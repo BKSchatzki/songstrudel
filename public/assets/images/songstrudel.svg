@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2160 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.592593,0,0,0.592593,0,0)">
+        <path d="M1005.11,74.891L1005.11,1005.11L74.891,1005.11L74.891,74.891L1005.11,74.891ZM954.707,125.293L125.293,125.293L125.293,954.707L954.707,954.707L954.707,125.293Z" style="fill:url(#_Linear1);"/>
+        <path d="M915.14,164.86L915.14,915.14L164.86,915.14L164.86,164.86L915.14,164.86ZM595.038,297.234L484.962,297.234L484.962,407.311L595.038,407.311L595.038,297.234ZM782.766,297.234L672.689,297.234L672.689,407.311L782.766,407.311L782.766,297.234ZM407.311,484.962L297.234,484.962L297.234,595.038L407.311,595.038L407.311,484.962ZM782.766,484.962L672.689,484.962L672.689,595.038L782.766,595.038L782.766,484.962ZM595.038,484.962L484.962,484.962L484.962,595.038L595.038,595.038L595.038,484.962ZM595.038,672.689L484.962,672.689L484.962,782.766L595.038,782.766L595.038,672.689ZM407.311,297.234L297.234,297.234L297.234,407.311L407.311,407.311L407.311,297.234ZM407.311,672.689L297.234,672.689L297.234,782.766L407.311,782.766L407.311,672.689ZM782.766,672.689L672.689,672.689L672.689,782.766L782.766,782.766L782.766,672.689Z" style="fill:url(#_Linear2);"/>
+    </g>
+    <g transform="matrix(0.927755,0,0,1,16.0702,113.848)">
+        <g transform="matrix(288,0,0,288,2190.5,206.152)">
+        </g>
+        <text x="732.08px" y="206.152px" style="font-family:'Candara-Bold', 'Candara', sans-serif;font-weight:700;font-size:288px;fill:url(#_Linear3);">S<tspan x="875.49px 1029.16px 1180.31px 1331.73px 1475.14px 1572.43px 1676.18px 1824.65px 1975.94px 2116.25px " y="206.152px 206.152px 206.152px 206.152px 206.152px 206.152px 206.152px 206.152px 206.152px 206.152px ">ongStrudel</tspan></text>
+    </g>
+    <g transform="matrix(1.34435,0,0,1.228,-362.313,-28.3223)">
+        <g transform="matrix(0.913453,0,0,1,68.3302,0)">
+            <g transform="matrix(78.1761,0,0,78.1761,1882.9,439.059)">
+            </g>
+            <text x="789.515px" y="439.059px" style="font-family:'Candara', sans-serif;font-size:78.176px;fill:rgb(241,245,249);">S<tspan x="837.299px 914.399px 962.908px 1011.42px 1059.05px 1083.81px 1131.44px 1192.63px 1253.12px 1301.63px 1349.41px 1374.18px 1403.6px 1464.1px 1488.86px 1536.49px 1595.27px 1643.78px 1668.55px 1730.61px 1781.71px 1830.22px " y="439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px 439.059px ">WEET TUNES IN THE OVEN</tspan></text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(930.218,0,0,930.218,74.8908,540)"><stop offset="0" style="stop-color:rgb(250,204,21);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(251,146,60);stop-opacity:1"/></linearGradient>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(930.218,0,0,930.218,74.8908,540)"><stop offset="0" style="stop-color:rgb(250,204,21);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(251,146,60);stop-opacity:1"/></linearGradient>
+        <linearGradient id="_Linear3" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1431,0,0,272.672,742.909,142.52)"><stop offset="0" style="stop-color:rgb(251,146,60);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(250,204,21);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
