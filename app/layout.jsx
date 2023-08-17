@@ -1,5 +1,6 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
+import Provider from "@components/Provider";
 
 export const metadata = {
   title: "SongStrudel",
@@ -10,8 +11,10 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className="bg-slate-950 text-slate-100">
-        <Nav />
-        <main>{children}</main>
+        <Provider>
+          <Nav />
+          <main>{children}</main>
+        </Provider>
       </body>
     </html>
   );

@@ -1,0 +1,15 @@
+import NextAuth from "next-auth/next";
+import DiscordProvider from "next-auth/providers/discord";
+
+const handler = NextAuth({
+  providers: [
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+    }),
+  ],
+  async session({ session }) {},
+  async signIn({ profile }) {},
+});
+
+export { handler as GET, handler as POST };
