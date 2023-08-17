@@ -57,7 +57,7 @@ const Nav = () => {
               </button>
               <Link href="/my-arrangements">
                 <Image
-                  src="/assets/images/songstrudel-logoonly.svg"
+                  src={session?.user.image}
                   alt="My Arrangements"
                   width={37}
                   height={37}
@@ -73,7 +73,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="bg-slate-100 px-3 py-1.5 text-slate-950"
+                    className="rounded-lg bg-slate-100 px-3 py-1.5 text-slate-950"
                   >
                     Sign In
                   </button>
@@ -86,7 +86,7 @@ const Nav = () => {
           {session?.user ? (
             <div className="flex">
               <Image
-                src="/assets/images/songstrudel-logoonly.svg"
+                src={session?.user.image}
                 alt="My Arrangements"
                 width={37}
                 height={37}

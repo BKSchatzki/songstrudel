@@ -11,31 +11,31 @@ const handler = NextAuth({
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
   ],
-  async session({ session }) {
-    const sessionUser = await User.findOne({
-      discordId: session.user.discordId,
-    });
-    session.user.id = sessionUser._id.toString();
-    return session;
-  },
-  async signIn({ profile }) {
-    try {
-      await connectDB();
-      const userExists = await User.findOne({ discordId: profile.discordId });
-      if (!userExists) {
-        await User.create({
-          discordId: profile.discordId,
-          discordUsername: profile.discordUsername
-            .replace(" ", "")
-            .toLowerCase(),
-          discordAvatar: profile.discordAvatar,
-        });
+  callbacks: {
+    async session({ session }) {
+      const sessionUser = await User.findOne({
+        discordId: session.user.id,
+      });
+      session.user.id = sessionUser._id.toString();
+      return session;
+    },
+    async signIn({ profile }) {
+      try {
+        await connectDB();
+        const userExists = await User.findOne({ id: profile.id });
+        if (!userExists) {
+          await User.create({
+            id: profile.id,
+            username: profile.username.replace(" ", "").toLowerCase(),
+            image: profile.image,
+          });
+        }
+        return true;
+      } catch (err) {
+        console.log(err);
+        return false;
       }
-      return true;
-    } catch (err) {
-      console.log(err);
-      return false;
-    }
+    },
   },
 });
 
