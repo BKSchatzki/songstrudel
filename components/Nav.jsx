@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const isUserLoggedIn = true;
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [dropdownToggled, setDropdownToggled] = useState(false);
@@ -40,7 +40,7 @@ const Nav = () => {
         </Link>
         {/* Desktop Navigation */}
         <div className="hidden sm:flex">
-          {isUserLoggedIn ? (
+          {session?.user ? (
             <div className="flex gap-3 md:gap-5">
               <Link
                 href="/create-arrangement"
@@ -83,7 +83,7 @@ const Nav = () => {
         </div>
         {/* Mobile Navigation */}
         <div className="relative flex sm:hidden">
-          {isUserLoggedIn ? (
+          {session?.user ? (
             <div className="flex">
               <Image
                 src="/assets/images/songstrudel-logoonly.svg"
