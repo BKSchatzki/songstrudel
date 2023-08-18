@@ -14,7 +14,7 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       const sessionUser = await User.findOne({
-        discordId: session.user.id,
+        sessionId: session.user.id,
       });
       session.user.id = sessionUser._id.toString();
       return session;
