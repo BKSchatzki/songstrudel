@@ -10,7 +10,7 @@ const CreateArrangement = () => {
   const [arrangement, setArrangement] = useState({
     title: "",
     description: "",
-    elements: [],
+    instruments: ["", "", "", "", "", "", ""],
   });
 
   const createArrangement = async (e) => {};
