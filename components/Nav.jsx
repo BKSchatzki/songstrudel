@@ -109,7 +109,7 @@ const Nav = () => {
                     My Arrangements
                   </Link>
                   <Link
-                    href="/create-strudel"
+                    href="/create-arrangement"
                     onClick={() => setDropdownToggled(false)}
                     className="font-semibold"
                   >
