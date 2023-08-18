@@ -18,13 +18,13 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
           <span className="mb-1.5 text-left text-xs opacity-75">Title</span>
           <input
             type="text"
-            id="title"
             value={arrangement.title}
             maxLength={32}
             onChange={(e) =>
               setArrangement({ ...arrangement, title: e.target.value })
             }
             placeholder="Your arrangement's name ~"
+            required
             className="w-full bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-base"
           />
         </label>
@@ -34,7 +34,6 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
           </span>
           <textarea
             type="text"
-            id="description"
             value={arrangement.description}
             rows={6}
             maxLength={160}
@@ -42,15 +41,25 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
               setArrangement({ ...arrangement, description: e.target.value })
             }
             placeholder="A quick overview ~"
+            required
             className="w-full resize-none bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-base"
           />
         </label>
         <div className="flex-row flex-nowrap items-center justify-between">
-          {arrangement.instruments.map((_, index) => (
+          {arrangement.instruments.map((element, index) => (
             <label>
               <span className="hidden">Instruments</span>
               <input
                 type="text"
+                value={element}
+                onChange={(e) => {
+                  const updatedInstruments = [...arrangement.instruments];
+                  updatedInstruments[index] = e.target.value;
+                  setArrangement({
+                    ...arrangement,
+                    instruments: updatedInstruments,
+                  });
+                }}
                 maxLength={4}
                 placeholder={`Ins${index + 1}`}
                 className="w-[14.2857%] bg-slate-900 px-0.5 py-2 text-center text-xs font-bold outline-none placeholder:opacity-50 focus:brightness-125 sm:text-sm"
