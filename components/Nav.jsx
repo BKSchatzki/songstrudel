@@ -23,19 +23,19 @@ const Nav = () => {
     <nav className="mb-16 px-6 pt-3">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
         <Link href="/" className="flex items-center justify-center gap-2">
-          {/* <Image
+          <Image
             src="/assets/images/songstrudel-logoonly.svg"
             alt="SongStrudel Logo"
             width={37}
             height={37}
             className="block sm:hidden"
-          /> */}
+          />
           <Image
             src="/assets/images/songstrudel-nameonly.svg"
             alt="SongStrudel Logo"
             width={148}
             height={37}
-            // className="hidden sm:block"
+            className="hidden sm:block"
           />
         </Link>
         {/* Desktop Navigation */}
@@ -73,8 +73,14 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="rounded-lg bg-slate-100 px-3 py-1.5 text-slate-950"
+                    className="flex items-start justify-center gap-2 rounded-lg bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
                   >
+                    <Image
+                      src="/assets/images/discord-logo.svg"
+                      alt="Discord Logo"
+                      width={25}
+                      height={25}
+                    />
                     Sign In
                   </button>
                 ))}
@@ -127,8 +133,14 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="bg-slate-100 px-3 py-1.5 text-slate-950"
+                    className="flex items-start justify-center gap-2 rounded-lg bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
                   >
+                    <Image
+                      src="/assets/images/discord-logo.svg"
+                      alt="Discord Logo"
+                      width={25}
+                      height={25}
+                    />
                     Sign In
                   </button>
                 ))}
