@@ -17,7 +17,7 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
         <div className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
           <label
             htmlFor="title"
-            className="mb-1.5 text-left text-xs opacity-50"
+            className="mb-1.5 text-left text-xs opacity-75"
           >
             Title
           </label>
@@ -30,13 +30,13 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
               setArrangement({ ...arrangement, title: e.target.value })
             }
             placeholder="Your arrangement's name ~"
-            className="w-full bg-slate-900 px-3 text-base outline-none sm:text-lg"
+            className="w-full bg-slate-900 px-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
           />
         </div>
         <div className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
           <label
             htmlFor="description"
-            className="mb-1.5 text-left text-xs opacity-50"
+            className="mb-1.5 text-left text-xs opacity-75"
           >
             Description
           </label>
@@ -50,7 +50,7 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
               setArrangement({ ...arrangement, description: e.target.value })
             }
             placeholder="A quick overview ~"
-            className="w-full resize-none bg-slate-900 px-3 text-base outline-none sm:text-lg"
+            className="w-full resize-none bg-slate-900 px-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
           />
         </div>
       </form>
