@@ -14,13 +14,8 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
         onSubmit={handleSubmit}
         className="mt-8 w-full max-w-xs sm:max-w-sm"
       >
-        <div className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
-          <label
-            htmlFor="title"
-            className="mb-1.5 text-left text-xs opacity-75"
-          >
-            Title
-          </label>
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
+          <span className="mb-1.5 text-left text-xs opacity-75">Title</span>
           <input
             type="text"
             id="title"
@@ -32,14 +27,11 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
             placeholder="Your arrangement's name ~"
             className="w-full bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-base"
           />
-        </div>
-        <div className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
-          <label
-            htmlFor="description"
-            className="mb-1.5 text-left text-xs opacity-75"
-          >
+        </label>
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
+          <span className="mb-1.5 text-left text-xs opacity-75">
             Description
-          </label>
+          </span>
           <textarea
             type="text"
             id="description"
@@ -52,15 +44,18 @@ const Arrange = ({ arrangement, setArrangement, submitting, handleSubmit }) => {
             placeholder="A quick overview ~"
             className="w-full resize-none bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-base"
           />
-        </div>
+        </label>
         <div className="flex-row flex-nowrap items-center justify-between">
           {arrangement.instruments.map((_, index) => (
-            <input
-              type="text"
-              maxLength={4}
-              placeholder={`Ins${index + 1}`}
-              className="w-[14.2857%] bg-slate-900 px-0.5 py-2 text-center text-xs font-bold outline-none placeholder:opacity-50 focus:brightness-125 sm:text-sm"
-            />
+            <label>
+              <span className="hidden">Instruments</span>
+              <input
+                type="text"
+                maxLength={4}
+                placeholder={`Ins${index + 1}`}
+                className="w-[14.2857%] bg-slate-900 px-0.5 py-2 text-center text-xs font-bold outline-none placeholder:opacity-50 focus:brightness-125 sm:text-sm"
+              />
+            </label>
           ))}
         </div>
       </form>
