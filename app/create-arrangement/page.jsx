@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Arrange from "@components/Arrange";
 
 const CreateArrangement = () => {
-  const [submitting, setSubmitting] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState({
     title: "",
     description: "",
@@ -19,7 +19,7 @@ const CreateArrangement = () => {
     <Arrange
       arrangement={arrangement}
       setArrangement={setArrangement}
-      submitting={submitting}
+      saving={saving}
       handleSubmit={createArrangement}
     />
   );
