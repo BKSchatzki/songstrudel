@@ -16,7 +16,7 @@ const handler = NextAuth({
       await User.findOne({
         username: session.user.name,
       });
-      console.log("Session resumed.");
+      console.log(`Session resumed for user ${session.user.name}.`);
       return session;
     },
     async signIn({ profile }) {
@@ -28,7 +28,11 @@ const handler = NextAuth({
             id: profile.id,
             username: profile.username.replace(" ", "").toLowerCase(),
           });
-          console.log("New user created.");
+          console.log(
+            `New user ${profile.username
+              .replace(" ", "")
+              .toLowerCase()} created.`,
+          );
         }
         return true;
       } catch (err) {

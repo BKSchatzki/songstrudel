@@ -9,7 +9,7 @@ const Home = () => {
         In The Oven
       </h1>
       <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-        SongStrudel is a planning tool for the modern musician to block ideas{" "}
+        SongStrudel is a planning tool for the modern musician to develop ideas{" "}
         <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text font-semibold text-transparent">
           before getting lost in the DAW sauce.
         </span>
