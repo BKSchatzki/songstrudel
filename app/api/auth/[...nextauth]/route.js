@@ -13,10 +13,10 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      const sessionUser = await User.findOne({
-        name: session.user.name,
+      await User.findOne({
+        username: session.user.name,
       });
-      // session.user.id = sessionUser._id.toString();
+      console.log("Session resumed.");
       return session;
     },
     async signIn({ profile }) {
@@ -27,8 +27,8 @@ const handler = NextAuth({
           await User.create({
             id: profile.id,
             username: profile.username.replace(" ", "").toLowerCase(),
-            image: profile.image,
           });
+          console.log("New user created.");
         }
         return true;
       } catch (err) {
