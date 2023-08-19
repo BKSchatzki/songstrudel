@@ -6,9 +6,9 @@ import ArrangementCard from "./ArrangementCard";
 const ArrangementCardList = ({ data }) => {
   return (
     <div>
-      {data.map((arrangement) => {
-        <ArrangementCard key={arrangement._id} arrangement={arrangement} />;
-      })}
+      {data.map((arrangement) => (
+        <ArrangementCard key={arrangement._id} arrangement={arrangement} />
+      ))}
     </div>
   );
 };
@@ -26,7 +26,7 @@ const Feed = () => {
       setArrangements(data);
     };
     fetchArrangements();
-  });
+  }, []);
 
   return (
     <section className="mt-12">
