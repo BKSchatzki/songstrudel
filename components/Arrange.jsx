@@ -21,7 +21,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           <input
             type="text"
             value={arrangement.title}
-            maxLength={32}
+            maxLength={48}
             onChange={(e) =>
               setArrangement({ ...arrangement, title: e.target.value })
             }
@@ -38,7 +38,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             type="text"
             value={arrangement.description}
             rows={6}
-            maxLength={160}
+            maxLength={152}
             onChange={(e) =>
               setArrangement({ ...arrangement, description: e.target.value })
             }

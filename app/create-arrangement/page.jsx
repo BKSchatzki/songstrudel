@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Arrange from "@components/Arrange";
-import { POST } from "@app/api/auth/[...nextauth]/route";
 
 const CreateArrangement = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState({
@@ -21,7 +22,7 @@ const CreateArrangement = () => {
 
     try {
       const res = await fetch("/api/arrangement/new", {
-        method: POST,
+        method: "POST",
         body: JSON.stringify({
           userId: session?.user.id,
           title: arrangement.title,
@@ -31,7 +32,7 @@ const CreateArrangement = () => {
       });
 
       if (res.ok) {
-        // router.push("/");
+        router.push("/");
       }
     } catch (err) {
       console.log(err);

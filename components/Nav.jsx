@@ -97,10 +97,10 @@ const Nav = () => {
                 width={37}
                 height={37}
                 onClick={() => setDropdownToggled((prev) => !prev)}
-                className="z-10 rounded-full"
+                className="z-20 rounded-full"
               />
               {dropdownToggled && (
-                <div className="absolute right-0 top-0 flex h-full flex-col gap-2 rounded-sm bg-slate-950 bg-opacity-10 px-4 py-4 ps-8 pt-24 text-right backdrop-blur-md backdrop-filter">
+                <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-2 rounded-sm bg-slate-950 bg-opacity-10 px-4 py-4 ps-8 pt-24 text-right backdrop-blur-md backdrop-filter">
                   <Link
                     href="/my-arrangements"
                     onClick={() => setDropdownToggled(false)}
