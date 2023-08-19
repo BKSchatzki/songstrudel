@@ -1,6 +1,7 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import Image from "next/image";
 
 export const metadata = {
   title: "SongStrudel",
@@ -12,6 +13,7 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body className="bg-slate-950 text-slate-100">
         <Provider>
+          <div className="gradient" />
           <Nav />
           <main>{children}</main>
         </Provider>

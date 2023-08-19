@@ -20,7 +20,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="mb-16 px-6 pt-3">
+    <nav className="mb-8 bg-gradient-to-b from-slate-950 to-transparent px-6 pb-10 pt-3 sm:mb-8">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
         <Link href="/" className="flex items-center justify-center gap-2">
           <Image
@@ -51,7 +51,7 @@ const Nav = () => {
               <button
                 type="button"
                 onClick={signOut}
-                className="inset-1 rounded-sm px-3 py-1.5 ring-1 ring-slate-100"
+                className=" rounded-sm px-3 py-1.5"
               >
                 Sign Out
               </button>
@@ -100,7 +100,7 @@ const Nav = () => {
                 className="z-20 rounded-full"
               />
               {dropdownToggled && (
-                <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-2 rounded-sm bg-slate-950 bg-opacity-10 px-4 py-4 ps-8 pt-24 text-right backdrop-blur-md backdrop-filter">
+                <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-6 rounded-sm bg-slate-950 bg-opacity-20 px-4 py-4 ps-8 pt-20 text-right backdrop-blur-md backdrop-filter">
                   <Link
                     href="/my-arrangements"
                     onClick={() => setDropdownToggled(false)}
@@ -118,7 +118,7 @@ const Nav = () => {
                   <button
                     type="button"
                     onClick={signOut}
-                    className="mt-4 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-950"
+                    className="mt-14 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-950"
                   >
                     Sign Out
                   </button>

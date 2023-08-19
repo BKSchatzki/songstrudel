@@ -3,7 +3,7 @@ import Link from "next/link";
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
-      <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
+      <h1 className="mx-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
           Cook
@@ -14,8 +14,8 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         onSubmit={handleSubmit}
         className="mt-8 w-full max-w-xs sm:max-w-lg"
       >
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
-          <span className="mb-1.5 text-left text-xs opacity-75 sm:text-base">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+          <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
             Title
           </span>
           <input
@@ -27,11 +27,11 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             }
             placeholder="Your arrangement's name ~"
             required
-            className="w-full bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+            className="w-full bg-transparent px-3 text-sm outline-none  placeholder:opacity-50 sm:text-lg"
           />
         </label>
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-900 px-3 pb-3 pt-1.5">
-          <span className="mb-1.5 text-left text-xs opacity-75 sm:text-base">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+          <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
             Description
           </span>
           <textarea
@@ -44,7 +44,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             }
             placeholder="A quick overview ~"
             required
-            className="w-full resize-none bg-slate-900 px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+            className="w-full resize-none bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
           />
         </label>
         <div className="mb-4 flex-row flex-nowrap items-center justify-between">
@@ -64,7 +64,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 }}
                 maxLength={4}
                 placeholder={`Ins${index + 1}`}
-                className="w-[14.2857%] bg-slate-900 px-0.5 py-2 text-center text-xs font-bold outline-none placeholder:opacity-50 focus:brightness-125 sm:text-base"
+                className="w-[14.2857%] bg-slate-950 bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base"
               />
             </label>
           ))}
