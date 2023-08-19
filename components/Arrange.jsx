@@ -35,7 +35,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             }
             placeholder="Your arrangement's name ~"
             required
-            className="w-full bg-transparent px-3 text-sm outline-none  placeholder:opacity-50 sm:text-lg"
+            className="w-full bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
           />
         </label>
         {/* ----------- */}

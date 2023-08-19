@@ -1,3 +1,5 @@
+import Feed from "@components/Feed";
+
 const Home = () => {
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
@@ -17,6 +19,8 @@ const Home = () => {
           before getting lost in the DAW sauce.
         </span>
       </p>
+
+      <Feed />
     </section>
   );
 };
