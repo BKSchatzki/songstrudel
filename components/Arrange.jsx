@@ -73,7 +73,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         <div className="mt-8 flex items-center justify-end gap-8">
           <Link
             href="/"
-            className="rounded-lg px-2 py-1 text-xs opacity-50 sm:text-base"
+            className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
           >
             Cancel
           </Link>

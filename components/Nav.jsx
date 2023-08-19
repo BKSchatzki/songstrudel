@@ -44,14 +44,14 @@ const Nav = () => {
             <div className="flex gap-3 md:gap-5">
               <Link
                 href="/create-arrangement"
-                className="rounded-lg bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold"
+                className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold"
               >
                 Create Arrangement
               </Link>
               <button
                 type="button"
                 onClick={signOut}
-                className="inset-1 rounded-lg px-3 py-1.5 ring-1 ring-slate-100"
+                className="inset-1 rounded-sm px-3 py-1.5 ring-1 ring-slate-100"
               >
                 Sign Out
               </button>
@@ -73,7 +73,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="flex items-start justify-center gap-2 rounded-lg bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
+                    className="flex items-start justify-center gap-2 rounded-sm bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
                   >
                     <Image
                       src="/assets/images/discord-logo.svg"
@@ -88,19 +88,19 @@ const Nav = () => {
           )}
         </div>
         {/* Mobile Navigation */}
-        <div className="relative flex sm:hidden">
+        <div className="flex sm:hidden">
           {session?.user ? (
             <div className="flex">
               <Image
                 src={session?.user.image}
-                alt="My Arrangements"
+                alt="My Discord Avatar"
                 width={37}
                 height={37}
                 onClick={() => setDropdownToggled((prev) => !prev)}
-                className="rounded-full"
+                className="z-10 rounded-full"
               />
               {dropdownToggled && (
-                <div className="absolute right-0 top-12 flex w-56 flex-col gap-2 rounded-md bg-gradient-to-r from-blue-800 to-violet-800 px-4 py-4 text-right">
+                <div className="absolute right-0 top-0 flex h-full flex-col gap-2 rounded-sm bg-slate-950 bg-opacity-10 px-4 py-4 ps-8 pt-24 text-right backdrop-blur-md backdrop-filter">
                   <Link
                     href="/my-arrangements"
                     onClick={() => setDropdownToggled(false)}
@@ -118,7 +118,7 @@ const Nav = () => {
                   <button
                     type="button"
                     onClick={signOut}
-                    className="mt-4 rounded-lg bg-slate-950 px-3 py-1.5"
+                    className="mt-4 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-950"
                   >
                     Sign Out
                   </button>
@@ -133,7 +133,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="flex items-start justify-center gap-2 rounded-lg bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
+                    className="flex items-start justify-center gap-2 rounded-sm bg-[#7289da] px-3 py-1.5 font-semibold text-slate-100"
                   >
                     <Image
                       src="/assets/images/discord-logo.svg"
