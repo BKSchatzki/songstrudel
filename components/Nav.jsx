@@ -6,11 +6,12 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
+  // Import session
   const { data: session } = useSession();
-
+  // Initialize state for providers and mobile dropdown menu
   const [providers, setProviders] = useState(null);
   const [dropdownToggled, setDropdownToggled] = useState(false);
-
+  // Fire getProviders() once on page-load
   useEffect(() => {
     const loadProviders = async () => {
       const res = await getProviders();
@@ -20,8 +21,12 @@ const Nav = () => {
   }, []);
 
   return (
+    // Top of nav should be background color for on mobile overscroll
     <nav className="mb-8 bg-gradient-to-b from-slate-950 to-transparent px-6 pb-10 pt-3 sm:mb-8">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
+        {/* --------------- */}
+        {/* Responsive Logo */}
+        {/* --------------- */}
         <Link href="/" className="flex items-center justify-center gap-2">
           <Image
             src="/assets/images/songstrudel-logoonly.svg"
@@ -38,7 +43,9 @@ const Nav = () => {
             className="hidden sm:block"
           />
         </Link>
+        {/* ------------------ */}
         {/* Desktop Navigation */}
+        {/* ------------------ */}
         <div className="hidden sm:flex">
           {session?.user ? (
             <div className="flex gap-3 md:gap-5">
@@ -66,6 +73,7 @@ const Nav = () => {
               </Link>
             </div>
           ) : (
+            // Map providers in case I want to add more later, styling to be decided
             <>
               {providers &&
                 Object.values(providers).map((provider) => (
@@ -87,7 +95,9 @@ const Nav = () => {
             </>
           )}
         </div>
+        {/* ----------------- */}
         {/* Mobile Navigation */}
+        {/* ----------------- */}
         <div className="flex sm:hidden">
           {session?.user ? (
             <div className="flex">
@@ -126,6 +136,7 @@ const Nav = () => {
               )}
             </div>
           ) : (
+            // Map providers in case I want to add more later, styling to be decided
             <>
               {providers &&
                 Object.values(providers).map((provider) => (

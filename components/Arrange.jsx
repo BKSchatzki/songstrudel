@@ -3,17 +3,25 @@ import Link from "next/link";
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
+      {/* ------ */}
+      {/* Header */}
+      {/* ------ */}
       <h1 className="mx-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
           Cook
         </span>
       </h1>
-
+      {/* --------- */}
+      {/* Main Form */}
+      {/* --------- */}
       <form
         onSubmit={handleSubmit}
         className="mt-8 w-full max-w-xs sm:max-w-lg"
       >
+        {/* ----- */}
+        {/* Title */}
+        {/* ----- */}
         <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
           <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
             Title
@@ -30,6 +38,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             className="w-full bg-transparent px-3 text-sm outline-none  placeholder:opacity-50 sm:text-lg"
           />
         </label>
+        {/* ----------- */}
+        {/* Description */}
+        {/* ----------- */}
         <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
           <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
             Description
@@ -47,6 +58,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             className="w-full resize-none bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
           />
         </label>
+        {/* -------------- */}
+        {/* Instrument Map */}
+        {/* -------------- */}
         <div className="mb-4 flex-row flex-nowrap items-center justify-between">
           {arrangement.instruments.map((element, index) => (
             <label>
@@ -69,7 +83,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             </label>
           ))}
         </div>
-
+        {/* ------------------ */}
+        {/* Submission Buttons */}
+        {/* ------------------ */}
         <div className="mt-8 flex items-center justify-end gap-8">
           <Link
             href="/"

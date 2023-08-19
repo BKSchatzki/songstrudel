@@ -1,7 +1,6 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
-import Image from "next/image";
 
 export const metadata = {
   title: "SongStrudel",

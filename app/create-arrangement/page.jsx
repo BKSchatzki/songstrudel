@@ -6,20 +6,21 @@ import { useRouter } from "next/navigation";
 import Arrange from "@components/Arrange";
 
 const CreateArrangement = () => {
+  // Import session and set up router
   const { data: session } = useSession();
   const router = useRouter();
-
+  // Initialize state for document to go in arrangements collection
   const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState({
     title: "",
     description: "",
     instruments: ["", "", "", "", "", "", ""],
   });
-
+  // Define CREATE function for arrangements document
   const createArrangement = async (e) => {
     e.preventDefault();
     setSaving(true);
-
+    // Fetch at API route using _id defined in auth route and state
     try {
       const res = await fetch("/api/arrangement/new", {
         method: "POST",
@@ -30,7 +31,7 @@ const CreateArrangement = () => {
           instruments: arrangement.instruments,
         }),
       });
-
+      // Redirect to root if successful
       if (res.ok) {
         router.push("/");
       }
@@ -41,6 +42,7 @@ const CreateArrangement = () => {
     }
   };
 
+  // Pass props to Arrange component
   return (
     <Arrange
       arrangement={arrangement}
