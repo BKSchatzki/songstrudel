@@ -14,10 +14,11 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       try {
-        await User.findOne({
+        const sessionUser = await User.findOne({
           username: session.user.name,
         });
         console.log(`Session resumed for user ${session.user.name}.`);
+        session.user.id = sessionUser._id.toString();
         return session;
       } catch (err) {
         console.log(err);
