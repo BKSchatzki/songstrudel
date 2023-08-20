@@ -24,8 +24,8 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* ----- */}
         {/* Title */}
         {/* ----- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
-          <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+          <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
             Title
           </span>
           <input
@@ -37,27 +37,27 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             }
             placeholder="Your arrangement's name ~"
             required
-            className="w-full bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+            className="w-full bg-transparent px-6 pb-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
           />
         </label>
         {/* ----------- */}
         {/* Description */}
         {/* ----------- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 px-3 pb-3 pt-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
-          <span className="mb-1.5 text-left text-xs font-semibold opacity-75 sm:text-base">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 pb-3 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+          <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
             Description
           </span>
           <textarea
             type="text"
             value={arrangement.description}
             rows={6}
-            maxLength={152}
+            maxLength={240}
             onChange={(e) =>
               setArrangement({ ...arrangement, description: e.target.value })
             }
             placeholder="A quick overview ~"
             required
-            className="w-full resize-none bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+            className="w-full resize-none bg-transparent px-6 pb-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
           />
         </label>
         {/* -------------- */}
@@ -88,9 +88,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* -------- */}
         {/* Sections */}
         {/* -------- */}
-        <div className="rounded-sm bg-slate-950 bg-opacity-20 py-3 backdrop-blur-md">
+        <div className="">
           {arrangement.sections.map((section, index) => (
-            <div key={index} className="mb-4 flex flex-col bg-slate-950">
+            <div key={index} className="mb-4 flex flex-col ">
               {/* Name Input */}
               <label>
                 <span className="hidden">Section Name</span>
@@ -105,9 +105,10 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       sections: updatedSections,
                     });
                   }}
+                  maxLength={24}
                   placeholder="Section"
                   required
-                  className="bg-transparent text-center text-xs outline-none placeholder:opacity-50 sm:text-base"
+                  className="w-full bg-slate-950 bg-opacity-50 px-3 py-1.5 text-left text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
               {/* Notes Textarea */}
@@ -117,7 +118,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   type="text"
                   value={section.notes}
                   rows={4}
-                  maxLength={200}
+                  maxLength={144}
                   onChange={(e) => {
                     const updatedSections = [...arrangement.sections];
                     updatedSections[index].notes = e.target.value;
@@ -128,7 +129,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   }}
                   placeholder="Notes"
                   required
-                  className="w-full resize-none bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 text-sm outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-lg"
                 />
               </label>
             </div>
