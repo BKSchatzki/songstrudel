@@ -15,6 +15,32 @@ const CreateArrangement = () => {
     title: "",
     description: "",
     instruments: ["", "", "", "", "", "", ""],
+    sections: [
+      {
+        name: "",
+        notes: "",
+        rows: [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+        ],
+      },
+      {
+        name: "",
+        notes: "",
+        rows: [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+        ],
+      },
+      {
+        name: "",
+        notes: "",
+        rows: [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+        ],
+      },
+    ],
   });
   // Define CREATE function for arrangements document
   const createArrangement = async (e) => {

@@ -63,7 +63,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* -------------- */}
         {/* Instrument Map */}
         {/* -------------- */}
-        <div className="mb-4 flex-row flex-nowrap items-center justify-between">
+        <div className="mb-4">
           {arrangement.instruments.map((element, index) => (
             <label>
               <span className="hidden">Instruments</span>
@@ -85,6 +85,57 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             </label>
           ))}
         </div>
+        {/* -------- */}
+        {/* Sections */}
+        {/* -------- */}
+        <div className="rounded-sm bg-slate-950 bg-opacity-20 py-3 backdrop-blur-md">
+          {arrangement.sections.map((section, index) => (
+            <div key={index} className="mb-4 flex flex-col bg-slate-950">
+              {/* Name Input */}
+              <label>
+                <span className="hidden">Section Name</span>
+                <input
+                  type="text"
+                  value={section.name}
+                  onChange={(e) => {
+                    const updatedSections = [...arrangement.sections];
+                    updatedSections[index].name = e.target.value;
+                    setArrangement({
+                      ...arrangement,
+                      sections: updatedSections,
+                    });
+                  }}
+                  placeholder="Section"
+                  required
+                  className="bg-transparent text-center text-xs outline-none placeholder:opacity-50 sm:text-base"
+                />
+              </label>
+
+              {/* Notes Textarea */}
+              <label>
+                <span className="hidden">Section Notes</span>
+                <textarea
+                  type="text"
+                  value={section.notes}
+                  rows={4}
+                  maxLength={200}
+                  onChange={(e) => {
+                    const updatedSections = [...arrangement.sections];
+                    updatedSections[index].notes = e.target.value;
+                    setArrangement({
+                      ...arrangement,
+                      sections: updatedSections,
+                    });
+                  }}
+                  placeholder="Notes"
+                  required
+                  className="w-full resize-none bg-transparent px-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+
         {/* ------------------ */}
         {/* Submission Buttons */}
         {/* ------------------ */}

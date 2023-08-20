@@ -36,7 +36,7 @@ const Feed = () => {
         onSubmit={(e) => e.preventDefault()}
         className="mt-4 flex flex-col items-center justify-center"
       >
-        <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+        <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
           <span className="hidden">Name</span>
           <input
             type="text"
