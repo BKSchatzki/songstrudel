@@ -1,5 +1,30 @@
-const ArrangementCard = () => {
-  return <div>ArrangementCard</div>;
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+
+const ArrangementCard = ({ arrangement, handleEdit, handleDelete }) => {
+  return (
+    <article className="relative my-8 max-w-xl rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 backdrop-blur-md">
+      <span className="absolute -top-3 left-3 text-[0.625rem] opacity-50 sm:text-xs">
+        {arrangement.creator.username}
+      </span>
+      <div className="mb-4 flex flex-col text-left">
+        <h4 className="text-sm font-semibold sm:text-base">
+          {arrangement.title}
+        </h4>
+        <p className="text-xs opacity-75 sm:text-sm">
+          {arrangement.description}
+        </p>
+      </div>
+      <ul className="mt-4 flex flex-row flex-nowrap items-center justify-between text-xs opacity-50 sm:text-sm">
+        {arrangement.instruments.map((element, index) => (
+          <li>{element ? element : `Ins${index + 1}`}</li>
+        ))}
+      </ul>
+    </article>
+  );
 };
 
 export default ArrangementCard;

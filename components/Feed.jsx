@@ -5,7 +5,7 @@ import ArrangementCard from "./ArrangementCard";
 
 const ArrangementCardList = ({ data }) => {
   return (
-    <div>
+    <div className="mt-16">
       {data.map((arrangement) => (
         <ArrangementCard key={arrangement._id} arrangement={arrangement} />
       ))}
@@ -33,7 +33,7 @@ const Feed = () => {
       <h3 className="mx-4 mb-4 max-w-xl text-xl font-semibold sm:text-2xl">
         Search Arrangements
       </h3>
-      <form className="mt-4 flex flex-col items-end justify-center">
+      <form className="mt-4 flex flex-col items-center justify-center">
         <label className="flex flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-3 py-1.5 backdrop-blur-md backdrop-filter focus-within:brightness-150">
           <span className="w-16 border-0 border-r border-r-slate-100 border-opacity-10 pr-3 text-right text-xs opacity-75 sm:text-base">
             Name
@@ -60,7 +60,7 @@ const Feed = () => {
         </label>
       </form>
 
-      <ArrangementCardList data={[arrangements]} />
+      <ArrangementCardList data={arrangements} />
     </section>
   );
 };
