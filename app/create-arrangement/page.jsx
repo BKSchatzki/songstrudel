@@ -24,22 +24,6 @@ const CreateArrangement = () => {
           [0, 0, 0, 0, 0, 0, 0],
         ],
       },
-      {
-        name: "",
-        notes: "",
-        rows: [
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-        ],
-      },
-      {
-        name: "",
-        notes: "",
-        rows: [
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-        ],
-      },
     ],
   });
   // Define CREATE function for arrangements document
@@ -55,6 +39,7 @@ const CreateArrangement = () => {
           title: arrangement.title,
           description: arrangement.description,
           instruments: arrangement.instruments,
+          sections: arrangement.sections,
         }),
       });
       // Redirect to root if successful

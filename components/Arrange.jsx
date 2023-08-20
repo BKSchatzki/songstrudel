@@ -110,7 +110,6 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   className="bg-transparent text-center text-xs outline-none placeholder:opacity-50 sm:text-base"
                 />
               </label>
-
               {/* Notes Textarea */}
               <label>
                 <span className="hidden">Section Notes</span>
@@ -135,7 +134,6 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             </div>
           ))}
         </div>
-
         {/* ------------------ */}
         {/* Submission Buttons */}
         {/* ------------------ */}

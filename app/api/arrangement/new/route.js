@@ -2,7 +2,8 @@ import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
 export const POST = async (req, res) => {
-  const { userId, title, description, instruments } = await req.json();
+  const { userId, title, description, instruments, sections } =
+    await req.json();
   try {
     await connectDB();
     const newArrangement = new Arrangement({
@@ -10,6 +11,7 @@ export const POST = async (req, res) => {
       title,
       description,
       instruments,
+      sections,
     });
     await newArrangement.save();
     console.log(`Successfully saved new arrangement ${title} to the database.`);
