@@ -12,6 +12,13 @@ const arrangementSchema = new Schema(
       type: [String],
       required: [true, "Instruments are required."],
     },
+    sections: [
+      {
+        name: { type: String, required: [true, "A name is required."] },
+        notes: { type: String, required: [true, "Notes are required."] },
+        rows: { type: [[Number]], required: [true, "Rows are required."] },
+      },
+    ],
   },
   { timestamps: true },
 );
