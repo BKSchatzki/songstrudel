@@ -5,11 +5,30 @@ import { useState } from "react";
 import Cell from "./Cell";
 
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
+  const textColors = [
+    "bg-red-950 text-red-500",
+    "bg-orange-950 text-orange-500",
+    "bg-yellow-950 text-yellow-500",
+    "bg-green-950 text-green-500",
+    "bg-blue-950 text-blue-500",
+    "bg-purple-950 text-purple-500",
+    "bg-pink-950 text-pink-500",
+  ];
+  const bgColors = [
+    "bg-red-500",
+    "bg-orange-500",
+    "bg-yellow-500",
+    "bg-green-500",
+    "bg-blue-500",
+    "bg-purple-500",
+    "bg-pink-500",
+  ];
+
   const [cellAppearance, setCellAppearance] = useState([
-    "bg-opacity-10",
+    "bg-opacity-5",
     "bg-opacity-30",
     "bg-opacity-60",
-    "bg-opacity-100",
+    "bg-opacity-100 brightness-150",
   ]);
   const [currentCellAppearance, setCurrentCellAppearance] = useState(0);
 
@@ -90,7 +109,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 }}
                 maxLength={4}
                 placeholder={`Ins${index + 1}`}
-                className="w-[14.2857%] bg-slate-950 bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base"
+                className={`w-[14.2857%] bg-slate-950 bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]}`}
               />
             </label>
           ))}
@@ -154,6 +173,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                         key={cellIndex}
                         initialValue={cell}
                         cellAppearance={cellAppearance}
+                        bgColors={bgColors}
+                        cellIndex={cellIndex}
+                        rowIndex={rowIndex}
                       />
                     ))}
                   </div>
