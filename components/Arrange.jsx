@@ -117,8 +117,8 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 <textarea
                   type="text"
                   value={section.notes}
-                  rows={4}
-                  maxLength={144}
+                  rows={5}
+                  maxLength={192}
                   onChange={(e) => {
                     const updatedSections = [...arrangement.sections];
                     updatedSections[index].notes = e.target.value;
@@ -129,9 +129,27 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   }}
                   placeholder="Notes"
                   required
-                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 text-sm outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-lg"
+                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 text-xs outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
+              {/* Rows here */}
+              <div>
+                {section.rows.map((row, rowIndex) => (
+                  <div key={rowIndex} className="flex flex-row flex-nowrap">
+                    {row.map((cell, cellIndex) => (
+                      <input
+                        type="button"
+                        value={cell}
+                        onChange={(e) => {}}
+                        placeholder={`Row ${rowIndex + 1}, Cell ${
+                          cellIndex + 1
+                        }`}
+                        className="w-[14.2857%] "
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
