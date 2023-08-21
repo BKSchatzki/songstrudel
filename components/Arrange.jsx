@@ -1,8 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import Cell from "./Cell";
 
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
+  const [cellAppearance, setCellAppearance] = useState([
+    "bg-opacity-10",
+    "bg-opacity-30",
+    "bg-opacity-60",
+    "bg-opacity-100",
+  ]);
+  const [currentCellAppearance, setCurrentCellAppearance] = useState(0);
+
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
       {/* ------ */}
@@ -133,18 +143,17 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 />
               </label>
               {/* Rows here */}
-              <div>
+              <div className="flex flex-col gap-1">
                 {section.rows.map((row, rowIndex) => (
-                  <div key={rowIndex} className="flex flex-row flex-nowrap">
+                  <div
+                    key={rowIndex}
+                    className="flex flex-row flex-nowrap gap-1"
+                  >
                     {row.map((cell, cellIndex) => (
-                      <input
-                        type="button"
-                        value={cell}
-                        onChange={(e) => {}}
-                        placeholder={`Row ${rowIndex + 1}, Cell ${
-                          cellIndex + 1
-                        }`}
-                        className="w-[14.2857%] "
+                      <Cell
+                        key={cellIndex}
+                        initialValue={cell}
+                        cellAppearance={cellAppearance}
                       />
                     ))}
                   </div>
