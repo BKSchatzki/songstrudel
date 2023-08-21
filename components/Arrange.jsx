@@ -26,7 +26,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
 
   const [cellAppearance, setCellAppearance] = useState([
     "bg-opacity-5",
-    "bg-opacity-30",
+    "bg-opacity-20",
     "bg-opacity-60",
     "bg-opacity-100 brightness-150",
   ]);
@@ -176,6 +176,18 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                         bgColors={bgColors}
                         cellIndex={cellIndex}
                         rowIndex={rowIndex}
+                        updateCellAppearance={(
+                          rowIndex,
+                          cellIndex,
+                          newValue,
+                        ) => {
+                          const updatedSections = [...arrangement.sections];
+                          updatedSections[rowIndex].rows[cellIndex] = newValue;
+                          setArrangement({
+                            ...arrangement,
+                            sections: updatedSections,
+                          });
+                        }}
                       />
                     ))}
                   </div>

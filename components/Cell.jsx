@@ -8,14 +8,15 @@ const Cell = ({
   bgColors,
   cellIndex,
   rowIndex,
+  updateCellAppearance,
 }) => {
   const [currentCellAppearance, setCurrentCellAppearance] =
     useState(initialValue);
 
   const handleClick = () => {
-    setCurrentCellAppearance(
-      (prevIndex) => (prevIndex + 1) % cellAppearance.length,
-    );
+    const newValue = (currentCellAppearance + 1) % cellAppearance.length;
+    setCurrentCellAppearance(newValue);
+    updateCellAppearance(rowIndex, cellIndex, newValue);
   };
 
   return (
