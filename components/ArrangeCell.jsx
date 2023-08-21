@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const Cell = ({
+const ArrangeCell = ({
   initialValue,
   cellAppearance,
   bgColors,
@@ -31,4 +31,4 @@ const Cell = ({
   );
 };
 
-export default Cell;
+export default ArrangeCell;

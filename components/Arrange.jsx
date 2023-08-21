@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Cell from "./Cell";
+import ArrangeCell from "./ArrangeCell";
 
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   const textColors = [
@@ -94,7 +94,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* -------------- */}
         <div className="mb-4">
           {arrangement.instruments.map((element, index) => (
-            <label>
+            <label key={index}>
               <span className="hidden">Instruments</span>
               <input
                 type="text"
@@ -169,7 +169,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     className="flex flex-row flex-nowrap gap-1"
                   >
                     {row.map((cell, cellIndex) => (
-                      <Cell
+                      <ArrangeCell
                         key={cellIndex}
                         initialValue={cell}
                         cellAppearance={cellAppearance}

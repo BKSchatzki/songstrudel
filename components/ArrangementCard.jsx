@@ -20,7 +20,7 @@ const ArrangementCard = ({ arrangement, handleEdit, handleDelete }) => {
       </div>
       <ul className="mt-4 flex flex-row flex-nowrap items-center justify-between text-xs opacity-50 sm:text-sm">
         {arrangement.instruments.map((element, index) => (
-          <li>{element ? element : `Ins${index + 1}`}</li>
+          <li key={index}>{element ? element : `Ins${index + 1}`}</li>
         ))}
       </ul>
     </article>
