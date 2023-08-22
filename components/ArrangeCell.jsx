@@ -31,7 +31,7 @@ const ArrangeCell = ({
       className={`w-[14.2857%] cursor-pointer text-transparent sm:h-[4.5rem] ${
         bgColors[cellIndex]
       } ${cellAppearance[currentCellAppearance]} ${
-        rowIndex === 1 ? "sm:h[4.5rem] h-11" : "h-5 sm:h-8"
+        rowIndex === 1 ? "h-11 sm:h-[4.5rem]" : "h-5 sm:h-[2rem]"
       }`}
     />
   );
