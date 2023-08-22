@@ -4,12 +4,18 @@ import { useState } from "react";
 
 const ArrangeCell = ({
   initialValue,
-  cellAppearance,
   bgColors,
   cellIndex,
   rowIndex,
   updateCellAppearance,
 }) => {
+  const [cellAppearance, setCellAppearance] = useState([
+    "bg-opacity-5",
+    "bg-opacity-20",
+    "bg-opacity-60",
+    "bg-opacity-100 brightness-150",
+  ]);
+
   const [currentCellAppearance, setCurrentCellAppearance] =
     useState(initialValue);
 

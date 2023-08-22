@@ -24,14 +24,6 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
     "bg-pink-500",
   ];
 
-  const [cellAppearance, setCellAppearance] = useState([
-    "bg-opacity-5",
-    "bg-opacity-20",
-    "bg-opacity-60",
-    "bg-opacity-100 brightness-150",
-  ]);
-  const [currentCellAppearance, setCurrentCellAppearance] = useState(0);
-
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
       {/* ------ */}
@@ -137,7 +129,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   maxLength={24}
                   placeholder="Section"
                   required
-                  className="w-full bg-slate-950 bg-opacity-50 px-3 py-1.5 text-left text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
+                  className="w-full bg-slate-950 bg-opacity-50 px-3 py-1.5 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
               {/* Notes Textarea */}
@@ -172,7 +164,6 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       <ArrangeCell
                         key={cellIndex}
                         initialValue={cell}
-                        cellAppearance={cellAppearance}
                         bgColors={bgColors}
                         cellIndex={cellIndex}
                         rowIndex={rowIndex}
