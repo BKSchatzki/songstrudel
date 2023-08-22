@@ -107,6 +107,33 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             </label>
           ))}
         </div>
+        {/* ----------------- */}
+        {/* Add First Section */}
+        {/* ----------------- */}
+        <button
+          type="button"
+          value="Add section"
+          onClick={() => {
+            const updatedSections = [...arrangement.sections];
+            const newSection = {
+              name: "",
+              notes: "",
+              rows: [
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+              ],
+            };
+            updatedSections.unshift(newSection);
+            setArrangement({
+              ...arrangement,
+              sections: updatedSections,
+            });
+          }}
+          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-20 py-0.5 sm:py-2"
+        >
+          <Plus className="w-4 stroke-slate-100 sm:w-6" />
+        </button>
         {/* -------- */}
         {/* Sections */}
         {/* -------- */}
