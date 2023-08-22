@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ArrangeCell from "./ArrangeCell";
+import { Plus, Minus } from "lucide-react";
 
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   const textColors = [
@@ -186,7 +187,52 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
               </label>
             </div>
           ))}
+          {/* -------- */}
+          {/* Add and Delete Buttons */}
+          {/* -------- */}
+          <div className="flex items-center justify-end gap-6">
+            <button
+              type="button"
+              value="Delete section"
+              onClick={() => {
+                const updatedSections = [...arrangement.sections];
+                updatedSections.pop();
+                setArrangement({
+                  ...arrangement,
+                  sections: updatedSections,
+                });
+              }}
+              className="bg-slate-950 bg-opacity-20 px-6 py-3"
+            >
+              <Minus className="stroke-slate-100" />
+            </button>
+            <button
+              type="button"
+              value="Add section"
+              onClick={() => {
+                const updatedSections = [...arrangement.sections];
+                const newSection = {
+                  name: "",
+                  notes: "",
+                  rows: [
+                    [0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0],
+                  ],
+                };
+                updatedSections.push(newSection);
+                setArrangement({
+                  ...arrangement,
+                  sections: updatedSections,
+                });
+              }}
+              className="bg-slate-950 bg-opacity-20 px-6 py-3"
+            >
+              <Plus className="stroke-slate-100" />
+            </button>
+          </div>
         </div>
+
         {/* ------------------ */}
         {/* Submission Buttons */}
         {/* ------------------ */}
