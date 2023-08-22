@@ -84,9 +84,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* -------------- */}
         {/* Instrument Map */}
         {/* -------------- */}
-        <div className="mb-4">
+        <div className="mb-4 flex flex-grow gap-1 sm:gap-2">
           {arrangement.instruments.map((element, index) => (
-            <label key={index}>
+            <label key={index} className="w-[14.2857%]">
               <span className="hidden">Instruments</span>
               <input
                 type="text"
@@ -101,7 +101,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 }}
                 maxLength={4}
                 placeholder={`Ins${index + 1}`}
-                className={`w-[14.2857%] bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]} placeholder:${textColors[index]}`}
+                className={`w-full bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]} placeholder:${textColors[index]}`}
               />
             </label>
           ))}
@@ -133,11 +133,11 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 />
               </label>
               {/* Rows here */}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1 sm:gap-2">
                 {section.rows.map((row, rowIndex) => (
                   <div
                     key={rowIndex}
-                    className="flex flex-row flex-nowrap gap-2"
+                    className="flex flex-row flex-nowrap gap-1 sm:gap-2"
                   >
                     {row.map((cell, cellIndex) => (
                       <ArrangeCell
