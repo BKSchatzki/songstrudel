@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ArrangeCell from "./ArrangeCell";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Trash } from "lucide-react";
 
 const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   const textColors = [
@@ -30,7 +30,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
       {/* ------ */}
       {/* Header */}
       {/* ------ */}
-      <h1 className="mx-4 max-w-xl text-2xl font-bold sm:text-3xl">
+      <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
           Cook
@@ -112,7 +112,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* ----------------- */}
         <button
           type="button"
-          value="Add section"
+          value="Add Section"
           onClick={() => {
             const updatedSections = [...arrangement.sections];
             const newSection = {
@@ -141,25 +141,43 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           {arrangement.sections.map((section, index) => (
             <div key={index} className="mb-4 flex flex-col gap-2">
               {/* Name Input */}
-              <label>
-                <span className="hidden">Section Name</span>
-                <input
-                  type="text"
-                  value={section.name}
-                  onChange={(e) => {
+              <div className="grid grid-cols-7 gap-1 sm:gap-2">
+                <label className="col-span-6">
+                  <span className="hidden">Section Name</span>
+                  <input
+                    type="text"
+                    value={section.name}
+                    onChange={(e) => {
+                      const updatedSections = [...arrangement.sections];
+                      updatedSections[index].name = e.target.value;
+                      setArrangement({
+                        ...arrangement,
+                        sections: updatedSections,
+                      });
+                    }}
+                    maxLength={24}
+                    placeholder="Section"
+                    required
+                    className="w-full bg-slate-950 bg-opacity-50 px-6 py-3 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
+                  />
+                </label>
+                {/* Delete Section Button */}
+                <button
+                  type="button"
+                  value="Delete Section"
+                  onClick={() => {
                     const updatedSections = [...arrangement.sections];
-                    updatedSections[index].name = e.target.value;
+                    updatedSections.pop();
                     setArrangement({
                       ...arrangement,
                       sections: updatedSections,
                     });
                   }}
-                  maxLength={24}
-                  placeholder="Section"
-                  required
-                  className="w-full bg-slate-950 bg-opacity-50 px-3 py-1.5 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
-                />
-              </label>
+                  className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-20"
+                >
+                  <Trash className="w-4 stroke-slate-100 sm:w-5" />
+                </button>
+              </div>
               {/* Rows here */}
               <div className="flex flex-col gap-1 sm:gap-2">
                 {section.rows.map((row, rowIndex) => (
@@ -212,52 +230,33 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 py-3 text-xs outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
+              {/* Add New Section After Current Button */}
+              <button
+                type="button"
+                value="Add Section"
+                onClick={() => {
+                  const updatedSections = [...arrangement.sections];
+                  const newSection = {
+                    name: "",
+                    notes: "",
+                    rows: [
+                      [0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0],
+                    ],
+                  };
+                  updatedSections.unshift(newSection);
+                  setArrangement({
+                    ...arrangement,
+                    sections: updatedSections,
+                  });
+                }}
+                className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-20 py-0.5 sm:py-2"
+              >
+                <Plus className="w-4 stroke-slate-100 sm:w-6" />
+              </button>
             </div>
           ))}
-          {/* -------- */}
-          {/* Add and Delete Buttons */}
-          {/* -------- */}
-          <div className="flex items-center justify-end gap-6">
-            <button
-              type="button"
-              value="Delete section"
-              onClick={() => {
-                const updatedSections = [...arrangement.sections];
-                updatedSections.pop();
-                setArrangement({
-                  ...arrangement,
-                  sections: updatedSections,
-                });
-              }}
-              className="bg-slate-950 bg-opacity-20 px-6 py-3"
-            >
-              <Minus className="stroke-slate-100" />
-            </button>
-            <button
-              type="button"
-              value="Add section"
-              onClick={() => {
-                const updatedSections = [...arrangement.sections];
-                const newSection = {
-                  name: "",
-                  notes: "",
-                  rows: [
-                    [0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0],
-                  ],
-                };
-                updatedSections.push(newSection);
-                setArrangement({
-                  ...arrangement,
-                  sections: updatedSections,
-                });
-              }}
-              className="bg-slate-950 bg-opacity-20 px-6 py-3"
-            >
-              <Plus className="stroke-slate-100" />
-            </button>
-          </div>
         </div>
 
         {/* ------------------ */}
