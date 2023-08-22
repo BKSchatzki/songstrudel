@@ -101,7 +101,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                 }}
                 maxLength={4}
                 placeholder={`Ins${index + 1}`}
-                className={`w-[14.2857%] bg-slate-950 bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]}`}
+                className={`w-[14.2857%] bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]} placeholder:${textColors[index]}`}
               />
             </label>
           ))}
@@ -111,7 +111,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* -------- */}
         <div className="">
           {arrangement.sections.map((section, index) => (
-            <div key={index} className="mb-4 flex flex-col ">
+            <div key={index} className="mb-4 flex flex-col gap-2">
               {/* Name Input */}
               <label>
                 <span className="hidden">Section Name</span>
@@ -132,6 +132,37 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   className="w-full bg-slate-950 bg-opacity-50 px-3 py-1.5 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
+              {/* Rows here */}
+              <div className="flex flex-col gap-2">
+                {section.rows.map((row, rowIndex) => (
+                  <div
+                    key={rowIndex}
+                    className="flex flex-row flex-nowrap gap-2"
+                  >
+                    {row.map((cell, cellIndex) => (
+                      <ArrangeCell
+                        key={cellIndex}
+                        bgColors={bgColors}
+                        rowIndex={rowIndex}
+                        cellIndex={cellIndex}
+                        updateCellAppearance={(
+                          rowIndex,
+                          cellIndex,
+                          newValue,
+                        ) => {
+                          const updatedSections = [...arrangement.sections];
+                          updatedSections[index].rows[rowIndex][cellIndex] =
+                            newValue;
+                          setArrangement({
+                            ...arrangement,
+                            sections: updatedSections,
+                          });
+                        }}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
               {/* Notes Textarea */}
               <label>
                 <span className="hidden">Section Notes</span>
@@ -148,42 +179,11 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       sections: updatedSections,
                     });
                   }}
-                  placeholder="Notes"
+                  placeholder="Section notes go here ~"
                   required
-                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 text-xs outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
+                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 py-3 text-xs outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
-              {/* Rows here */}
-              <div className="flex flex-col gap-1">
-                {section.rows.map((row, rowIndex) => (
-                  <div
-                    key={rowIndex}
-                    className="flex flex-row flex-nowrap gap-1"
-                  >
-                    {row.map((cell, cellIndex) => (
-                      <ArrangeCell
-                        key={cellIndex}
-                        initialValue={cell}
-                        bgColors={bgColors}
-                        cellIndex={cellIndex}
-                        rowIndex={rowIndex}
-                        updateCellAppearance={(
-                          rowIndex,
-                          cellIndex,
-                          newValue,
-                        ) => {
-                          const updatedSections = [...arrangement.sections];
-                          updatedSections[rowIndex].rows[cellIndex] = newValue;
-                          setArrangement({
-                            ...arrangement,
-                            sections: updatedSections,
-                          });
-                        }}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
             </div>
           ))}
         </div>

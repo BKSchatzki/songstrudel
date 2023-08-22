@@ -16,7 +16,7 @@ const arrangementSchema = new Schema(
       {
         name: { type: String, required: [true, "A name is required."] },
         notes: { type: String, required: [true, "Notes are required."] },
-        rows: { type: [[Number]], required: [true, "Rows are required."] },
+        rows: { type: [[Number]], required: [true, "Cells are required."] },
       },
     ],
   },
