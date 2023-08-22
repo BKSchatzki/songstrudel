@@ -28,10 +28,10 @@ const ArrangeCell = ({
       type="button"
       value={currentCellAppearance}
       onClick={handleClick}
-      className={`w-[14.2857%] cursor-pointer text-transparent sm:h-[4.5rem] ${
+      className={`w-[14.2857%] cursor-pointer text-transparent ${
         bgColors[cellIndex]
       } ${cellAppearance[currentCellAppearance]} ${
-        rowIndex === 1 ? "h-11 sm:h-[4.5rem]" : "h-5 sm:h-[2rem]"
+        rowIndex === 1 ? "h-11 sm:h-[4.5rem]" : "h-5 sm:h-8"
       }`}
     />
   );
