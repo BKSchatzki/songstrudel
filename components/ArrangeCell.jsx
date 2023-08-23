@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ArrangeCell = ({
   bgColors,
-  cellIndex,
   rowIndex,
+  cellIndex,
+  cellData,
   updateCellAppearance,
 }) => {
   const [cellAppearance, setCellAppearance] = useState([
@@ -15,7 +16,13 @@ const ArrangeCell = ({
     "bg-opacity-100 brightness-150",
   ]);
 
-  const [currentCellAppearance, setCurrentCellAppearance] = useState(0);
+  const [currentCellAppearance, setCurrentCellAppearance] = useState(
+    cellData[rowIndex][cellIndex],
+  );
+
+  useEffect(() => {
+    setCurrentCellAppearance(cellData[rowIndex][cellIndex]);
+  }, [cellData, rowIndex, cellIndex]);
 
   const handleClick = () => {
     const newValue = (currentCellAppearance + 1) % cellAppearance.length;

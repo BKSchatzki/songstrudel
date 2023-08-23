@@ -138,8 +138,8 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* Sections */}
         {/* -------- */}
         <div className="">
-          {arrangement.sections.map((section, index) => (
-            <div key={index} className="mb-4 flex flex-col gap-2">
+          {arrangement.sections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="mb-4 flex flex-col gap-2">
               {/* Name Input */}
               <div className="grid grid-cols-7 gap-1 sm:gap-2">
                 <label className="col-span-6">
@@ -149,7 +149,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     value={section.name}
                     onChange={(e) => {
                       const updatedSections = [...arrangement.sections];
-                      updatedSections[index].name = e.target.value;
+                      updatedSections[sectionIndex].name = e.target.value;
                       setArrangement({
                         ...arrangement,
                         sections: updatedSections,
@@ -167,7 +167,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   value="Delete Section"
                   onClick={() => {
                     const updatedSections = arrangement.sections.filter(
-                      (_, i) => i !== index,
+                      (_, i) => i !== sectionIndex,
                     );
                     setArrangement({
                       ...arrangement,
@@ -192,14 +192,16 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                         bgColors={bgColors}
                         rowIndex={rowIndex}
                         cellIndex={cellIndex}
+                        cellData={arrangement.sections[sectionIndex].rows}
                         updateCellAppearance={(
                           rowIndex,
                           cellIndex,
                           newValue,
                         ) => {
                           const updatedSections = [...arrangement.sections];
-                          updatedSections[index].rows[rowIndex][cellIndex] =
-                            newValue;
+                          updatedSections[sectionIndex].rows[rowIndex][
+                            cellIndex
+                          ] = newValue;
                           setArrangement({
                             ...arrangement,
                             sections: updatedSections,
@@ -220,7 +222,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   maxLength={192}
                   onChange={(e) => {
                     const updatedSections = [...arrangement.sections];
-                    updatedSections[index].notes = e.target.value;
+                    updatedSections[sectionIndex].notes = e.target.value;
                     setArrangement({
                       ...arrangement,
                       sections: updatedSections,
@@ -246,7 +248,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       [0, 0, 0, 0, 0, 0, 0],
                     ],
                   };
-                  const currentIndex = index;
+                  const currentIndex = sectionIndex;
                   updatedSections.splice(currentIndex + 1, 0, newSection);
                   const updatedSectionsWithKeys = updatedSections.map(
                     (section, i) => ({
