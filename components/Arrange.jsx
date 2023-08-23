@@ -166,8 +166,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   type="button"
                   value="Delete Section"
                   onClick={() => {
-                    const updatedSections = [...arrangement.sections];
-                    updatedSections.pop();
+                    const updatedSections = arrangement.sections.filter(
+                      (_, i) => i !== index,
+                    );
                     setArrangement({
                       ...arrangement,
                       sections: updatedSections,
@@ -245,10 +246,18 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       [0, 0, 0, 0, 0, 0, 0],
                     ],
                   };
-                  updatedSections.unshift(newSection);
+                  const currentIndex = index;
+                  updatedSections.splice(currentIndex + 1, 0, newSection);
+                  const updatedSectionsWithKeys = updatedSections.map(
+                    (section, i) => ({
+                      ...section,
+                      key: i,
+                    }),
+                  );
+                  console.log(updatedSectionsWithKeys);
                   setArrangement({
                     ...arrangement,
-                    sections: updatedSections,
+                    sections: updatedSectionsWithKeys,
                   });
                 }}
                 className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-20 py-0.5 sm:py-2"
