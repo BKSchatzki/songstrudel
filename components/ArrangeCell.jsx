@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const ArrangeCell = ({
   bgColors,
+  shadowColors,
   rowIndex,
   cellIndex,
   cellData,
@@ -35,9 +36,9 @@ const ArrangeCell = ({
       type="button"
       value={currentCellAppearance}
       onClick={handleClick}
-      className={`w-[14.2857%] cursor-pointer text-transparent ${
+      className={`w-[14.2857%] cursor-pointer text-transparent shadow-sm backdrop-blur-md backdrop-filter transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none ${
         bgColors[cellIndex]
-      } ${cellAppearance[currentCellAppearance]} ${
+      } ${shadowColors[cellIndex]} ${cellAppearance[currentCellAppearance]} ${
         rowIndex === 1 ? "h-11 sm:h-[4.5rem]" : "h-5 sm:h-8"
       }`}
     />

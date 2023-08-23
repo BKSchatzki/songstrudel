@@ -51,7 +51,7 @@ const Nav = () => {
             <div className="flex gap-3 md:gap-5">
               <Link
                 href="/create-arrangement"
-                className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold"
+                className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none"
               >
                 Create Arrangement
               </Link>
@@ -128,7 +128,7 @@ const Nav = () => {
                   <button
                     type="button"
                     onClick={signOut}
-                    className="mt-14 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-900"
+                    className="mt-14 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-900 shadow-sm shadow-slate-100 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none"
                   >
                     Sign Out
                   </button>

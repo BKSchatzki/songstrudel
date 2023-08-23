@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const ArrangementCard = ({ arrangement, handleEdit, handleDelete }) => {
   return (
-    <article className="relative w-96 max-w-xl rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 backdrop-blur-md">
+    <article className="relative w-96 max-w-xl cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md">
       <span className="absolute -top-2 right-3 rounded-sm bg-slate-950 px-1 py-0.5 text-[0.625rem] opacity-50 backdrop-blur-md sm:text-xs">
         {arrangement.creator.username}
       </span>

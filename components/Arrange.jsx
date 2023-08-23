@@ -24,6 +24,15 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
     "bg-purple-500",
     "bg-pink-500",
   ];
+  const shadowColors = [
+    "shadow-red-500/50",
+    "shadow-orange-500/50",
+    "shadow-yellow-500/50",
+    "shadow-green-500/50",
+    "shadow-blue-500/50",
+    "shadow-purple-500/50",
+    "shadow-pink-500/50",
+  ];
 
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
@@ -46,7 +55,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* ----- */}
         {/* Title */}
         {/* ----- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
           <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
             Title
           </span>
@@ -65,7 +74,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* ----------- */}
         {/* Description */}
         {/* ----------- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 pb-3 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 pb-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
           <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
             Description
           </span>
@@ -86,23 +95,23 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         {/* Instrument Map */}
         {/* -------------- */}
         <div className="mb-4 flex flex-grow gap-1 sm:gap-2">
-          {arrangement.instruments.map((element, index) => (
-            <label key={index} className="w-[14.2857%]">
+          {arrangement.instruments.map((instrument, instrumentIndex) => (
+            <label key={instrumentIndex} className="w-[14.2857%]">
               <span className="hidden">Instruments</span>
               <input
                 type="text"
-                value={element}
+                value={instrument}
                 onChange={(e) => {
                   const updatedInstruments = [...arrangement.instruments];
-                  updatedInstruments[index] = e.target.value;
+                  updatedInstruments[instrumentIndex] = e.target.value;
                   setArrangement({
                     ...arrangement,
                     instruments: updatedInstruments,
                   });
                 }}
                 maxLength={4}
-                placeholder={`Ins${index + 1}`}
-                className={`w-full bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[index]} placeholder:${textColors[index]}`}
+                placeholder={`Ins${instrumentIndex + 1}`}
+                className={`w-full bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold shadow-sm outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[instrumentIndex]} ${shadowColors[instrumentIndex]} placeholder:${textColors[instrumentIndex]}`}
               />
             </label>
           ))}
@@ -130,7 +139,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
               sections: updatedSections,
             });
           }}
-          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-20 py-0.5 sm:py-2"
+          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:py-2"
         >
           <Plus className="w-4 stroke-slate-100 sm:w-6" />
         </button>
@@ -158,7 +167,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     maxLength={24}
                     placeholder="Section"
                     required
-                    className="w-full bg-slate-950 bg-opacity-50 px-6 py-3 text-center text-xs font-semibold outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
+                    className="w-full bg-slate-950 bg-opacity-50 px-6 py-3 text-center text-xs font-semibold shadow-sm shadow-slate-950/50 outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                   />
                 </label>
                 {/* Delete Section Button */}
@@ -174,7 +183,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       sections: updatedSections,
                     });
                   }}
-                  className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-20"
+                  className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-30 shadow-sm shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none"
                 >
                   <Trash className="w-4 stroke-slate-100 sm:w-5" />
                 </button>
@@ -190,6 +199,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       <ArrangeCell
                         key={cellIndex}
                         bgColors={bgColors}
+                        shadowColors={shadowColors}
                         rowIndex={rowIndex}
                         cellIndex={cellIndex}
                         cellData={arrangement.sections[sectionIndex].rows}
@@ -230,7 +240,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   }}
                   placeholder="Section notes go here ~"
                   required
-                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 py-3 text-xs outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
+                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 py-3 text-xs shadow-sm shadow-slate-950/50 outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
                 />
               </label>
               {/* Add New Section After Current Button */}
@@ -262,7 +272,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     sections: updatedSectionsWithKeys,
                   });
                 }}
-                className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-20 py-0.5 sm:py-2"
+                className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:py-2"
               >
                 <Plus className="w-4 stroke-slate-100 sm:w-6" />
               </button>
@@ -283,7 +293,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           <button
             type="submit"
             disabled={saving}
-            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 sm:w-24 sm:text-lg"
+            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
           >
             {saving ? "Saving ~" : "Save"}
           </button>
