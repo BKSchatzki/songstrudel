@@ -22,7 +22,7 @@ const Nav = () => {
 
   return (
     // Top of nav should be background color for on mobile overscroll
-    <nav className="mb-8 bg-gradient-to-b from-slate-900 to-transparent px-6 pb-10 pt-3 sm:mb-8">
+    <nav className="mb-8 bg-gradient-to-b from-gray-900 to-transparent px-6 pb-10 pt-3 sm:mb-8">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
         {/* --------------- */}
         {/* Responsive Logo */}
@@ -110,7 +110,7 @@ const Nav = () => {
                 className="z-20 rounded-full"
               />
               {dropdownToggled && (
-                <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-6 rounded-sm bg-slate-900 bg-opacity-20 px-4 py-4 ps-8 pt-20 text-right backdrop-blur-md backdrop-filter">
+                <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 ps-8 pt-20 text-right backdrop-blur-md backdrop-filter">
                   <Link
                     href="/my-arrangements"
                     onClick={() => setDropdownToggled(false)}
@@ -128,7 +128,7 @@ const Nav = () => {
                   <button
                     type="button"
                     onClick={signOut}
-                    className="mt-14 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-900 shadow-sm shadow-slate-100 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="mt-14 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-950 shadow-sm shadow-slate-100 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                   >
                     Sign Out
                   </button>

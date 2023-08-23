@@ -10,9 +10,9 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className="bg-slate-900 text-slate-100">
+      <body className="bg-gray-900 text-slate-100">
         <Provider>
-          <div className="gradient" />
+          {/* <div className="gradient" /> */}
           <Nav />
           <main>{children}</main>
         </Provider>
