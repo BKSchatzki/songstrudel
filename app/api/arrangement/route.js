@@ -1,6 +1,7 @@
 import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
+export const revalidate = 10;
 export const GET = async (req) => {
   try {
     await connectDB();
