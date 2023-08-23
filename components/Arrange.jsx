@@ -139,7 +139,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
               sections: updatedSections,
             });
           }}
-          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:py-2"
+          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:py-2"
         >
           <Plus className="w-4 stroke-slate-100 sm:w-6" />
         </button>
@@ -183,7 +183,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                       sections: updatedSections,
                     });
                   }}
-                  className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-30 shadow-sm shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none"
+                  className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-30 shadow-sm shadow-slate-950/30 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                 >
                   <Trash className="w-4 stroke-slate-100 sm:w-5" />
                 </button>
@@ -272,7 +272,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     sections: updatedSectionsWithKeys,
                   });
                 }}
-                className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:py-2"
+                className="mx-auto flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:py-2"
               >
                 <Plus className="w-4 stroke-slate-100 sm:w-6" />
               </button>
@@ -293,7 +293,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           <button
             type="submit"
             disabled={saving}
-            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-1 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
+            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
           >
             {saving ? "Saving ~" : "Save"}
           </button>
