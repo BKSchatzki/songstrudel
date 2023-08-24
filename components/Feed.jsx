@@ -23,7 +23,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchArrangements = async () => {
-      const res = await fetch("/api/arrangement");
+      const res = await fetch("/api/arrangement", { cache: "no-store" });
       const data = await res.json();
       setArrangements(data);
     };
