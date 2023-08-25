@@ -1,11 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import ArrangeCell from "./ArrangeCell";
+import ArrangementTitle from "./ArrangementTitle";
+import ArrangementDescription from "./Arrangement.Description";
+import SectionName from "./SectionName";
+import SectionNotes from "./SectionNotes";
+import SectionCell from "./SectionCell";
 import { Plus, Trash } from "lucide-react";
 
-const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
+const ArrangementForm = ({
+  arrangement,
+  setArrangement,
+  saving,
+  handleSubmit,
+}) => {
   const textColors = [
     "bg-red-950 text-red-500",
     "bg-orange-950 text-orange-500",
@@ -45,6 +53,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           Cook
         </span>
       </h1>
+
       {/* --------- */}
       {/* Main Form */}
       {/* --------- */}
@@ -52,45 +61,21 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         onSubmit={handleSubmit}
         className="mt-8 w-full max-w-xs sm:max-w-lg"
       >
-        {/* ----- */}
         {/* Title */}
-        {/* ----- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
-          <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
-            Title
-          </span>
-          <input
-            type="text"
-            value={arrangement.title}
-            maxLength={48}
-            onChange={(e) =>
-              setArrangement({ ...arrangement, title: e.target.value })
-            }
-            placeholder="Your arrangement's name ~"
-            required
-            className="w-full bg-transparent px-6 pb-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
-          />
-        </label>
-        {/* ----------- */}
+        <ArrangementTitle
+          value={arrangement.title}
+          onChange={(e) =>
+            setArrangement({ ...arrangement, title: e.target.value })
+          }
+        />
         {/* Description */}
-        {/* ----------- */}
-        <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 pb-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
-          <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
-            Description
-          </span>
-          <textarea
-            type="text"
-            value={arrangement.description}
-            rows={6}
-            maxLength={240}
-            onChange={(e) =>
-              setArrangement({ ...arrangement, description: e.target.value })
-            }
-            placeholder="A quick overview ~"
-            required
-            className="w-full resize-none bg-transparent px-6 pb-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
-          />
-        </label>
+        <ArrangementDescription
+          value={arrangement.description}
+          onChange={(e) =>
+            setArrangement({ ...arrangement, description: e.target.value })
+          }
+        />
+
         {/* -------------- */}
         {/* Instrument Map */}
         {/* -------------- */}
@@ -116,6 +101,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             </label>
           ))}
         </div>
+
         {/* ----------------- */}
         {/* Add First Section */}
         {/* ----------------- */}
@@ -143,6 +129,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         >
           <Plus className="w-4 stroke-slate-100 sm:w-6" />
         </button>
+
         {/* -------- */}
         {/* Sections */}
         {/* -------- */}
@@ -151,25 +138,17 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             <div key={sectionIndex} className="mb-4 flex flex-col gap-2">
               {/* Name Input */}
               <div className="grid grid-cols-7 gap-1 sm:gap-2">
-                <label className="col-span-6">
-                  <span className="hidden">Section Name</span>
-                  <input
-                    type="text"
-                    value={section.name}
-                    onChange={(e) => {
-                      const updatedSections = [...arrangement.sections];
-                      updatedSections[sectionIndex].name = e.target.value;
-                      setArrangement({
-                        ...arrangement,
-                        sections: updatedSections,
-                      });
-                    }}
-                    maxLength={24}
-                    placeholder="Section"
-                    required
-                    className="w-full bg-slate-950 bg-opacity-50 px-6 py-3 text-center text-xs font-semibold shadow-sm shadow-slate-950/50 outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
-                  />
-                </label>
+                <SectionName
+                  value={section.name}
+                  onChange={(e) => {
+                    const updatedSections = [...arrangement.sections];
+                    updatedSections[sectionIndex].name = e.target.value;
+                    setArrangement({
+                      ...arrangement,
+                      sections: updatedSections,
+                    });
+                  }}
+                />
                 {/* Delete Section Button */}
                 <button
                   type="button"
@@ -188,7 +167,9 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   <Trash className="w-4 stroke-slate-100 sm:w-5" />
                 </button>
               </div>
+              {/* --------- */}
               {/* Rows here */}
+              {/* --------- */}
               <div className="flex flex-col gap-1 sm:gap-2">
                 {section.rows.map((row, rowIndex) => (
                   <div
@@ -196,7 +177,7 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                     className="flex flex-row flex-nowrap gap-1 sm:gap-2"
                   >
                     {row.map((cell, cellIndex) => (
-                      <ArrangeCell
+                      <SectionCell
                         key={cellIndex}
                         bgColors={bgColors}
                         shadowColors={shadowColors}
@@ -222,27 +203,20 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
                   </div>
                 ))}
               </div>
-              {/* Notes Textarea */}
-              <label>
-                <span className="hidden">Section Notes</span>
-                <textarea
-                  type="text"
-                  value={section.notes}
-                  rows={5}
-                  maxLength={192}
-                  onChange={(e) => {
-                    const updatedSections = [...arrangement.sections];
-                    updatedSections[sectionIndex].notes = e.target.value;
-                    setArrangement({
-                      ...arrangement,
-                      sections: updatedSections,
-                    });
-                  }}
-                  placeholder="Section notes go here ~"
-                  required
-                  className="w-full resize-none bg-slate-950 bg-opacity-50 px-6 py-3 text-xs shadow-sm shadow-slate-950/50 outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-base"
-                />
-              </label>
+              {/* ------------- */}
+              {/* Section Notes */}
+              {/* ------------- */}
+              <SectionNotes
+                value={section.notes}
+                onChange={(e) => {
+                  const updatedSections = [...arrangement.sections];
+                  updatedSections[sectionIndex].notes = e.target.value;
+                  setArrangement({
+                    ...arrangement,
+                    sections: updatedSections,
+                  });
+                }}
+              />
               {/* Add New Section After Current Button */}
               <button
                 type="button"
@@ -303,4 +277,4 @@ const Arrange = ({ arrangement, setArrangement, saving, handleSubmit }) => {
   );
 };
 
-export default Arrange;
+export default ArrangementForm;

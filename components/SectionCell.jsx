@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ArrangeCell = ({
+const SectionCell = ({
   bgColors,
   shadowColors,
   rowIndex,
@@ -45,4 +45,4 @@ const ArrangeCell = ({
   );
 };
 
-export default ArrangeCell;
+export default SectionCell;
