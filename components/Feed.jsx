@@ -13,6 +13,9 @@ const ArrangementCardList = ({ data }) => {
   );
 };
 
+export const dynamic = "force-dynamic";
+export const revalidate = 60;
+
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [arrangements, setArrangements] = useState([]);
