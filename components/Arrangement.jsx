@@ -4,10 +4,21 @@ import Link from "next/link";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";
 import ArrangementInstruments from "./ArrangementInstruments";
+import SectionAdd from "./SectionAdd";
 import Section from "./Section";
-import { Plus, Trash } from "lucide-react";
 
 const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
+  // Define newSection to pass as props to buttons
+  const newSection = {
+    name: "",
+    notes: "",
+    rows: [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+    ],
+  };
+  // Create arrays of classes to pass into color elements
   const textColors = [
     "bg-red-950 text-red-500",
     "bg-orange-950 text-orange-500",
@@ -38,7 +49,7 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
 
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
-      {/* Header */}
+      {/* HEADER */}
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
@@ -46,73 +57,46 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         </span>
       </h1>
 
-      {/* --------- */}
-      {/* Main Form */}
-      {/* --------- */}
+      {/* FORM START */}
       <form
         onSubmit={handleSubmit}
         className="mt-8 w-full max-w-xs sm:max-w-lg"
       >
-        {/* Title */}
+        {/* ARRANGEMENT PROPERTIES */}
         <ArrangementTitle
           arrangement={arrangement}
           setArrangement={setArrangement}
         />
-        {/* Description */}
         <ArrangementDescription
           arrangement={arrangement}
           setArrangement={setArrangement}
         />
-        {/* Instruments */}
         <ArrangementInstruments
           arrangement={arrangement}
           setArrangement={setArrangement}
           textColors={textColors}
           shadowColors={shadowColors}
         />
-
-        {/* ----------------- */}
-        {/* Add First Section */}
-        {/* ----------------- */}
-        <button
-          type="button"
-          value="Add Section"
+        {/* ADD SECTION TO BEGINNING */}
+        <SectionAdd
           onClick={() => {
             const updatedSections = [...arrangement.sections];
-            const newSection = {
-              name: "",
-              notes: "",
-              rows: [
-                [0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0],
-              ],
-            };
             updatedSections.unshift(newSection);
             setArrangement({
               ...arrangement,
               sections: updatedSections,
             });
           }}
-          className="mx-auto mb-4 flex w-5/6 items-center justify-center bg-slate-950 bg-opacity-30 py-0.5 shadow-md shadow-slate-950/30 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:py-2"
-        >
-          <Plus className="w-4 stroke-slate-100 sm:w-6" />
-        </button>
-
-        {/* -------- */}
-        {/* Sections */}
-        {/* -------- */}
+        />
+        {/* ALL SECTIONS */}
         <Section
           arrangement={arrangement}
           setArrangement={setArrangement}
-          textColors={textColors}
+          newSection={newSection}
           bgColors={bgColors}
           shadowColors={shadowColors}
         />
-
-        {/* ------------------ */}
-        {/* Submission Buttons */}
-        {/* ------------------ */}
+        {/* SUBMISSION BUTTONS */}
         <div className="mt-8 flex items-center justify-end gap-8">
           <Link
             href="/"

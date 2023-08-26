@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ArrangementCard from "./ArrangementCard";
+import FeedCard from "./FeedCard";
 
-const ArrangementCardList = ({ data }) => {
+const FeedCardList = ({ data }) => {
   return (
     <div className="mt-24 flex flex-wrap items-start justify-center gap-8">
       {data.map((arrangement) => (
-        <ArrangementCard key={arrangement._id} arrangement={arrangement} />
+        <FeedCard key={arrangement._id} arrangement={arrangement} />
       ))}
     </div>
   );
@@ -51,7 +51,7 @@ const Feed = () => {
         </label>
       </form>
 
-      <ArrangementCardList data={arrangements} />
+      <FeedCardList data={arrangements} />
     </section>
   );
 };

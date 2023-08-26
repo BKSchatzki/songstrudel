@@ -1,6 +1,9 @@
-"use client";
-
-const SectionName = ({ arrangement, section, setArrangement }) => {
+const SectionName = ({
+  arrangement,
+  setArrangement,
+  section,
+  sectionIndex,
+}) => {
   return (
     <label className="col-span-6">
       <span className="hidden">Section Name</span>
