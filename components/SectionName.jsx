@@ -1,13 +1,20 @@
 "use client";
 
-const SectionName = ({ value, onChange }) => {
+const SectionName = ({ arrangement, section, setArrangement }) => {
   return (
     <label className="col-span-6">
       <span className="hidden">Section Name</span>
       <input
         type="text"
-        value={value}
-        onChange={onChange}
+        value={section.name}
+        onChange={(e) => {
+          const updatedSections = [...arrangement.sections];
+          updatedSections[sectionIndex].name = e.target.value;
+          setArrangement({
+            ...arrangement,
+            sections: updatedSections,
+          });
+        }}
         maxLength={24}
         placeholder="Section"
         required

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import ArrangementForm from "@components/ArrangementForm";
+import Arrangement from "@components/Arrangement";
 
 const CreateArrangement = () => {
   // Import session and set up router
@@ -46,7 +46,7 @@ const CreateArrangement = () => {
 
   // Pass props to Arrange component
   return (
-    <ArrangementForm
+    <Arrangement
       arrangement={arrangement}
       setArrangement={setArrangement}
       saving={saving}
