@@ -1,5 +1,7 @@
 import Feed from "@components/Feed";
 
+export const dynamic = "force-dynamic";
+
 const Home = () => {
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">

@@ -13,8 +13,8 @@ const FeedCardList = ({ data }) => {
   );
 };
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// export const dynamic = "force-dynamic";
+// export const revalidate = 0;
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
@@ -27,7 +27,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchArrangements = async () => {
       const res = await fetch("/api/arrangement", {
-        /*cache: "no-store"*/ next: { revalidate: 10 },
+        /*cache: "no-store"*/ next: { revalidate: 0 },
       });
       const data = await res.json();
       setArrangements(data);
