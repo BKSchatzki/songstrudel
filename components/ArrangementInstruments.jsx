@@ -22,7 +22,7 @@ const ArrangementInstruments = ({
             }}
             maxLength={4}
             placeholder={`Ins${instrumentIndex + 1}`}
-            className={`w-full bg-opacity-50 px-0.5 py-2 text-center text-xs font-semibold shadow-sm outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-base ${textColors[instrumentIndex]} ${shadowColors[instrumentIndex]} placeholder:${textColors[instrumentIndex]}`}
+            className={`w-full bg-opacity-50 px-0.5 py-2 text-center text-base font-semibold shadow-sm outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-200 sm:text-lg ${textColors[instrumentIndex]} ${shadowColors[instrumentIndex]} placeholder:${textColors[instrumentIndex]}`}
           />
         </label>
       ))}

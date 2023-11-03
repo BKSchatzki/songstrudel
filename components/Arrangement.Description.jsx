@@ -16,7 +16,7 @@ const ArrangementDescription = ({ arrangement, setArrangement }) => {
         }
         placeholder="A quick overview ~"
         required
-        className="w-full resize-none bg-transparent px-6 pb-3 text-sm outline-none placeholder:opacity-50 sm:text-lg"
+        className="w-full resize-none bg-transparent px-6 pb-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
       />
     </label>
   );
