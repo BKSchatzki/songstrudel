@@ -46,12 +46,21 @@ const CreateArrangement = () => {
 
   // Pass props to Arrange component
   return (
-    <Arrangement
-      arrangement={arrangement}
-      setArrangement={setArrangement}
-      saving={saving}
-      handleSubmit={createArrangement}
-    />
+    <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
+      {/* HEADER */}
+      <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
+        Letting You{" "}
+        <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
+          Cook
+        </span>
+      </h1>
+      <Arrangement
+        arrangement={arrangement}
+        setArrangement={setArrangement}
+        saving={saving}
+        handleSubmit={createArrangement}
+      />
+    </section>
   );
 };
 
