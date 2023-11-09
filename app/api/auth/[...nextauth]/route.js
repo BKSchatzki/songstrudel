@@ -17,12 +17,16 @@ const handler = NextAuth({
         const sessionUser = await User.findOne({
           username: session.user.name,
         });
+        if (!sessionUser) {
+          console.log(`No user found for ${session.user.name}`);
+          return session; // or return an empty session object
+        }
         console.log(`Session resumed for user ${session.user.name}.`);
         session.user.id = sessionUser._id.toString();
         return session;
       } catch (err) {
         console.log(err);
-        return;
+        return session; // or return an empty session object
       }
     },
     async signIn({ profile }) {
