@@ -19,14 +19,14 @@ const handler = NextAuth({
         });
         if (!sessionUser) {
           console.log(`No user found for ${session.user.name}`);
-          return session; // or return an empty session object
+          return {}; // or return session
         }
         console.log(`Session resumed for user ${session.user.name}.`);
         session.user.id = sessionUser._id.toString();
         return session;
       } catch (err) {
         console.log(err);
-        return session; // or return an empty session object
+        return {}; // or return session
       }
     },
     async signIn({ profile }) {
