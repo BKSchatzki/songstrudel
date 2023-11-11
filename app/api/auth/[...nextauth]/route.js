@@ -13,6 +13,13 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      console.log("Before try");
+      setTimeout(() => {
+        console.log(
+          "10 seconds passed. Hopefully this comes after the session resumed.",
+        );
+        return {};
+      }, 10000);
       try {
         const sessionUser = await User.findOne({
           username: session.user.name,
