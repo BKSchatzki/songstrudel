@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+import { GeistSans } from "geist/font/sans";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
@@ -9,7 +10,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={GeistSans.className}>
       <body className="bg-gray-900 text-slate-100">
         <Provider>
           <div className="gradient" />
