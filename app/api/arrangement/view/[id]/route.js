@@ -2,7 +2,8 @@ import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
 export const GET = async (req, res) => {
-  const { id } = req.params;
+  console.log("GET request to /api/arrangement/view/[id]");
+  const { id } = req.query;
   try {
     await connectDB();
     const arrangement = await Arrangement.findOne({ _id: id }).populate(
