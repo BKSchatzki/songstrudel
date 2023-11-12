@@ -15,7 +15,6 @@ const Section = ({
     <>
       {arrangement.sections.map((section, sectionIndex) => (
         <div key={sectionIndex} className="flex flex-col gap-2">
-          {/* SECTION TOP BAR */}
           <div className="grid grid-cols-7 gap-1 sm:gap-2">
             <SectionName
               arrangement={arrangement}
@@ -23,7 +22,6 @@ const Section = ({
               sectionIndex={sectionIndex}
               setArrangement={setArrangement}
             />
-            {/* DELETE CURRENT SECTION */}
             <SectionDelete
               onClick={() => {
                 const updatedSections = arrangement.sections.filter(
@@ -36,7 +34,6 @@ const Section = ({
               }}
             />
           </div>
-          {/* SECTION ROWS AND CELLS */}
           <div className="flex flex-col gap-1 sm:gap-2">
             {section.rows.map((row, rowIndex) => (
               <div
@@ -50,9 +47,7 @@ const Section = ({
                     shadowColors={shadowColors}
                     rowIndex={rowIndex}
                     cellIndex={cellIndex}
-                    // Pass down the rows of cells
                     cellData={arrangement.sections[sectionIndex].rows}
-                    // Pass down method with matrix indeces and newValue parameter to be altered inside component
                     updateCellAppearance={(rowIndex, cellIndex, newValue) => {
                       const updatedSections = [...arrangement.sections];
                       updatedSections[sectionIndex].rows[rowIndex][cellIndex] =
@@ -67,14 +62,12 @@ const Section = ({
               </div>
             ))}
           </div>
-          {/* SECTION NOTES */}
           <SectionNotes
             arrangement={arrangement}
             section={section}
             sectionIndex={sectionIndex}
             setArrangement={setArrangement}
           />
-          {/* ADD SECTION AFTER CURRENT */}
           <SectionAdd
             onClick={() => {
               const updatedSections = [...arrangement.sections];

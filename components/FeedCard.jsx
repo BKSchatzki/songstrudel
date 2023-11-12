@@ -1,11 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
-const FeedCard = ({ arrangement, handleEdit, handleDelete }) => {
+const FeedCard = ({ arrangement }) => {
   return (
     <Link href={`/view-arrangement/${arrangement._id}`}>
       <article className="relative w-80 max-w-xl cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md sm:w-96">

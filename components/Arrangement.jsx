@@ -8,7 +8,6 @@ import SectionAdd from "./SectionAdd";
 import Section from "./Section";
 
 const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
-  // Define newSection to pass as props to buttons
   const newSection = {
     name: "",
     notes: "",
@@ -18,7 +17,6 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
       [0, 0, 0, 0, 0, 0, 0],
     ],
   };
-  // Create arrays of classes to pass into color elements
   const textColors = [
     "bg-red-950 text-red-500",
     "bg-orange-950 text-orange-500",
@@ -49,7 +47,6 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 w-full max-w-xs sm:max-w-lg">
-      {/* ARRANGEMENT PROPERTIES */}
       <ArrangementTitle
         arrangement={arrangement}
         setArrangement={setArrangement}
@@ -64,7 +61,6 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         textColors={textColors}
         shadowColors={shadowColors}
       />
-      {/* ADD SECTION TO BEGINNING */}
       <SectionAdd
         onClick={() => {
           const updatedSections = [...arrangement.sections];
@@ -75,7 +71,6 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
           });
         }}
       />
-      {/* ALL SECTIONS */}
       <Section
         arrangement={arrangement}
         setArrangement={setArrangement}
@@ -83,7 +78,6 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
         bgColors={bgColors}
         shadowColors={shadowColors}
       />
-      {/* SUBMISSION BUTTONS */}
       <div className="mt-8 flex items-center justify-end gap-8">
         <Link
           href="/"

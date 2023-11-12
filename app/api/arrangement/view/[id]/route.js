@@ -1,19 +1,16 @@
 import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
-export const GET = async (req, res) => {
-  console.log("GET request to /api/arrangement/view/[id]");
-  const { id } = req.query;
+export const GET = async (req, { params }) => {
   try {
     await connectDB();
-    const arrangement = await Arrangement.findOne({ _id: id }).populate(
+    const arrangement = await Arrangement.findById(params.id).populate(
       "creator",
     );
-    if (!arrangement) {
-      return res.status(404).json({ message: "Arrangement not found" });
-    }
-    return res.status(200).json(arrangement);
+    if (!arrangement)
+      return new Response("Arrangement not found.", { status: 404 });
+    return new Response(JSON.stringify(arrangement), { status: 200 });
   } catch (err) {
-    return res.status(500).json({ message: "Failed to fetch arrangement" });
+    return new Response("Failed to fetch arrangement.", { status: 500 });
   }
 };

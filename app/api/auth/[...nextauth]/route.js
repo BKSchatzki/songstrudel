@@ -2,7 +2,6 @@ import NextAuth from "next-auth/next";
 import DiscordProvider from "next-auth/providers/discord";
 import { connectDB } from "@utils/database";
 import User from "@/models/user";
-import { userAgent } from "next/server";
 
 const handler = NextAuth({
   providers: [
@@ -13,27 +12,20 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      console.log("Before try");
-      setTimeout(() => {
-        console.log(
-          "10 seconds passed. Hopefully this comes after the session resumed.",
-        );
-        return {};
-      }, 10000);
       try {
         const sessionUser = await User.findOne({
           username: session.user.name,
         });
         if (!sessionUser) {
           console.log(`No user found for ${session.user.name}`);
-          return {}; // or return session
+          return session; // or return {}
         }
         console.log(`Session resumed for user ${session.user.name}.`);
         session.user.id = sessionUser._id.toString();
         return session;
       } catch (err) {
         console.log(err);
-        return {}; // or return session
+        return session; // or return {}
       }
     },
     async signIn({ profile }) {

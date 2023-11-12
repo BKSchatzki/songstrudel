@@ -6,10 +6,9 @@ import { useRouter } from "next/navigation";
 import Arrangement from "@components/Arrangement";
 
 const CreateArrangement = () => {
-  // Import session and set up router
   const { data: session } = useSession();
   const router = useRouter();
-  // Initialize state for document to go in arrangements collection
+
   const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState({
     title: "",
@@ -17,11 +16,11 @@ const CreateArrangement = () => {
     instruments: ["", "", "", "", "", "", ""],
     sections: [],
   });
-  // Define CREATE function for arrangements document
+
   const createArrangement = async (e) => {
     e.preventDefault();
     setSaving(true);
-    // Fetch at API route using _id defined in auth route and state
+
     try {
       const res = await fetch("/api/arrangement/new", {
         method: "POST",
@@ -33,7 +32,6 @@ const CreateArrangement = () => {
           sections: arrangement.sections,
         }),
       });
-      // Redirect to root if successful
       if (res.ok) {
         router.push("/");
       }
@@ -44,10 +42,8 @@ const CreateArrangement = () => {
     }
   };
 
-  // Pass props to Arrange component
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
-      {/* HEADER */}
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
