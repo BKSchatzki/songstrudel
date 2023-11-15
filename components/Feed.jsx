@@ -1,5 +1,6 @@
 "use client";
 
+import { unstable_noStore as noStore } from "next/cache";
 import { useState, useEffect } from "react";
 import FeedCard from "./FeedCard";
 
@@ -23,6 +24,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchArrangements = async () => {
+      noStore();
       const res = await fetch("/api/arrangement");
       const data = await res.json();
       setArrangements(data);
