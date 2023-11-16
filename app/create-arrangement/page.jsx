@@ -53,6 +53,8 @@ const CreateArrangement = () => {
       <Arrangement
         arrangement={arrangement}
         setArrangement={setArrangement}
+        isNewArrangement={true}
+        isUserLoggedIn={session?.user.id !== undefined}
         saving={saving}
         handleSubmit={createArrangement}
       />

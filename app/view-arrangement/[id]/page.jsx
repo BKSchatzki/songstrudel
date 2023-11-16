@@ -42,14 +42,6 @@ const ViewArrangement = ({ params: { id } }) => {
           isCreator={isCreator}
         />
       )}
-      {isCreator && (
-        <button
-          onClick={() => router.push(`/edit-arrangement/${id}`)}
-          className="mt-4 rounded-sm bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text px-4 py-2 text-transparent"
-        >
-          Edit
-        </button>
-      )}
     </section>
   );
 };
