@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Arrangement from "@components/Arrangement";
 
 const ViewArrangement = ({ params: { id } }) => {
+  const { data: session } = useSession();
   const [arrangement, setArrangement] = useState(null);
   const router = useRouter();
 
@@ -12,7 +14,6 @@ const ViewArrangement = ({ params: { id } }) => {
     const fetchArrangement = async () => {
       if (!id) return;
       const res = await fetch(`/api/arrangement/view/${id}`);
-      console.log(res);
       const data = await res.json();
       setArrangement(data);
     };
@@ -21,6 +22,8 @@ const ViewArrangement = ({ params: { id } }) => {
       fetchArrangement();
     }
   }, [id]);
+
+  const isCreator = session?.user.id === arrangement?.creator._id;
 
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
@@ -34,7 +37,18 @@ const ViewArrangement = ({ params: { id } }) => {
         <Arrangement
           arrangement={arrangement}
           setArrangement={setArrangement}
+          // saving={saving}
+          // handleSubmit={editArrangement}
+          isCreator={isCreator}
         />
+      )}
+      {isCreator && (
+        <button
+          onClick={() => router.push(`/edit-arrangement/${id}`)}
+          className="mt-4 rounded-sm bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text px-4 py-2 text-transparent"
+        >
+          Edit
+        </button>
       )}
     </section>
   );

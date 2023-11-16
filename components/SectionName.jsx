@@ -1,6 +1,7 @@
 const SectionName = ({
   arrangement,
   setArrangement,
+  disabled,
   section,
   sectionIndex,
 }) => {
@@ -22,6 +23,7 @@ const SectionName = ({
         placeholder="Section"
         required
         className="w-full bg-slate-950 bg-opacity-50 px-6 py-3 text-center text-base font-semibold shadow-sm shadow-slate-950/50 outline-none backdrop-blur-md backdrop-filter placeholder:opacity-50 focus:brightness-150 sm:text-lg"
+        disabled={disabled}
       />
     </label>
   );

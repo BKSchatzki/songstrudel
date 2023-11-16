@@ -7,7 +7,13 @@ import ArrangementInstruments from "./ArrangementInstruments";
 import SectionAdd from "./SectionAdd";
 import Section from "./Section";
 
-const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
+const Arrangement = ({
+  arrangement,
+  setArrangement,
+  saving,
+  handleSubmit,
+  isCreator,
+}) => {
   const newSection = {
     name: "",
     notes: "",
@@ -50,14 +56,17 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
       <ArrangementTitle
         arrangement={arrangement}
         setArrangement={setArrangement}
+        disabled={!isCreator}
       />
       <ArrangementDescription
         arrangement={arrangement}
         setArrangement={setArrangement}
+        disabled={!isCreator}
       />
       <ArrangementInstruments
         arrangement={arrangement}
         setArrangement={setArrangement}
+        disabled={!isCreator}
         textColors={textColors}
         shadowColors={shadowColors}
       />
@@ -70,10 +79,12 @@ const Arrangement = ({ arrangement, setArrangement, saving, handleSubmit }) => {
             sections: updatedSections,
           });
         }}
+        disabled={!isCreator}
       />
       <Section
         arrangement={arrangement}
         setArrangement={setArrangement}
+        disabled={!isCreator}
         newSection={newSection}
         bgColors={bgColors}
         shadowColors={shadowColors}

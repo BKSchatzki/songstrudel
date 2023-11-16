@@ -7,6 +7,7 @@ import SectionNotes from "./SectionNotes";
 const Section = ({
   arrangement,
   setArrangement,
+  disabled,
   newSection,
   bgColors,
   shadowColors,
@@ -18,9 +19,10 @@ const Section = ({
           <div className="grid grid-cols-7 gap-1 sm:gap-2">
             <SectionName
               arrangement={arrangement}
+              setArrangement={setArrangement}
+              disabled={disabled}
               section={section}
               sectionIndex={sectionIndex}
-              setArrangement={setArrangement}
             />
             <SectionDelete
               onClick={() => {
@@ -32,6 +34,7 @@ const Section = ({
                   sections: updatedSections,
                 });
               }}
+              disabled={disabled}
             />
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
@@ -57,6 +60,7 @@ const Section = ({
                         sections: updatedSections,
                       });
                     }}
+                    disabled={disabled}
                   />
                 ))}
               </div>
@@ -64,9 +68,10 @@ const Section = ({
           </div>
           <SectionNotes
             arrangement={arrangement}
+            setArrangement={setArrangement}
+            disabled={disabled}
             section={section}
             sectionIndex={sectionIndex}
-            setArrangement={setArrangement}
           />
           <SectionAdd
             onClick={() => {
@@ -85,6 +90,7 @@ const Section = ({
                 sections: updatedSectionsWithKeys,
               });
             }}
+            disabled={disabled}
           />
         </div>
       ))}
