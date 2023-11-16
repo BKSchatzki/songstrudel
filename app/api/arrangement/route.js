@@ -1,7 +1,9 @@
+// import { unstable_noStore as noStore } from "next/cache";
 import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
 export const GET = async (req) => {
+  // noStore();
   try {
     await connectDB();
     const arrangements = await Arrangement.find({}).populate("creator");
@@ -10,3 +12,5 @@ export const GET = async (req) => {
     return new Response("Failed to fetch all arrangements.", { status: 500 });
   }
 };
+
+export const revalidate = 0;
