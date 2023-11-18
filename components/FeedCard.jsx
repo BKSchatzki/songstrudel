@@ -3,7 +3,7 @@ import Link from "next/link";
 const FeedCard = ({ arrangement }) => {
   return (
     <Link href={`/view-arrangement/${arrangement._id}`}>
-      <article className="relative w-80 max-w-xl cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md sm:w-96">
+      <article className="relative w-80 max-w-xl cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-96">
         <span className="absolute -top-2 right-3 rounded-sm bg-slate-950 px-1 py-0.5 text-[0.625rem] opacity-50 backdrop-blur-md sm:text-xs">
           {arrangement.creator ? arrangement.creator.username : "Anonymous"}
         </span>

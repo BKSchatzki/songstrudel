@@ -27,14 +27,14 @@ const Nav = () => {
             alt="SongStrudel Logo"
             width={37}
             height={37}
-            className="block sm:hidden"
+            className="block transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:hidden"
           />
           <Image
             src="/assets/images/songstrudel-nameonly.svg"
             alt="SongStrudel Logo"
             width={148}
             height={37}
-            className="hidden sm:block"
+            className="hidden transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:block"
           />
         </Link>
         {/* Desktop Nav */}
@@ -60,7 +60,7 @@ const Nav = () => {
                   alt="My Arrangements"
                   width={37}
                   height={37}
-                  className="rounded-full"
+                  className="rounded-full transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                 />
               </Link>
             </div>
@@ -96,7 +96,7 @@ const Nav = () => {
                 width={37}
                 height={37}
                 onClick={() => setDropdownToggled((prev) => !prev)}
-                className="z-20 rounded-full"
+                className="z-20 rounded-full transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
               />
               {dropdownToggled && (
                 <div className="absolute right-0 top-0 z-10 flex h-full flex-col gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 ps-8 pt-20 text-right backdrop-blur-md backdrop-filter">
