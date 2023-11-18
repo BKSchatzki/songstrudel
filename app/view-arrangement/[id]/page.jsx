@@ -40,6 +40,7 @@ const ViewArrangement = ({ params: { id } }) => {
           // saving={saving}
           // handleSubmit={editArrangement}
           isCreator={isCreator}
+          isNewArrangement={false}
         />
       )}
     </section>

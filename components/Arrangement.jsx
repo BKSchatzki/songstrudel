@@ -53,21 +53,37 @@ const Arrangement = ({
     "shadow-pink-500/50",
   ];
 
+  const setArrangementAndStore = (newArrangement) => {
+    setArrangement(newArrangement);
+    if (isNewArrangement) {
+      window.localStorage.setItem(
+        "newArrangement",
+        JSON.stringify(newArrangement),
+      );
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="mt-8 w-full max-w-xs sm:max-w-lg">
       <ArrangementTitle
         arrangement={arrangement}
         setArrangement={setArrangement}
+        setArrangementAndStore={setArrangementAndStore}
+        isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
       />
       <ArrangementDescription
         arrangement={arrangement}
         setArrangement={setArrangement}
+        setArrangementAndStore={setArrangementAndStore}
+        isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
       />
       <ArrangementInstruments
         arrangement={arrangement}
         setArrangement={setArrangement}
+        setArrangementAndStore={setArrangementAndStore}
+        isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
         textColors={textColors}
         shadowColors={shadowColors}
@@ -76,16 +92,21 @@ const Arrangement = ({
         onClick={() => {
           const updatedSections = [...arrangement.sections];
           updatedSections.unshift(newSection);
-          setArrangement({
-            ...arrangement,
-            sections: updatedSections,
-          });
+          setArrangementAndStore(
+            {
+              ...arrangement,
+              sections: updatedSections,
+            },
+            isNewArrangement,
+          );
         }}
         disabled={!isCreator && !isNewArrangement}
       />
       <Section
         arrangement={arrangement}
         setArrangement={setArrangement}
+        setArrangementAndStore={setArrangementAndStore}
+        isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
         newSection={newSection}
         bgColors={bgColors}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Arrangement from "@components/Arrangement";
@@ -16,6 +16,13 @@ const CreateArrangement = () => {
     instruments: ["", "", "", "", "", "", ""],
     sections: [],
   });
+
+  useEffect(() => {
+    const storedArrangement = window.localStorage.getItem("newArrangement");
+    if (storedArrangement) {
+      setArrangement(JSON.parse(storedArrangement));
+    }
+  }, []);
 
   const createArrangement = async (e) => {
     e.preventDefault();
@@ -33,6 +40,7 @@ const CreateArrangement = () => {
         }),
       });
       if (res.ok) {
+        window.localStorage.removeItem("newArrangement");
         router.push("/");
       }
     } catch (err) {

@@ -1,4 +1,10 @@
-const ArrangementTitle = ({ arrangement, setArrangement, disabled }) => {
+const ArrangementTitle = ({
+  arrangement,
+  setArrangement,
+  setArrangementAndStore,
+  isNewArrangement,
+  disabled,
+}) => {
   return (
     <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
       <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
@@ -9,7 +15,10 @@ const ArrangementTitle = ({ arrangement, setArrangement, disabled }) => {
         value={arrangement.title}
         maxLength={48}
         onChange={(e) =>
-          setArrangement({ ...arrangement, title: e.target.value })
+          setArrangementAndStore(
+            { ...arrangement, title: e.target.value },
+            isNewArrangement,
+          )
         }
         placeholder="Your arrangement's name ~"
         required

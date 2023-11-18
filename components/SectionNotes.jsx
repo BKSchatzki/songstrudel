@@ -1,6 +1,8 @@
 const SectionNotes = ({
   arrangement,
   setArrangement,
+  setArrangementAndStore,
+  isNewArrangement,
   disabled,
   section,
   sectionIndex,
@@ -16,10 +18,13 @@ const SectionNotes = ({
         onChange={(e) => {
           const updatedSections = [...arrangement.sections];
           updatedSections[sectionIndex].notes = e.target.value;
-          setArrangement({
-            ...arrangement,
-            sections: updatedSections,
-          });
+          setArrangementAndStore(
+            {
+              ...arrangement,
+              sections: updatedSections,
+            },
+            isNewArrangement,
+          );
         }}
         placeholder="Section notes go here ~"
         required

@@ -7,6 +7,8 @@ import SectionNotes from "./SectionNotes";
 const Section = ({
   arrangement,
   setArrangement,
+  setArrangementAndStore,
+  isNewArrangement,
   disabled,
   newSection,
   bgColors,
@@ -20,6 +22,8 @@ const Section = ({
             <SectionName
               arrangement={arrangement}
               setArrangement={setArrangement}
+              setArrangementAndStore={setArrangementAndStore}
+              isNewArrangement={isNewArrangement}
               disabled={disabled}
               section={section}
               sectionIndex={sectionIndex}
@@ -29,10 +33,13 @@ const Section = ({
                 const updatedSections = arrangement.sections.filter(
                   (_, i) => i !== sectionIndex,
                 );
-                setArrangement({
-                  ...arrangement,
-                  sections: updatedSections,
-                });
+                setArrangementAndStore(
+                  {
+                    ...arrangement,
+                    sections: updatedSections,
+                  },
+                  isNewArrangement,
+                );
               }}
               disabled={disabled}
             />
@@ -55,10 +62,13 @@ const Section = ({
                       const updatedSections = [...arrangement.sections];
                       updatedSections[sectionIndex].rows[rowIndex][cellIndex] =
                         newValue;
-                      setArrangement({
-                        ...arrangement,
-                        sections: updatedSections,
-                      });
+                      setArrangementAndStore(
+                        {
+                          ...arrangement,
+                          sections: updatedSections,
+                        },
+                        isNewArrangement,
+                      );
                     }}
                     disabled={disabled}
                   />
@@ -69,6 +79,8 @@ const Section = ({
           <SectionNotes
             arrangement={arrangement}
             setArrangement={setArrangement}
+            setArrangementAndStore={setArrangementAndStore}
+            isNewArrangement={isNewArrangement}
             disabled={disabled}
             section={section}
             sectionIndex={sectionIndex}
@@ -85,10 +97,13 @@ const Section = ({
                 }),
               );
               console.log(updatedSectionsWithKeys);
-              setArrangement({
-                ...arrangement,
-                sections: updatedSectionsWithKeys,
-              });
+              setArrangementAndStore(
+                {
+                  ...arrangement,
+                  sections: updatedSectionsWithKeys,
+                },
+                isNewArrangement,
+              );
             }}
             disabled={disabled}
           />

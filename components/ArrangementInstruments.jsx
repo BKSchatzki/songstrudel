@@ -1,6 +1,8 @@
 const ArrangementInstruments = ({
   arrangement,
   setArrangement,
+  setArrangementAndStore,
+  isNewArrangement,
   disabled,
   textColors,
   shadowColors,
@@ -16,10 +18,13 @@ const ArrangementInstruments = ({
             onChange={(e) => {
               const updatedInstruments = [...arrangement.instruments];
               updatedInstruments[instrumentIndex] = e.target.value;
-              setArrangement({
-                ...arrangement,
-                instruments: updatedInstruments,
-              });
+              setArrangementAndStore(
+                {
+                  ...arrangement,
+                  instruments: updatedInstruments,
+                },
+                isNewArrangement,
+              );
             }}
             maxLength={4}
             placeholder={`Ins${instrumentIndex + 1}`}

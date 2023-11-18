@@ -1,6 +1,8 @@
 const SectionName = ({
   arrangement,
   setArrangement,
+  setArrangementAndStore,
+  isNewArrangement,
   disabled,
   section,
   sectionIndex,
@@ -14,10 +16,13 @@ const SectionName = ({
         onChange={(e) => {
           const updatedSections = [...arrangement.sections];
           updatedSections[sectionIndex].name = e.target.value;
-          setArrangement({
-            ...arrangement,
-            sections: updatedSections,
-          });
+          setArrangementAndStore(
+            {
+              ...arrangement,
+              sections: updatedSections,
+            },
+            isNewArrangement,
+          );
         }}
         maxLength={24}
         placeholder="Section"
