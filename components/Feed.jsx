@@ -27,7 +27,7 @@ const Feed = () => {
       // noStore();
       const res = await fetch("/api/arrangement");
       const data = await res.json();
-      setArrangements(data);
+      setArrangements(data.reverse());
     };
     fetchArrangements();
   }, []);
