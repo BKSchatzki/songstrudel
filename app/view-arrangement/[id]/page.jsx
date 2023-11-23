@@ -47,8 +47,21 @@ const ViewArrangement = ({ params: { id } }) => {
     }
   };
 
+  const deleteArrangement = async () => {
+    if (!id || !isCreator) return;
+
+    try {
+      const res = await fetch(`/api/arrangement/view/${id}`, {
+        method: "DELETE",
+      });
+      router.push("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
+    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pt-16 text-center sm:pt-32">
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Checking the{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
@@ -59,10 +72,12 @@ const ViewArrangement = ({ params: { id } }) => {
         <Arrangement
           arrangement={arrangement}
           setArrangement={setArrangement}
-          saving={saving}
-          handleSubmit={editArrangement}
           isCreator={isCreator}
           isNewArrangement={false}
+          isUserLoggedIn={session?.user.id !== undefined}
+          saving={saving}
+          handleSubmit={editArrangement}
+          handleDelete={deleteArrangement}
         />
       )}
     </section>

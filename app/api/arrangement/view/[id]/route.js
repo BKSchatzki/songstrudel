@@ -30,3 +30,15 @@ export const PUT = async (req, { params }) => {
     return new Response("Failed to update arrangement.", { status: 500 });
   }
 };
+
+export const DELETE = async (req, { params }) => {
+  try {
+    await connectDB();
+    const deletedArrangement = await Arrangement.findByIdAndDelete(params.id);
+    if (!deletedArrangement)
+      return new Response("Arrangement not found.", { status: 404 });
+    return new Response(JSON.stringify(deletedArrangement), { status: 200 });
+  } catch (err) {
+    return new Response("Failed to delete arrangement.", { status: 500 });
+  }
+};

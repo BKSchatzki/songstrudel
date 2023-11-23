@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";
 import ArrangementInstruments from "./ArrangementInstruments";
 import SectionAdd from "./SectionAdd";
 import Section from "./Section";
+import { set } from "mongoose";
 
 const Arrangement = ({
   arrangement,
@@ -15,6 +17,7 @@ const Arrangement = ({
   isUserLoggedIn,
   saving,
   handleSubmit,
+  handleDelete,
 }) => {
   const newSection = {
     name: "",
@@ -52,6 +55,27 @@ const Arrangement = ({
     "shadow-purple-500/50",
     "shadow-pink-500/50",
   ];
+
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [countdown, setCountdown] = useState(3);
+
+  const handleDeleteClick = () => {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      let timer = countdown;
+      const intervalId = setInterval(() => {
+        timer--;
+        setCountdown(timer);
+        if (timer === 0) {
+          clearInterval(intervalId);
+          setConfirmDelete(false);
+          setCountdown(3);
+        }
+      }, 1000);
+    } else {
+      handleDelete();
+    }
+  };
 
   const setArrangementAndStore = (newArrangement) => {
     setArrangement(newArrangement);
@@ -112,20 +136,38 @@ const Arrangement = ({
         bgColors={bgColors}
         shadowColors={shadowColors}
       />
-      <div className="mt-8 flex items-center justify-end gap-8">
-        <Link
+      <div className="mt-8 flex items-center justify-center gap-8 sm:justify-end">
+        {/* <Link
           href="/"
           className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
         >
           Back
-        </Link>
-        {(isCreator || (isNewArrangement && isUserLoggedIn)) && (
+        </Link> */}
+        {isCreator && !isNewArrangement && isUserLoggedIn && (
+          <>
+            <button
+              type="button"
+              onClick={handleDeleteClick}
+              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text px-3 py-1.5 text-sm font-semibold text-slate-950 text-transparent shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg`}
+            >
+              {confirmDelete ? `Confirm (${countdown})` : "Delete"}
+            </button>
+            <button
+              type="submit"
+              disabled={saving}
+              className="w-[7.5rem] rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg"
+            >
+              {saving ? "Updating" : "Update"}
+            </button>
+          </>
+        )}
+        {isNewArrangement && isUserLoggedIn && (
           <button
             type="submit"
             disabled={saving}
-            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
+            className="w-3/5 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg"
           >
-            {isNewArrangement ? "Create" : "Update"}
+            {saving ? "Creating" : "Create"}
           </button>
         )}
       </div>

@@ -19,7 +19,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="mb-8 bg-gradient-to-b from-gray-900 to-transparent px-6 pb-10 pt-3 sm:mb-8">
+    <nav className="fixed z-10 w-full bg-gradient-to-b from-gray-900 to-transparent px-6 pb-10 pt-3">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
         <Link href="/" className="flex items-center justify-center gap-2">
           <Image

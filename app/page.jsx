@@ -4,7 +4,7 @@ import Feed from "@components/Feed";
 
 const Home = () => {
   return (
-    <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
+    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pt-16 text-center sm:pt-32">
       <h1 className="mx-4 mt-4 max-w-xl text-4xl font-bold sm:text-5xl">
         <span className="bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
           Sweet Tunes{" "}
