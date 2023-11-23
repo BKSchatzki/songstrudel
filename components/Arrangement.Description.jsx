@@ -18,7 +18,7 @@ const ArrangementDescription = ({
         type="text"
         value={arrangement.description}
         minRows={2}
-        maxRows={12}
+        maxRows={24}
         maxLength={512}
         onChange={(e) =>
           setArrangementAndStore(
@@ -31,7 +31,7 @@ const ArrangementDescription = ({
         }
         placeholder="A quick overview ~"
         required
-        className="w-full resize-none bg-transparent px-6 pb-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
+        className="w-full resize-none overflow-hidden bg-transparent px-6 pb-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
         disabled={disabled}
       />
     </label>
