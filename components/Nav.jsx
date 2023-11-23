@@ -52,6 +52,7 @@ const Nav = () => {
               alt="Buy Me A Coffee"
               width={109}
               height={30}
+              className="shadow-[#fd605f] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
             />
           </Link>
         </div>
@@ -149,6 +150,7 @@ const Nav = () => {
                       alt="Buy Me A Coffee"
                       width={109}
                       height={30}
+                      className="shadow-[#fd605f] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                     />
                   </Link>
                 </div>
