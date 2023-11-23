@@ -113,22 +113,20 @@ const Arrangement = ({
         shadowColors={shadowColors}
       />
       <div className="mt-8 flex items-center justify-end gap-8">
+        <Link
+          href="/"
+          className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
+        >
+          Back
+        </Link>
         {(isCreator || (isNewArrangement && isUserLoggedIn)) && (
-          <>
-            <Link
-              href="/"
-              className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
-            >
-              Cancel
-            </Link>
-            <button
-              type="submit"
-              disabled={saving}
-              className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
-            >
-              {saving ? "Saving" : "Save"}
-            </button>
-          </>
+          <button
+            type="submit"
+            disabled={saving}
+            className="w-20 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-24 sm:text-lg"
+          >
+            {isNewArrangement ? "Create" : "Update"}
+          </button>
         )}
       </div>
     </form>
