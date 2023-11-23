@@ -31,6 +31,9 @@ const CreateArrangement = () => {
     try {
       const res = await fetch("/api/arrangement/new", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           userId: session?.user.id,
           title: arrangement.title,

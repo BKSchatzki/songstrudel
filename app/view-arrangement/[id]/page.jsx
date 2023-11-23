@@ -7,8 +7,10 @@ import Arrangement from "@components/Arrangement";
 
 const ViewArrangement = ({ params: { id } }) => {
   const { data: session } = useSession();
-  const [arrangement, setArrangement] = useState(null);
   const router = useRouter();
+
+  const [saving, setSaving] = useState(false);
+  const [arrangement, setArrangement] = useState(null);
 
   useEffect(() => {
     const fetchArrangement = async () => {
@@ -25,6 +27,26 @@ const ViewArrangement = ({ params: { id } }) => {
 
   const isCreator = session?.user.id === arrangement?.creator._id;
 
+  const editArrangement = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    if (!id || !isCreator) return;
+
+    try {
+      const res = await fetch(`/api/arrangement/view/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(arrangement),
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center text-center">
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
@@ -37,8 +59,8 @@ const ViewArrangement = ({ params: { id } }) => {
         <Arrangement
           arrangement={arrangement}
           setArrangement={setArrangement}
-          // saving={saving}
-          // handleSubmit={editArrangement}
+          saving={saving}
+          handleSubmit={editArrangement}
           isCreator={isCreator}
           isNewArrangement={false}
         />

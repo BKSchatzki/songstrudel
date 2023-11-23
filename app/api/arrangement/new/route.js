@@ -2,9 +2,9 @@ import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
 export const POST = async (req, res) => {
-  const { userId, title, description, instruments, sections } =
-    await req.json();
   try {
+    const { userId, title, description, instruments, sections } =
+      await req.json();
     await connectDB();
     const newArrangement = new Arrangement({
       creator: userId,
