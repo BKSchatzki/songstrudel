@@ -32,6 +32,21 @@ const Feed = () => {
     fetchArrangements();
   }, []);
 
+  const filteredArrangements = arrangements.filter((arrangement) => {
+    const titlesLowercase = arrangement.title.toLowerCase();
+    const usernamesLowercase = arrangement.creator.username.toLowerCase();
+    const instrumentsLowercase = arrangement.instruments
+      .join(" ")
+      .toLowerCase();
+    const searchWords = searchText.toLowerCase().split(" ");
+    return searchWords.every(
+      (word) =>
+        titlesLowercase.includes(word) ||
+        usernamesLowercase.includes(word) ||
+        instrumentsLowercase.includes(word),
+    );
+  });
+
   return (
     <section className="mt-6 w-full sm:mt-12">
       <form
@@ -50,7 +65,7 @@ const Feed = () => {
         </label>
       </form>
 
-      <FeedCardList data={arrangements} />
+      <FeedCardList data={filteredArrangements} />
     </section>
   );
 };
