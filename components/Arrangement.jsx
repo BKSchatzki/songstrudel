@@ -151,7 +151,7 @@ const Arrangement = ({
             <button
               type="button"
               onClick={handleDeleteClick}
-              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600  px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg ${
+              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base ${
                 confirmDelete
                   ? "text-slate-950 brightness-125"
                   : "bg-clip-text text-transparent"
@@ -162,7 +162,7 @@ const Arrangement = ({
             <button
               type="submit"
               disabled={saving}
-              className="w-[7.5rem] rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg"
+              className="w-[7.5rem] rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base"
             >
               {saving ? "Updating" : "Update"}
             </button>
@@ -172,7 +172,7 @@ const Arrangement = ({
           <button
             type="submit"
             disabled={saving}
-            className="w-3/5 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg"
+            className="w-3/5 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-indigo-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base"
           >
             {saving ? "Creating" : "Create"}
           </button>

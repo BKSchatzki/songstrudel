@@ -103,25 +103,25 @@ const Nav = () => {
                 className="z-20 rounded-full transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
               />
               {dropdownToggled && (
-                <div className="fixed right-0 top-0 z-10 flex h-full w-full flex-col items-center gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 ps-8 pt-20 text-right backdrop-blur-md backdrop-filter">
+                <div className="fixed right-0 top-0 z-10 flex h-full w-full flex-col items-center gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 pt-32 text-right backdrop-blur-md backdrop-filter">
                   <Link
                     href="/my-arrangements"
                     onClick={() => setDropdownToggled(false)}
-                    className="w-4/5 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-center font-semibold text-slate-950 shadow-sm shadow-amber-400/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="w-3/4 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-center text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                   >
                     My Arrangements
                   </Link>
                   <Link
                     href="/create-arrangement"
                     onClick={() => setDropdownToggled(false)}
-                    className="w-4/5 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-center font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="w-3/4 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-center text-sm font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                   >
                     Create Arrangement
                   </Link>
                   <button
                     type="button"
                     onClick={signOut}
-                    className="mt-14 w-4/5 rounded-sm bg-slate-100 px-3 py-1.5 text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="mt-14 w-3/4 rounded-sm bg-slate-100 px-3 py-1.5 text-sm text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                   >
                     Sign Out
                   </button>
