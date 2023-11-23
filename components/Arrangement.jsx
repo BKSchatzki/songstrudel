@@ -151,7 +151,11 @@ const Arrangement = ({
             <button
               type="button"
               onClick={handleDeleteClick}
-              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text px-3 py-1.5 text-sm font-semibold text-slate-950 text-transparent shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg`}
+              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600  px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-lg ${
+                confirmDelete
+                  ? "text-slate-950 brightness-125"
+                  : "bg-clip-text text-transparent"
+              }`}
             >
               {confirmDelete ? `Confirm (${countdown})` : "Delete"}
             </button>

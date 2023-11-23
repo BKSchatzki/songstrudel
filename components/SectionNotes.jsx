@@ -1,3 +1,5 @@
+import TextareaAutosize from "react-textarea-autosize";
+
 const SectionNotes = ({
   arrangement,
   setArrangement,
@@ -10,11 +12,12 @@ const SectionNotes = ({
   return (
     <label>
       <span className="hidden">Section Notes</span>
-      <textarea
+      <TextareaAutosize
         type="text"
         value={section.notes}
-        rows={5}
-        maxLength={192}
+        minRows={2}
+        maxRows={12}
+        maxLength={512}
         onChange={(e) => {
           const updatedSections = [...arrangement.sections];
           updatedSections[sectionIndex].notes = e.target.value;

@@ -13,7 +13,7 @@ const ArrangementTitle = ({
       <input
         type="text"
         value={arrangement.title}
-        maxLength={48}
+        maxLength={64}
         onChange={(e) =>
           setArrangementAndStore(
             { ...arrangement, title: e.target.value },
@@ -22,7 +22,7 @@ const ArrangementTitle = ({
         }
         placeholder="Your arrangement's name ~"
         required
-        className="w-full bg-transparent px-6 pb-3 text-base outline-none placeholder:opacity-50 sm:text-lg"
+        className="w-full bg-transparent px-6 pb-3 text-base font-semibold outline-none placeholder:opacity-50 sm:text-lg"
         disabled={disabled}
       />
     </label>

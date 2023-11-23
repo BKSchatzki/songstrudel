@@ -1,5 +1,7 @@
 "use client";
 
+import TextareaAutosize from "react-textarea-autosize";
+
 const ArrangementDescription = ({
   arrangement,
   setArrangement,
@@ -12,11 +14,12 @@ const ArrangementDescription = ({
       <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
         Description
       </span>
-      <textarea
+      <TextareaAutosize
         type="text"
         value={arrangement.description}
-        rows={6}
-        maxLength={240}
+        minRows={2}
+        maxRows={12}
+        maxLength={512}
         onChange={(e) =>
           setArrangementAndStore(
             {
