@@ -7,7 +7,7 @@ import FeedCard from "./FeedCard";
 const FeedCardList = ({ data, isPersonalFeed }) => {
   return (
     <div
-      className={`flex flex-wrap items-start justify-start gap-8 ${
+      className={`flex flex-wrap items-start justify-center gap-8 ${
         !isPersonalFeed && "mt-12 sm:mt-24"
       }`}
     >
