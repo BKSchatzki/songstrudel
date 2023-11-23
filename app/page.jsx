@@ -9,16 +9,16 @@ const Home = () => {
         <span className="bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
           Sweet Tunes{" "}
         </span>
-        <br className="sm:hidden" />
+        <br />
         In The Oven
       </h1>
       <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-        SongStrudel is a planning tool for the modern musician to develop ideas{" "}
+        SongStrudel is a planning tool for the modern musician to develop ideas,{" "}
         <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text font-semibold text-transparent">
           before getting lost in the DAW sauce.
         </span>
       </p>
-      <Feed />
+      <Feed personalFeed={false} />
     </section>
   );
 };

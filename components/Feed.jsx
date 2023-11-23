@@ -4,9 +4,13 @@
 import { useState, useEffect } from "react";
 import FeedCard from "./FeedCard";
 
-const FeedCardList = ({ data }) => {
+const FeedCardList = ({ data, isPersonalFeed }) => {
   return (
-    <div className="mt-12 flex flex-wrap items-start justify-center gap-8 sm:mt-24">
+    <div
+      className={`flex flex-wrap items-start justify-center gap-8 ${
+        !isPersonalFeed && "mt-12 sm:mt-24"
+      }`}
+    >
       {data.map((arrangement) => (
         <FeedCard key={arrangement._id} arrangement={arrangement} />
       ))}
@@ -14,7 +18,7 @@ const FeedCardList = ({ data }) => {
   );
 };
 
-const Feed = () => {
+const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState("");
   const [arrangements, setArrangements] = useState([]);
 
@@ -27,7 +31,13 @@ const Feed = () => {
       // noStore();
       const res = await fetch("/api/arrangement");
       const data = await res.json();
-      setArrangements(data.reverse());
+      isPersonalFeed
+        ? setArrangements(
+            data
+              .filter((arrangement) => arrangement.creator._id === currentUser)
+              .reverse(),
+          )
+        : setArrangements(data.reverse());
     };
     fetchArrangements();
   }, []);
@@ -49,23 +59,27 @@ const Feed = () => {
 
   return (
     <section className="mt-6 w-full sm:mt-12">
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col items-center justify-center"
-      >
-        <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
-          <span className="hidden">Name</span>
-          <input
-            type="text"
-            value={searchText}
-            onChange={handleSearchTextChange}
-            placeholder="Search arrangements ~"
-            className="w-full bg-transparent text-center text-sm outline-none placeholder:opacity-50 sm:text-lg"
-          />
-        </label>
-      </form>
-
-      <FeedCardList data={filteredArrangements} />
+      {!isPersonalFeed && (
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col items-center justify-center"
+        >
+          <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
+            <span className="hidden">Name</span>
+            <input
+              type="text"
+              value={searchText}
+              onChange={handleSearchTextChange}
+              placeholder="Search arrangements ~"
+              className="w-full bg-transparent text-center text-sm outline-none placeholder:opacity-50 sm:text-lg"
+            />
+          </label>
+        </form>
+      )}
+      <FeedCardList
+        data={filteredArrangements}
+        isPersonalFeed={isPersonalFeed}
+      />
     </section>
   );
 };
