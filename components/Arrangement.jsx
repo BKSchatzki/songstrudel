@@ -88,7 +88,10 @@ const Arrangement = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 w-full max-w-xs sm:max-w-lg">
+    <form
+      onSubmit={handleSubmit}
+      className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg"
+    >
       <ArrangementTitle
         arrangement={arrangement}
         setArrangement={setArrangement}
