@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/avatars/**/*.png",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.buymeacoffee.com",
+        port: "",
+        pathname: "/**/*",
+      },
     ],
   },
 };

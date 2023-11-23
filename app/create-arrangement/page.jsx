@@ -54,7 +54,7 @@ const CreateArrangement = () => {
   };
 
   return (
-    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pt-16 text-center sm:pt-32">
+    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
