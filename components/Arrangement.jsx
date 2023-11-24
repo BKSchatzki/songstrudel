@@ -29,13 +29,22 @@ const Arrangement = ({
     ],
   };
   const textColors = [
-    "bg-red-950 text-red-500",
-    "bg-orange-950 text-orange-500",
-    "bg-yellow-950 text-yellow-500",
-    "bg-green-950 text-green-500",
-    "bg-blue-950 text-blue-500",
-    "bg-purple-950 text-purple-500",
-    "bg-pink-950 text-pink-500",
+    "text-red-500",
+    "text-orange-500",
+    "text-yellow-500",
+    "text-green-500",
+    "text-blue-500",
+    "text-purple-500",
+    "text-pink-500",
+  ];
+  const textBgColors = [
+    "bg-red-950",
+    "bg-orange-950",
+    "bg-yellow-950",
+    "bg-green-950",
+    "bg-blue-950",
+    "bg-purple-950",
+    "bg-pink-950",
   ];
   const bgColors = [
     "bg-red-500",
@@ -113,6 +122,7 @@ const Arrangement = ({
         isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
         textColors={textColors}
+        textBgColors={textBgColors}
         shadowColors={shadowColors}
       />
       {(isCreator || isNewArrangement) && (
@@ -141,6 +151,7 @@ const Arrangement = ({
         newSection={newSection}
         bgColors={bgColors}
         shadowColors={shadowColors}
+        textColors={textColors}
       />
       <div className="mt-8 flex items-center justify-center gap-8 sm:justify-end">
         {/* <Link
