@@ -23,5 +23,3 @@ export const POST = async (req, res) => {
     });
   }
 };
-
-export const revalidate = 0;

@@ -3,7 +3,6 @@ import { connectDB } from "@utils/database";
 import Arrangement from "@models/arrangement";
 
 export const GET = async (req) => {
-  // noStore();
   try {
     await connectDB();
     const arrangements = await Arrangement.find({}).populate("creator");
