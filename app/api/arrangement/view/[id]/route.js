@@ -42,3 +42,5 @@ export const DELETE = async (req, { params }) => {
     return new Response("Failed to delete arrangement.", { status: 500 });
   }
 };
+
+export const revalidate = 0;
