@@ -1,3 +1,5 @@
+"use client";
+
 import SectionName from "./SectionName";
 import SectionAdd from "./SectionAdd";
 import SectionDelete from "./SectionDelete";
