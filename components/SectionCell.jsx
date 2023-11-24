@@ -20,6 +20,16 @@ const SectionCell = ({
     "bg-opacity-100 brightness-150",
   ]);
 
+  const darkTextColors = [
+    "text-red-950",
+    "text-orange-950",
+    "text-yellow-950",
+    "text-green-950",
+    "text-blue-950",
+    "text-purple-950",
+    "text-pink-950",
+  ];
+
   const [currentCellAppearance, setCurrentCellAppearance] = useState(
     cellData[rowIndex][cellIndex],
   );
@@ -39,15 +49,20 @@ const SectionCell = ({
       type="button"
       value={instrument}
       onClick={handleClick}
-      className={`w-[14.2857%] text-xs shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-base ${
+      className={`w-[14.2857%] text-xs shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-sm ${
         !disabled && "active:translate-y-0.5 active:scale-95 active:shadow-none"
       } ${bgColors[cellIndex]} ${shadowColors[cellIndex]} ${
         cellAppearance[currentCellAppearance]
       } ${
         rowIndex === 1
-          ? `h-11 sm:h-[4.5rem] ${textColors[cellIndex]}`
+          ? `h-11 sm:h-[4.5rem] ${
+              currentCellAppearance > 1
+                ? `font-bold ${darkTextColors[cellIndex]}`
+                : `font-semibold ${textColors[cellIndex]}`
+            }`
           : "h-5 text-transparent sm:h-8"
-      }`}
+      }
+      `}
       disabled={disabled}
     />
   );
