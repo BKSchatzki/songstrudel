@@ -49,7 +49,7 @@ const SectionCell = ({
       type="button"
       value={instrument}
       onClick={handleClick}
-      className={`w-[14.2857%] text-xs shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-sm ${
+      className={`w-[14.2857%] text-[0.625rem] shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-sm ${
         !disabled && "active:translate-y-0.5 active:scale-95 active:shadow-none"
       } ${bgColors[cellIndex]} ${shadowColors[cellIndex]} ${
         cellAppearance[currentCellAppearance]
