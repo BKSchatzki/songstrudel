@@ -9,9 +9,9 @@ const FeedCard = ({ arrangement, isPersonalFeed }) => {
             {arrangement.creator ? arrangement.creator.username : "Anonymous"}
           </span>
           <div className="mb-4 flex flex-col text-left">
-            <h4 className="line-clamp-1 text-sm font-semibold md:text-base">
+            <h2 className="line-clamp-1 text-sm font-semibold md:text-base">
               {arrangement.title}
-            </h4>
+            </h2>
             <p className="line-clamp-3 h-12 text-xs opacity-75 sm:line-clamp-4 sm:h-16 md:line-clamp-5 md:h-24 md:text-sm lg:line-clamp-6 lg:h-[7.5rem]">
               {arrangement.description}
             </p>
