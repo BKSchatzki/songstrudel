@@ -14,6 +14,7 @@ const ArrangementInstruments = ({
           <span className="hidden">Instruments</span>
           <input
             type="text"
+            autoCorrect="off"
             value={instrument}
             onChange={(e) => {
               const updatedInstruments = [...arrangement.instruments];

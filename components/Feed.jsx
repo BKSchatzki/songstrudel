@@ -12,7 +12,11 @@ const FeedCardList = ({ data, isPersonalFeed }) => {
       }`}
     >
       {data.map((arrangement) => (
-        <FeedCard key={arrangement._id} arrangement={arrangement} />
+        <FeedCard
+          key={arrangement._id}
+          arrangement={arrangement}
+          isPersonalFeed={isPersonalFeed}
+        />
       ))}
     </div>
   );
