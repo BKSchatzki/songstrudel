@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
 import Link from "next/link";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";
@@ -67,6 +68,8 @@ const Arrangement = ({
 
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [countdown, setCountdown] = useState(3);
+
+  usePreventAutoZoom();
 
   const handleDeleteClick = () => {
     if (!confirmDelete) {

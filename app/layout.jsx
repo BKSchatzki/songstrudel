@@ -5,7 +5,8 @@ import Provider from "@components/Provider";
 
 export const metadata = {
   title: "SongStrudel",
-  description: "Sweet Tunes In The Oven",
+  description:
+    "Sweet Tunes In The Oven: SongStrudel is a planning tool for the modern musician to develop ideas, before getting lost in the DAW sauce.",
 };
 
 const RootLayout = ({ children }) => {
