@@ -22,7 +22,7 @@ const ArrangementTitle = ({
         }
         placeholder="Your arrangement's name ~"
         required
-        className="w-full bg-transparent px-6 pb-3 text-base font-semibold outline-none placeholder:opacity-50 sm:text-lg"
+        className="w-full bg-transparent px-6 pb-3 text-sm font-semibold outline-none placeholder:opacity-50 sm:text-lg"
         disabled={disabled}
       />
     </label>
