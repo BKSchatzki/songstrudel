@@ -115,24 +115,27 @@ const Arrangement = ({
         textColors={textColors}
         shadowColors={shadowColors}
       />
-      <SectionAdd
-        onClick={() => {
-          const updatedSections = [...arrangement.sections];
-          updatedSections.unshift(newSection);
-          setArrangementAndStore(
-            {
-              ...arrangement,
-              sections: updatedSections,
-            },
-            isNewArrangement,
-          );
-        }}
-        disabled={!isCreator && !isNewArrangement}
-      />
+      {(isCreator || isNewArrangement) && (
+        <SectionAdd
+          onClick={() => {
+            const updatedSections = [...arrangement.sections];
+            updatedSections.unshift(newSection);
+            setArrangementAndStore(
+              {
+                ...arrangement,
+                sections: updatedSections,
+              },
+              isNewArrangement,
+            );
+          }}
+          disabled={!isCreator && !isNewArrangement}
+        />
+      )}
       <Section
         arrangement={arrangement}
         setArrangement={setArrangement}
         setArrangementAndStore={setArrangementAndStore}
+        isCreator={isCreator}
         isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
         newSection={newSection}

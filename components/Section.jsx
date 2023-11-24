@@ -8,6 +8,7 @@ const Section = ({
   arrangement,
   setArrangement,
   setArrangementAndStore,
+  isCreator,
   isNewArrangement,
   disabled,
   newSection,
@@ -18,7 +19,11 @@ const Section = ({
     <>
       {arrangement.sections.map((section, sectionIndex) => (
         <div key={sectionIndex} className="flex flex-col gap-2">
-          <div className="grid grid-cols-7 gap-1 sm:gap-2">
+          <div
+            className={`grid gap-1 sm:gap-2 ${
+              (isCreator || isNewArrangement) && "grid-cols-7"
+            }`}
+          >
             <SectionName
               arrangement={arrangement}
               setArrangement={setArrangement}
@@ -28,21 +33,23 @@ const Section = ({
               section={section}
               sectionIndex={sectionIndex}
             />
-            <SectionDelete
-              onClick={() => {
-                const updatedSections = arrangement.sections.filter(
-                  (_, i) => i !== sectionIndex,
-                );
-                setArrangementAndStore(
-                  {
-                    ...arrangement,
-                    sections: updatedSections,
-                  },
-                  isNewArrangement,
-                );
-              }}
-              disabled={disabled}
-            />
+            {(isCreator || isNewArrangement) && (
+              <SectionDelete
+                onClick={() => {
+                  const updatedSections = arrangement.sections.filter(
+                    (_, i) => i !== sectionIndex,
+                  );
+                  setArrangementAndStore(
+                    {
+                      ...arrangement,
+                      sections: updatedSections,
+                    },
+                    isNewArrangement,
+                  );
+                }}
+                disabled={disabled}
+              />
+            )}
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             {section.rows.map((row, rowIndex) => (
@@ -85,28 +92,32 @@ const Section = ({
             section={section}
             sectionIndex={sectionIndex}
           />
-          <SectionAdd
-            onClick={() => {
-              const updatedSections = [...arrangement.sections];
-              const currentIndex = sectionIndex;
-              updatedSections.splice(currentIndex + 1, 0, newSection);
-              const updatedSectionsWithKeys = updatedSections.map(
-                (section, i) => ({
-                  ...section,
-                  key: i,
-                }),
-              );
-              console.log(updatedSectionsWithKeys);
-              setArrangementAndStore(
-                {
-                  ...arrangement,
-                  sections: updatedSectionsWithKeys,
-                },
-                isNewArrangement,
-              );
-            }}
-            disabled={disabled}
-          />
+          {isCreator || isNewArrangement ? (
+            <SectionAdd
+              onClick={() => {
+                const updatedSections = [...arrangement.sections];
+                const currentIndex = sectionIndex;
+                updatedSections.splice(currentIndex + 1, 0, newSection);
+                const updatedSectionsWithKeys = updatedSections.map(
+                  (section, i) => ({
+                    ...section,
+                    key: i,
+                  }),
+                );
+                console.log(updatedSectionsWithKeys);
+                setArrangementAndStore(
+                  {
+                    ...arrangement,
+                    sections: updatedSectionsWithKeys,
+                  },
+                  isNewArrangement,
+                );
+              }}
+              disabled={disabled}
+            />
+          ) : (
+            <div className="h-1" />
+          )}
         </div>
       ))}
     </>
