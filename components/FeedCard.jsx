@@ -120,7 +120,7 @@ const FeedCard = ({ index, data, isPersonalFeed, handleDelete }) => {
             <button
               type="button"
               onClick={handleDeleteClick}
-              className={`w-24 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-[6.5rem] ${
+              className={`w-24 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-0.5 py-0.5 font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-[6.5rem] ${
                 confirmDelete
                   ? "text-slate-950 brightness-125"
                   : "bg-clip-text text-transparent"
