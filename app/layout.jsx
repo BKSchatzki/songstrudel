@@ -12,7 +12,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-gray-900 text-slate-100">
+      <body className="min-h-screen bg-gray-900 text-slate-100">
         <Provider>
           {/* <div className="gradient" /> */}
           <Nav />

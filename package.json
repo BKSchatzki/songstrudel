@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.6",
     "eslint": "^8.52.0",
     "eslint-config-next": "^14.0.1",
     "geist": "^1.1.0",

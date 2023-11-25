@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const FeedCard = ({ arrangement, isPersonalFeed }) => {
   return (
-    <div>
+    <div className="col-span-1 flex flex-col gap-2">
       <Link href={`/view-arrangement/${arrangement._id}`}>
-        <article className="relative col-span-1 cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none">
+        <article className="relative cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none">
           <span className="absolute -top-2 right-3 rounded-sm bg-slate-950 px-1 py-0.5 text-[0.625rem] opacity-50 backdrop-blur-md md:text-xs">
             {arrangement.creator ? arrangement.creator.username : "Anonymous"}
           </span>
@@ -23,6 +23,41 @@ const FeedCard = ({ arrangement, isPersonalFeed }) => {
           </ul>
         </article>
       </Link>
+      {isPersonalFeed && (
+        <div className="rounded-sm bg-slate-800 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-800/20 backdrop-blur-md">
+          <div className="flex w-full items-center justify-center gap-3 text-xs md:text-sm">
+            <label
+              htmlFor="private"
+              className="flex items-center justify-center gap-1"
+            >
+              <span className="block">Private</span>
+              <input
+                id="private"
+                type="checkbox"
+                className="toggle toggle-secondary toggle-xs md:toggle-sm"
+              />
+            </label>
+            <label
+              htmlFor="listed"
+              className="flex items-center justify-center gap-1"
+            >
+              <span className="block">Listed</span>
+              <input
+                id="listed"
+                type="checkbox"
+                className="toggle toggle-accent toggle-xs md:toggle-sm"
+              />
+            </label>
+            <button
+              type="button"
+              onClick={""}
+              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base`}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
