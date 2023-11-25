@@ -44,7 +44,7 @@ const CreateArrangement = () => {
       });
       if (res.ok) {
         window.localStorage.removeItem("newArrangement");
-        router.push("/");
+        router.push("/my-arrangements");
       }
     } catch (err) {
       console.log(err);
