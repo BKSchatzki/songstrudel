@@ -19,13 +19,16 @@ export const PUT = async (req, { params }) => {
   try {
     const updatedArrangement = await req.json();
     await connectDB();
-    await Arrangement.findByIdAndUpdate(params.id, updatedArrangement, {
-      new: true,
-      runValidators: true,
-    });
-    if (!updatedArrangement)
-      return new Response("Arrangement not found.", { status: 404 });
-    return new Response(JSON.stringify(updatedArrangement), { status: 200 });
+    const res = await Arrangement.findByIdAndUpdate(
+      params.id,
+      updatedArrangement,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+    if (!res) return new Response("Arrangement not found.", { status: 404 });
+    return new Response(JSON.stringify(res), { status: 200 });
   } catch (err) {
     return new Response("Failed to update arrangement.", { status: 500 });
   }

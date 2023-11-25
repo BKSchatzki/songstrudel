@@ -14,7 +14,7 @@ const FeedCardList = ({ data, isPersonalFeed }) => {
       {data.map((arrangement, index) => (
         <FeedCard
           key={arrangement._id}
-          arrangement={arrangement}
+          data={arrangement}
           isPersonalFeed={isPersonalFeed}
           index={index}
         />

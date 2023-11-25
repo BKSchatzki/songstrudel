@@ -16,6 +16,11 @@ const arrangementSchema = new Schema(
         rows: { type: [[Number]], required: [true, "Cells are required."] },
       },
     ],
+    visibility: {
+      type: String,
+      enum: ["private", "unlisted", "visible"],
+      default: "unlisted",
+    },
   },
   { timestamps: true },
 );

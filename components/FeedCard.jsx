@@ -1,27 +1,46 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const FeedCard = ({ index, arrangement, isPersonalFeed }) => {
-  const [privateToggle, setPrivateToggle] = useState(false);
-  const [listedToggle, setListedToggle] = useState(false);
+const FeedCard = ({ index, data, isPersonalFeed }) => {
+  const [arrangement, setArrangement] = useState(data);
 
-  const handlePrivateToggle = () => {
-    setPrivateToggle(!privateToggle);
-    // Pass the state to your model here
-  };
+  const handleToggleChange = async (newState) => {
+    if (!arrangement._id) return;
 
-  const handleListedToggle = () => {
-    setListedToggle(!listedToggle);
-    // Pass the state to your model here
+    try {
+      const updatedArrangement = {
+        ...arrangement,
+        visibility: newState,
+      };
+
+      const res = await fetch(`/api/arrangement/view/${arrangement._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedArrangement),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setArrangement(data);
+      } else {
+        console.error("Error:", res.status, res.statusText);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div className="col-span-1">
       <Link href={`/view-arrangement/${arrangement._id}`}>
         <article className="relative cursor-pointer rounded-sm bg-slate-950 bg-opacity-20 px-8 py-3 shadow-md shadow-slate-950/20 backdrop-blur-md transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none">
-          <span className="absolute -top-2 right-3 rounded-sm bg-slate-950 px-1 py-0.5 text-[0.625rem] opacity-50 backdrop-blur-md md:text-xs">
-            {arrangement.creator ? arrangement.creator.username : "Anonymous"}
-          </span>
+          {!isPersonalFeed && (
+            <span className="absolute -top-2 right-3 rounded-sm bg-slate-950 px-1 py-0.5 text-[0.625rem] opacity-50 backdrop-blur-md md:text-xs">
+              {arrangement.creator ? arrangement.creator.username : "Anonymous"}
+            </span>
+          )}
           <div className="mb-4 flex flex-col text-left">
             <h2 className="line-clamp-1 text-sm font-semibold md:text-base">
               {arrangement.title}
@@ -49,21 +68,33 @@ const FeedCard = ({ index, arrangement, isPersonalFeed }) => {
                 id={`private-${index}`}
                 type="checkbox"
                 className="toggle toggle-secondary toggle-xs md:toggle-sm"
-                checked={privateToggle}
-                onChange={handlePrivateToggle}
+                checked={arrangement.visibility === "private"}
+                onChange={() =>
+                  handleToggleChange(
+                    !(arrangement.visibility === "private")
+                      ? "private"
+                      : "unlisted",
+                  )
+                }
               />
             </label>
             <label
-              htmlFor={`listed-${index}`}
+              htmlFor={`visible-${index}`}
               className="flex items-center justify-center gap-1 text-success sm:gap-2"
             >
-              <span className="block cursor-pointer">Listed</span>
+              <span className="block cursor-pointer">Visible</span>
               <input
-                id={`listed-${index}`}
+                id={`visible-${index}`}
                 type="checkbox"
                 className="toggle toggle-accent toggle-xs md:toggle-sm"
-                checked={listedToggle}
-                onChange={handleListedToggle}
+                checked={arrangement.visibility === "visible"}
+                onChange={() =>
+                  handleToggleChange(
+                    !(arrangement.visibility === "visible")
+                      ? "visible"
+                      : "unlisted",
+                  )
+                }
               />
             </label>
             <button
