@@ -11,11 +11,12 @@ const FeedCardList = ({ data, isPersonalFeed }) => {
         !isPersonalFeed && "mt-12 sm:mt-24"
       }`}
     >
-      {data.map((arrangement) => (
+      {data.map((arrangement, index) => (
         <FeedCard
           key={arrangement._id}
           arrangement={arrangement}
           isPersonalFeed={isPersonalFeed}
+          index={index}
         />
       ))}
     </div>

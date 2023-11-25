@@ -1,6 +1,20 @@
+import { useState } from "react";
 import Link from "next/link";
 
-const FeedCard = ({ arrangement, isPersonalFeed }) => {
+const FeedCard = ({ index, arrangement, isPersonalFeed }) => {
+  const [privateToggle, setPrivateToggle] = useState(false);
+  const [listedToggle, setListedToggle] = useState(false);
+
+  const handlePrivateToggle = () => {
+    setPrivateToggle(!privateToggle);
+    // Pass the state to your model here
+  };
+
+  const handleListedToggle = () => {
+    setListedToggle(!listedToggle);
+    // Pass the state to your model here
+  };
+
   return (
     <div className="col-span-1">
       <Link href={`/view-arrangement/${arrangement._id}`}>
@@ -27,25 +41,29 @@ const FeedCard = ({ arrangement, isPersonalFeed }) => {
         <div className="rounded-sm bg-slate-800 bg-opacity-20 px-3 py-1.5 shadow-md shadow-slate-800/20 backdrop-blur-md">
           <div className="flex w-full items-center justify-evenly gap-1 text-xs sm:gap-3 md:text-sm">
             <label
-              htmlFor="private"
+              htmlFor={`private-${index}`}
               className="flex items-center justify-center gap-1 text-secondary sm:gap-2"
             >
-              <span className="block">Private</span>
+              <span className="block cursor-pointer">Private</span>
               <input
-                id="private"
+                id={`private-${index}`}
                 type="checkbox"
                 className="toggle toggle-secondary toggle-xs md:toggle-sm"
+                checked={privateToggle}
+                onChange={handlePrivateToggle}
               />
             </label>
             <label
-              htmlFor="listed"
+              htmlFor={`listed-${index}`}
               className="flex items-center justify-center gap-1 text-success sm:gap-2"
             >
-              <span className="block">Listed</span>
+              <span className="block cursor-pointer">Listed</span>
               <input
-                id="listed"
+                id={`listed-${index}`}
                 type="checkbox"
                 className="toggle toggle-accent toggle-xs md:toggle-sm"
+                checked={listedToggle}
+                onChange={handleListedToggle}
               />
             </label>
             <button
