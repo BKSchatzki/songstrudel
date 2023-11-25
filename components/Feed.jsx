@@ -42,7 +42,11 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
               .filter((arrangement) => arrangement.creator._id === currentUser)
               .reverse(),
           )
-        : setArrangements(data.reverse());
+        : setArrangements(
+            data
+              .reverse()
+              .filter((arrangement) => arrangement.visibility === "visible"),
+          );
     };
     fetchArrangements();
   }, []);
