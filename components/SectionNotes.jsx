@@ -15,7 +15,7 @@ const SectionNotes = ({
       <TextareaAutosize
         type="text"
         value={section.notes}
-        minRows={2}
+        minRows={1}
         maxRows={24}
         maxLength={512}
         onChange={(e) => {

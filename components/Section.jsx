@@ -22,7 +22,7 @@ const Section = ({
   return (
     <>
       {arrangement.sections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="flex flex-col gap-2">
+        <div key={sectionIndex} className="mt-4 flex flex-col gap-2">
           <div
             className={`grid gap-1 sm:gap-2 ${
               (isCreator || isNewArrangement) && "grid-cols-7"
@@ -123,7 +123,7 @@ const Section = ({
               disabled={disabled}
             />
           ) : (
-            <div className="h-1" />
+            ""
           )}
         </div>
       ))}

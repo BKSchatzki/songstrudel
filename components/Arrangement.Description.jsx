@@ -10,14 +10,14 @@ const ArrangementDescription = ({
   disabled,
 }) => {
   return (
-    <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 pb-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
+    <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
       <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
         Description
       </span>
       <TextareaAutosize
         type="text"
         value={arrangement.description}
-        minRows={2}
+        minRows={1}
         maxRows={24}
         maxLength={512}
         onChange={(e) =>
