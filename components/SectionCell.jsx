@@ -52,7 +52,7 @@ const SectionCell = ({
                 : `font-semibold ${textColors[cellIndex]}`
             }`
           : "h-5 text-transparent sm:h-8"
-      }
+      } ${!instrument && "text-opacity-25"}
       `}
       disabled={disabled}
     />
