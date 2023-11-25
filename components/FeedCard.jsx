@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const FeedCard = ({ index, data, isPersonalFeed }) => {
+const FeedCard = ({ index, data, isPersonalFeed, handleDelete }) => {
   const [arrangement, setArrangement] = useState(data);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [countdown, setCountdown] = useState(3);
 
   const handleToggleChange = async (newState) => {
     if (!arrangement._id) return;
@@ -29,6 +31,24 @@ const FeedCard = ({ index, data, isPersonalFeed }) => {
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      let timer = countdown;
+      const intervalId = setInterval(() => {
+        timer--;
+        setCountdown(timer);
+        if (timer === 0) {
+          clearInterval(intervalId);
+          setConfirmDelete(false);
+          setCountdown(3);
+        }
+      }, 1000);
+    } else {
+      handleDelete(arrangement._id);
     }
   };
 
@@ -99,12 +119,14 @@ const FeedCard = ({ index, data, isPersonalFeed }) => {
             </label>
             <button
               type="button"
-              onClick={() => {
-                return;
-              }}
-              className={`w-24 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-[6.5rem]`}
+              onClick={handleDeleteClick}
+              className={`w-24 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-[6.5rem] ${
+                confirmDelete
+                  ? "text-slate-950 brightness-125"
+                  : "bg-clip-text text-transparent"
+              }`}
             >
-              Delete
+              {confirmDelete ? `Confirm (${countdown})` : "Delete"}
             </button>
           </div>
         </div>

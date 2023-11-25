@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import FeedCard from "./FeedCard";
 
-const FeedCardList = ({ data, isPersonalFeed }) => {
+const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
   return (
     <div
       className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
@@ -17,6 +17,7 @@ const FeedCardList = ({ data, isPersonalFeed }) => {
           data={arrangement}
           isPersonalFeed={isPersonalFeed}
           index={index}
+          handleDelete={handleDelete}
         />
       ))}
     </div>
@@ -50,6 +51,26 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
     };
     fetchArrangements();
   }, []);
+
+  const deleteArrangement = async (id) => {
+    if (!id || !isPersonalFeed) return;
+
+    try {
+      const res = await fetch(`/api/arrangement/view/${id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        setArrangements;
+      }
+      if (res.ok) {
+        setArrangements(
+          arrangements.filter((arrangement) => arrangement._id !== id),
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const filteredArrangements = arrangements.filter((arrangement) => {
     const titlesLowercase = arrangement.title.toLowerCase();
@@ -88,6 +109,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
       <FeedCardList
         data={filteredArrangements}
         isPersonalFeed={isPersonalFeed}
+        handleDelete={deleteArrangement}
       />
     </section>
   );
