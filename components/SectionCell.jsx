@@ -6,6 +6,7 @@ const SectionCell = ({
   bgColors,
   shadowColors,
   textColors,
+  darkTextColors,
   instrument,
   rowIndex,
   cellIndex,
@@ -19,16 +20,6 @@ const SectionCell = ({
     "bg-opacity-60",
     "bg-opacity-100 brightness-150",
   ]);
-
-  const darkTextColors = [
-    "text-red-950",
-    "text-orange-950",
-    "text-yellow-950",
-    "text-green-950",
-    "text-blue-950",
-    "text-purple-950",
-    "text-pink-950",
-  ];
 
   const [currentCellAppearance, setCurrentCellAppearance] = useState(
     cellData[rowIndex][cellIndex],
@@ -47,7 +38,7 @@ const SectionCell = ({
   return (
     <input
       type="button"
-      value={instrument}
+      value={instrument || `Ins${cellIndex + 1}`}
       onClick={handleClick}
       className={`w-[14.2857%] text-[0.625rem] shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-sm ${
         !disabled && "active:translate-y-0.5 active:scale-95 active:shadow-none"

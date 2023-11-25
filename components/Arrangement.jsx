@@ -38,6 +38,15 @@ const Arrangement = ({
     "text-purple-500",
     "text-pink-500",
   ];
+  const darkTextColors = [
+    "text-red-950",
+    "text-orange-950",
+    "text-yellow-950",
+    "text-green-950",
+    "text-blue-950",
+    "text-purple-950",
+    "text-pink-950",
+  ];
   const textBgColors = [
     "bg-red-950",
     "bg-orange-950",
@@ -155,6 +164,7 @@ const Arrangement = ({
         bgColors={bgColors}
         shadowColors={shadowColors}
         textColors={textColors}
+        darkTextColors={darkTextColors}
       />
       <div className="mt-8 flex items-center justify-center gap-8 sm:justify-end">
         {/* <Link

@@ -17,6 +17,7 @@ const Section = ({
   bgColors,
   shadowColors,
   textColors,
+  darkTextColors,
 }) => {
   return (
     <>
@@ -66,6 +67,7 @@ const Section = ({
                     bgColors={bgColors}
                     shadowColors={shadowColors}
                     textColors={textColors}
+                    darkTextColors={darkTextColors}
                     instrument={arrangement.instruments[cellIndex]}
                     rowIndex={rowIndex}
                     cellIndex={cellIndex}
