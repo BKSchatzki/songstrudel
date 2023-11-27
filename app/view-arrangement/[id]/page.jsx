@@ -11,6 +11,7 @@ const ViewArrangement = ({ params: { id } }) => {
 
   const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState(null);
+  const [isPrivateArrangement, setIsPrivateArrangement] = useState(false);
 
   useEffect(() => {
     const fetchArrangement = async () => {
@@ -22,6 +23,8 @@ const ViewArrangement = ({ params: { id } }) => {
         session?.user.id === data.creator._id
       ) {
         setArrangement(data);
+      } else {
+        setIsPrivateArrangement(true);
       }
     };
 
@@ -85,12 +88,14 @@ const ViewArrangement = ({ params: { id } }) => {
           handleDelete={deleteArrangement}
         />
       ) : (
-        <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-          Hmm. This oven seems to be{" "}
-          <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
-            locked shut.
-          </span>
-        </p>
+        isPrivateArrangement && (
+          <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
+            Hmm. This oven seems to be{" "}
+            <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
+              locked shut.
+            </span>
+          </p>
+        )
       )}
     </section>
   );
