@@ -35,6 +35,30 @@ const ViewArrangement = ({ params: { id } }) => {
 
   const isCreator = session?.user.id === arrangement?.creator._id;
 
+  const copyUrlToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /*   const share = async () => {
+    if (!navigator.share) {
+      alert("Your browser does not support the Share API");
+      return;
+    }
+
+    try {
+      await navigator.share({
+        title: "Check out this arrangement!",
+        url: window.location.href,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }; */
+
   const editArrangement = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -97,6 +121,8 @@ const ViewArrangement = ({ params: { id } }) => {
           </p>
         )
       )}
+      <button onClick={copyUrlToClipboard}>Copy URL</button>
+      {/* <button onClick={share}>Share</button> */}
     </section>
   );
 };
