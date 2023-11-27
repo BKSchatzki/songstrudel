@@ -14,7 +14,6 @@ const RootLayout = ({ children }) => {
     <html lang="en" className={GeistSans.className}>
       <body className="min-h-screen bg-gray-900 text-slate-100">
         <Provider>
-          {/* <div className="gradient" /> */}
           <Nav />
           <main>{children}</main>
         </Provider>

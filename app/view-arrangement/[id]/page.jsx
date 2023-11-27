@@ -54,7 +54,7 @@ const ViewArrangement = ({ params: { id } }) => {
       const res = await fetch(`/api/arrangement/view/${id}`, {
         method: "DELETE",
       });
-      router.push("/");
+      router.push("/my-arrangements");
     } catch (err) {
       console.log(err);
     }
