@@ -35,30 +35,6 @@ const ViewArrangement = ({ params: { id } }) => {
 
   const isCreator = session?.user.id === arrangement?.creator._id;
 
-  const copyUrlToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  /*   const share = async () => {
-    if (!navigator.share) {
-      alert("Your browser does not support the Share API");
-      return;
-    }
-
-    try {
-      await navigator.share({
-        title: "Check out this arrangement!",
-        url: window.location.href,
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }; */
-
   const editArrangement = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -92,6 +68,30 @@ const ViewArrangement = ({ params: { id } }) => {
     }
   };
 
+  const copyUrlToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /*   const share = async () => {
+    if (!navigator.share) {
+      alert("Your browser does not support the Share API");
+      return;
+    }
+
+    try {
+      await navigator.share({
+        title: "Check out this arrangement!",
+        url: window.location.href,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }; */
+
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
@@ -110,6 +110,7 @@ const ViewArrangement = ({ params: { id } }) => {
           saving={saving}
           handleSubmit={editArrangement}
           handleDelete={deleteArrangement}
+          handleCopy={copyUrlToClipboard}
         />
       ) : (
         isPrivateArrangement && (
@@ -121,8 +122,6 @@ const ViewArrangement = ({ params: { id } }) => {
           </p>
         )
       )}
-      <button onClick={copyUrlToClipboard}>Copy URL</button>
-      {/* <button onClick={share}>Share</button> */}
     </section>
   );
 };

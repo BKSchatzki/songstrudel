@@ -19,6 +19,7 @@ const Arrangement = ({
   saving,
   handleSubmit,
   handleDelete,
+  handleCopy,
 }) => {
   const newSection = {
     name: "",
@@ -166,19 +167,28 @@ const Arrangement = ({
         textColors={textColors}
         darkTextColors={darkTextColors}
       />
-      <div className="mt-8 flex items-center justify-center gap-8 sm:justify-end">
+      <div className="mt-8 grid grid-cols-2 items-center justify-center gap-4 px-7 sm:justify-end sm:px-11">
         {/* <Link
           href="/"
           className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
         >
           Back
         </Link> */}
+        {!isNewArrangement && (
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="col-span-2 rounded-sm bg-gradient-to-r from-green-500 to-teal-500 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-emerald-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+          >
+            Copy URL to Clipboard
+          </button>
+        )}
         {isCreator && !isNewArrangement && isUserLoggedIn && (
           <>
             <button
               type="button"
               onClick={handleDeleteClick}
-              className={`w-[7.5rem] rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base ${
+              className={`col-span-1 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
                 confirmDelete
                   ? "text-slate-950 brightness-125"
                   : "bg-clip-text text-transparent"
@@ -189,7 +199,7 @@ const Arrangement = ({
             <button
               type="submit"
               disabled={saving}
-              className="w-[7.5rem] rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base"
+              className="col-span-1 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
             >
               {saving ? "Updating" : "Update"}
             </button>
@@ -199,7 +209,7 @@ const Arrangement = ({
           <button
             type="submit"
             disabled={saving}
-            className="w-3/5 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-indigo-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:w-36 sm:text-base"
+            className="col-span-2 col-start-1 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-indigo-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
           >
             {saving ? "Creating" : "Create"}
           </button>
