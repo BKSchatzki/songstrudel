@@ -17,7 +17,12 @@ const ViewArrangement = ({ params: { id } }) => {
       if (!id) return;
       const res = await fetch(`/api/arrangement/view/${id}`);
       const data = await res.json();
-      setArrangement(data);
+      if (
+        data.visibility !== "private" ||
+        session?.user.id === data.creator._id
+      ) {
+        setArrangement(data);
+      }
     };
 
     if (id) {
@@ -68,7 +73,7 @@ const ViewArrangement = ({ params: { id } }) => {
           Oven
         </span>
       </h1>
-      {arrangement && (
+      {arrangement ? (
         <Arrangement
           arrangement={arrangement}
           setArrangement={setArrangement}
@@ -79,6 +84,13 @@ const ViewArrangement = ({ params: { id } }) => {
           handleSubmit={editArrangement}
           handleDelete={deleteArrangement}
         />
+      ) : (
+        <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
+          Hmm. This oven seems to be{" "}
+          <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
+            locked shut.
+          </span>
+        </p>
       )}
     </section>
   );
