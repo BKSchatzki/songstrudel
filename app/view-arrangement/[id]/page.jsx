@@ -120,15 +120,20 @@ const ViewArrangement = ({ params: { id } }) => {
           editSuccess={editSuccess}
           copySuccess={copySuccess}
         />
+      ) : isPrivateArrangement ? (
+        <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
+          Hmm. This oven seems to be{" "}
+          <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
+            locked shut.
+          </span>
+        </p>
       ) : (
-        isPrivateArrangement && (
-          <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-            Hmm. This oven seems to be{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
-              locked shut.
-            </span>
-          </p>
-        )
+        <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
+          <div className="skeleton mb-4 h-[76px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter" />
+          <div className="skeleton mb-4 h-[76px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter" />
+          <div className="skeleton mb-4 h-10 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter" />
+          <div className="skeleton mb-4 h-[276px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter" />
+        </div>
       )}
     </section>
   );
