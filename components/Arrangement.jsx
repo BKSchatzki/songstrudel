@@ -20,6 +20,8 @@ const Arrangement = ({
   handleSubmit,
   handleDelete,
   handleCopy,
+  editSuccess,
+  copySuccess,
 }) => {
   const newSection = {
     name: "",
@@ -178,9 +180,13 @@ const Arrangement = ({
           <button
             type="button"
             onClick={handleCopy}
-            className="col-span-2 rounded-sm bg-gradient-to-r from-green-500 to-teal-500 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-emerald-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+            disabled={copySuccess}
+            className={`col-span-2 rounded-sm bg-gradient-to-r from-green-500 to-teal-500 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-emerald-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
+              copySuccess &&
+              "translate-y-0.5 scale-95 cursor-default shadow-none brightness-50"
+            }`}
           >
-            Copy URL to Clipboard
+            {copySuccess ? "Successfully Copied" : "Copy URL to Clipboard"}
           </button>
         )}
         {isCreator && !isNewArrangement && isUserLoggedIn && (
@@ -198,10 +204,13 @@ const Arrangement = ({
             </button>
             <button
               type="submit"
-              disabled={saving}
-              className="col-span-1 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+              disabled={saving || editSuccess}
+              className={`col-span-1 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
+                (editSuccess || saving) &&
+                "translate-y-0.5 scale-95 cursor-default shadow-none brightness-50"
+              }`}
             >
-              {saving ? "Updating" : "Update"}
+              {saving ? "Updating" : editSuccess ? "Updated" : "Update"}
             </button>
           </>
         )}

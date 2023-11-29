@@ -12,6 +12,8 @@ const ViewArrangement = ({ params: { id } }) => {
   const [saving, setSaving] = useState(false);
   const [arrangement, setArrangement] = useState(null);
   const [isPrivateArrangement, setIsPrivateArrangement] = useState(false);
+  const [editSuccess, setEditSuccess] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     const fetchArrangement = async () => {
@@ -48,6 +50,8 @@ const ViewArrangement = ({ params: { id } }) => {
         },
         body: JSON.stringify(arrangement),
       });
+      setEditSuccess(true);
+      setTimeout(() => setEditSuccess(false), 3000);
     } catch (err) {
       console.log(err);
     } finally {
@@ -71,6 +75,8 @@ const ViewArrangement = ({ params: { id } }) => {
   const copyUrlToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 3000);
     } catch (err) {
       console.error(err);
     }
@@ -111,6 +117,8 @@ const ViewArrangement = ({ params: { id } }) => {
           handleSubmit={editArrangement}
           handleDelete={deleteArrangement}
           handleCopy={copyUrlToClipboard}
+          editSuccess={editSuccess}
+          copySuccess={copySuccess}
         />
       ) : (
         isPrivateArrangement && (
