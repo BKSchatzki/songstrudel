@@ -106,11 +106,26 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
           </label>
         </form>
       )}
-      <FeedCardList
-        data={filteredArrangements}
-        isPersonalFeed={isPersonalFeed}
-        handleDelete={deleteArrangement}
-      />
+      {arrangements.length !== 0 ? (
+        <FeedCardList
+          data={filteredArrangements}
+          isPersonalFeed={isPersonalFeed}
+          handleDelete={deleteArrangement}
+        />
+      ) : (
+        <div
+          className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
+            !isPersonalFeed && "mt-12 sm:mt-24"
+          }`}
+        >
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+        </div>
+      )}
     </section>
   );
 };
