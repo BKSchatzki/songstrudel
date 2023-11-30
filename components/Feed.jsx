@@ -27,6 +27,7 @@ const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
 const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState("");
   const [arrangements, setArrangements] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
@@ -35,6 +36,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
   useEffect(() => {
     const fetchArrangements = async () => {
       // noStore();
+      setLoading(true);
       const res = await fetch("/api/arrangement");
       const data = await res.json();
       isPersonalFeed
@@ -48,6 +50,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
               .reverse()
               .filter((arrangement) => arrangement.visibility === "visible"),
           );
+      setLoading(false);
     };
     fetchArrangements();
   }, []);
