@@ -12,7 +12,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="min-h-screen w-[100vw] bg-gray-900 text-slate-100">
+      <body className="scrollbar scrollbar-track-slate-900 scrollbar-thumb-slate-800 min-h-screen overflow-y-scroll bg-gray-900 text-slate-100">
         <Provider>
           <Nav />
           <main>{children}</main>

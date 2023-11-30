@@ -37,20 +37,35 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
     const fetchArrangements = async () => {
       // noStore();
       setLoading(true);
-      const res = await fetch("/api/arrangement");
-      const data = await res.json();
-      isPersonalFeed
-        ? setArrangements(
-            data
-              .filter((arrangement) => arrangement.creator._id === currentUser)
-              .reverse(),
-          )
-        : setArrangements(
-            data
-              .reverse()
-              .filter((arrangement) => arrangement.visibility === "visible"),
-          );
-      setLoading(false);
+      const maxAttempts = 5;
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        try {
+          const res = await fetch("/api/arrangement");
+          if (!res.ok) throw new Error("Fetch failed.");
+          const data = await res.json();
+          isPersonalFeed
+            ? setArrangements(
+                data
+                  .filter(
+                    (arrangement) => arrangement.creator._id === currentUser,
+                  )
+                  .reverse(),
+              )
+            : setArrangements(
+                data
+                  .reverse()
+                  .filter(
+                    (arrangement) => arrangement.visibility === "visible",
+                  ),
+              );
+          setLoading(false);
+          break;
+        } catch (err) {
+          if (attempt === maxAttempts - 1) {
+            console.error(err);
+          }
+        }
+      }
     };
     fetchArrangements();
   }, []);
