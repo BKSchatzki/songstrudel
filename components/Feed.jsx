@@ -8,7 +8,7 @@ const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
   return (
     <div
       className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
-        !isPersonalFeed && "mt-12 sm:mt-24"
+        !isPersonalFeed && "mt-6 sm:mt-12"
       }`}
     >
       {data.map((arrangement, index) => (
@@ -133,7 +133,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
       ) : (
         <div
           className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
-            !isPersonalFeed && "mt-12 sm:mt-24"
+            !isPersonalFeed && "mt-6 sm:mt-12"
           }`}
         >
           <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
