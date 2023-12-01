@@ -6,6 +6,7 @@ import SectionAdd from "./SectionAdd";
 import SectionDelete from "./SectionDelete";
 import SectionCell from "./SectionCell";
 import SectionNotes from "./SectionNotes";
+import { Copy, ClipboardPaste } from "lucide-react";
 
 const Section = ({
   arrangement,
@@ -24,32 +25,34 @@ const Section = ({
     <>
       {arrangement.sections.map((section, sectionIndex) => (
         <div key={sectionIndex} className="mt-4 flex flex-col gap-2">
-          <div
-            className={`grid gap-1 sm:gap-2 ${
-              (isCreator || isNewArrangement) && "grid-cols-7"
-            }`}
-          >
+          <div className="grid grid-cols-7 gap-1 sm:gap-2">
             <button
               type="button"
+              value="Copy Section"
               onClick={() => {
                 localStorage.setItem(
                   "storedSection",
                   JSON.stringify(arrangement.sections[sectionIndex]),
                 );
               }}
+              className="col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-30 shadow-sm shadow-slate-950/30 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
             >
-              Copy Section
+              <Copy className="w-4 stroke-slate-100 sm:w-5" />
             </button>
             {(isCreator || isNewArrangement) && (
               <button
                 type="button"
+                value="Paste Section"
                 onClick={() => {
                   const storedSection = JSON.parse(
                     localStorage.getItem("storedSection"),
                   );
                   if (storedSection) {
-                    const updatedSections = arrangement.sections.map((s, i) =>
-                      i === sectionIndex ? storedSection : s,
+                    const updatedSections = arrangement.sections.map(
+                      (sectionToStore, sectionToStoreIndex) =>
+                        sectionToStoreIndex === sectionIndex
+                          ? storedSection
+                          : sectionToStore,
                     );
                     setArrangementAndStore(
                       {
@@ -60,15 +63,20 @@ const Section = ({
                     );
                   }
                 }}
+                className={`col-span-1 flex items-center justify-center bg-slate-950 bg-opacity-30 shadow-sm shadow-slate-950/30 transition duration-75 ${
+                  !disabled &&
+                  "active:translate-y-0.5 active:scale-95 active:shadow-none"
+                }`}
                 disabled={disabled || !localStorage.getItem("storedSection")}
               >
-                Paste Section
+                <ClipboardPaste className="w-4 stroke-slate-100 sm:w-5" />
               </button>
             )}
             <SectionName
               arrangement={arrangement}
               setArrangement={setArrangement}
               setArrangementAndStore={setArrangementAndStore}
+              isCreator={isCreator}
               isNewArrangement={isNewArrangement}
               disabled={disabled}
               section={section}

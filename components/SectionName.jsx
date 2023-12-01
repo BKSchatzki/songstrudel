@@ -2,13 +2,16 @@ const SectionName = ({
   arrangement,
   setArrangement,
   setArrangementAndStore,
+  isCreator,
   isNewArrangement,
   disabled,
   section,
   sectionIndex,
 }) => {
   return (
-    <label className="col-span-6">
+    <label
+      className={isCreator || isNewArrangement ? "col-span-4" : "col-span-6"}
+    >
       <span className="hidden">Section Name</span>
       <input
         type="text"
