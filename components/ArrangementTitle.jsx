@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 
 const ArrangementTitle = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isNewArrangement,
   disabled,

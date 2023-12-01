@@ -4,7 +4,6 @@ import TextareaAutosize from "react-textarea-autosize";
 
 const ArrangementDescription = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isNewArrangement,
   disabled,

@@ -10,7 +10,6 @@ import { Copy, ClipboardPaste } from "lucide-react";
 
 const Section = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isCreator,
   isNewArrangement,
@@ -74,7 +73,6 @@ const Section = ({
             )}
             <SectionName
               arrangement={arrangement}
-              setArrangement={setArrangement}
               setArrangementAndStore={setArrangementAndStore}
               isCreator={isCreator}
               isNewArrangement={isNewArrangement}
@@ -137,7 +135,6 @@ const Section = ({
           </div>
           <SectionNotes
             arrangement={arrangement}
-            setArrangement={setArrangement}
             setArrangementAndStore={setArrangementAndStore}
             isNewArrangement={isNewArrangement}
             disabled={disabled}

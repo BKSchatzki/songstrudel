@@ -2,7 +2,6 @@ import TextareaAutosize from "react-textarea-autosize";
 
 const SectionNotes = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isNewArrangement,
   disabled,

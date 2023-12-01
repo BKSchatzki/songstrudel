@@ -82,22 +82,6 @@ const ViewArrangement = ({ params: { id } }) => {
     }
   };
 
-  /*   const share = async () => {
-    if (!navigator.share) {
-      alert("Your browser does not support the Share API");
-      return;
-    }
-
-    try {
-      await navigator.share({
-        title: "Check out this arrangement!",
-        url: window.location.href,
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }; */
-
   return (
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
       <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">

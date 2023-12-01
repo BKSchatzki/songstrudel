@@ -1,6 +1,5 @@
 "use client";
 
-// import { unstable_noStore as noStore } from "next/cache";
 import { useState, useEffect } from "react";
 import FeedCard from "./FeedCard";
 
@@ -35,7 +34,6 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
 
   useEffect(() => {
     const fetchArrangements = async () => {
-      // noStore();
       setLoading(true);
       const maxAttempts = 5;
       for (let attempt = 0; attempt < maxAttempts; attempt++) {

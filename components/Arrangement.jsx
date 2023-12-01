@@ -3,14 +3,12 @@
 import { useState, useEffect } from "react";
 import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
 import { signIn, getProviders } from "next-auth/react";
-import Link from "next/link";
 import Image from "next/image";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";
 import ArrangementInstruments from "./ArrangementInstruments";
 import SectionAdd from "./SectionAdd";
 import Section from "./Section";
-import { set } from "mongoose";
 
 const Arrangement = ({
   arrangement,
@@ -129,21 +127,18 @@ const Arrangement = ({
     >
       <ArrangementTitle
         arrangement={arrangement}
-        setArrangement={setArrangement}
         setArrangementAndStore={setArrangementAndStore}
         isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
       />
       <ArrangementDescription
         arrangement={arrangement}
-        setArrangement={setArrangement}
         setArrangementAndStore={setArrangementAndStore}
         isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
       />
       <ArrangementInstruments
         arrangement={arrangement}
-        setArrangement={setArrangement}
         setArrangementAndStore={setArrangementAndStore}
         isNewArrangement={isNewArrangement}
         disabled={!isCreator && !isNewArrangement}
@@ -169,7 +164,6 @@ const Arrangement = ({
       )}
       <Section
         arrangement={arrangement}
-        setArrangement={setArrangement}
         setArrangementAndStore={setArrangementAndStore}
         isCreator={isCreator}
         isNewArrangement={isNewArrangement}
@@ -181,12 +175,6 @@ const Arrangement = ({
         darkTextColors={darkTextColors}
       />
       <div className="mt-8 grid grid-cols-2 items-center justify-center gap-4 px-7 sm:justify-end sm:px-11">
-        {/* <Link
-          href="/"
-          className="rounded-sm px-2 py-1 text-xs opacity-50 sm:text-base"
-        >
-          Back
-        </Link> */}
         {!isNewArrangement && (
           <button
             type="button"

@@ -1,6 +1,5 @@
 const ArrangementInstruments = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isNewArrangement,
   disabled,

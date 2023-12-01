@@ -1,6 +1,5 @@
 const SectionName = ({
   arrangement,
-  setArrangement,
   setArrangementAndStore,
   isCreator,
   isNewArrangement,
