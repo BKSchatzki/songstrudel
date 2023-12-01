@@ -91,7 +91,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="flex items-start justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="flex items-center justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
                   >
                     <Image
                       src="/assets/images/discord-logo.svg"
@@ -164,7 +164,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="flex items-start justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 font-semibold text-slate-100 shadow-md shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                    className="flex items-center justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
                   >
                     <Image
                       src="/assets/images/discord-logo.svg"

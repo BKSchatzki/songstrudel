@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
+import { signIn, getProviders } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";
 import ArrangementInstruments from "./ArrangementInstruments";
@@ -80,6 +82,15 @@ const Arrangement = ({
 
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [countdown, setCountdown] = useState(3);
+  const [providers, setProviders] = useState(null);
+
+  useEffect(() => {
+    const loadProviders = async () => {
+      const res = await getProviders();
+      setProviders(res);
+    };
+    loadProviders();
+  }, []);
 
   usePreventAutoZoom();
 
@@ -214,7 +225,7 @@ const Arrangement = ({
             </button>
           </>
         )}
-        {isNewArrangement && isUserLoggedIn && (
+        {isNewArrangement && isUserLoggedIn ? (
           <button
             type="submit"
             disabled={saving}
@@ -222,6 +233,24 @@ const Arrangement = ({
           >
             {saving ? "Creating" : "Create"}
           </button>
+        ) : (
+          providers &&
+          Object.values(providers).map((provider) => (
+            <button
+              type="button"
+              key={provider.name}
+              onClick={() => signIn(provider.id)}
+              className="col-span-2 flex items-center justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+            >
+              <Image
+                src="/assets/images/discord-logo.svg"
+                alt="Discord Logo"
+                width={25}
+                height={25}
+              />
+              Sign In to Save
+            </button>
+          ))
         )}
       </div>
     </form>
