@@ -20,7 +20,11 @@ const CreateArrangement = () => {
   useEffect(() => {
     const storedArrangement = window.localStorage.getItem("newArrangement");
     if (storedArrangement) {
-      setArrangement(JSON.parse(storedArrangement));
+      const parsedArrangement = JSON.parse(storedArrangement);
+      if (!Array.isArray(parsedArrangement.sections)) {
+        parsedArrangement.sections = [];
+      }
+      setArrangement(parsedArrangement);
     }
   }, []);
 

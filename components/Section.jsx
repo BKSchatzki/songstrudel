@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import SectionName from "./SectionName";
 import SectionAdd from "./SectionAdd";
 import SectionDelete from "./SectionDelete";
@@ -28,6 +29,39 @@ const Section = ({
               (isCreator || isNewArrangement) && "grid-cols-7"
             }`}
           >
+            <button
+              type="button"
+              onClick={() => {
+                localStorage.setItem(
+                  "storedSection",
+                  JSON.stringify(arrangement.sections[sectionIndex]),
+                );
+              }}
+            >
+              Copy Section
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const storedSection = JSON.parse(
+                  localStorage.getItem("storedSection"),
+                );
+                if (storedSection) {
+                  const updatedSections = arrangement.sections.map((s, i) =>
+                    i === sectionIndex ? storedSection : s,
+                  );
+                  setArrangementAndStore(
+                    {
+                      ...arrangement,
+                      sections: updatedSections,
+                    },
+                    isNewArrangement,
+                  );
+                }
+              }}
+            >
+              Paste Section
+            </button>
             <SectionName
               arrangement={arrangement}
               setArrangement={setArrangement}
