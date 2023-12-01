@@ -225,7 +225,7 @@ const Arrangement = ({
             </button>
           </>
         )}
-        {isNewArrangement && isUserLoggedIn ? (
+        {isNewArrangement && isUserLoggedIn && (
           <button
             type="submit"
             disabled={saving}
@@ -233,7 +233,9 @@ const Arrangement = ({
           >
             {saving ? "Creating" : "Create"}
           </button>
-        ) : (
+        )}{" "}
+        {isNewArrangement &&
+          !isUserLoggedIn &&
           providers &&
           Object.values(providers).map((provider) => (
             <button
@@ -250,8 +252,7 @@ const Arrangement = ({
               />
               Sign In to Save
             </button>
-          ))
-        )}
+          ))}
       </div>
     </form>
   );
