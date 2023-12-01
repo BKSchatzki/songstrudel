@@ -40,28 +40,31 @@ const Section = ({
             >
               Copy Section
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                const storedSection = JSON.parse(
-                  localStorage.getItem("storedSection"),
-                );
-                if (storedSection) {
-                  const updatedSections = arrangement.sections.map((s, i) =>
-                    i === sectionIndex ? storedSection : s,
+            {(isCreator || isNewArrangement) && (
+              <button
+                type="button"
+                onClick={() => {
+                  const storedSection = JSON.parse(
+                    localStorage.getItem("storedSection"),
                   );
-                  setArrangementAndStore(
-                    {
-                      ...arrangement,
-                      sections: updatedSections,
-                    },
-                    isNewArrangement,
-                  );
-                }
-              }}
-            >
-              Paste Section
-            </button>
+                  if (storedSection) {
+                    const updatedSections = arrangement.sections.map((s, i) =>
+                      i === sectionIndex ? storedSection : s,
+                    );
+                    setArrangementAndStore(
+                      {
+                        ...arrangement,
+                        sections: updatedSections,
+                      },
+                      isNewArrangement,
+                    );
+                  }
+                }}
+                disabled={disabled || !localStorage.getItem("storedSection")}
+              >
+                Paste Section
+              </button>
+            )}
             <SectionName
               arrangement={arrangement}
               setArrangement={setArrangement}
