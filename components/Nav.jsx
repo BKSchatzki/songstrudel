@@ -155,7 +155,7 @@ const Nav = () => {
                     exit={{
                       opacity: 0,
                       x: 500,
-                      transition: { delay: 0.25 },
+                      transition: { delay: 0.3333 },
                     }}
                   >
                     <motion.div
@@ -190,6 +190,7 @@ const Nav = () => {
                       exit={{
                         opacity: 0,
                         x: -384,
+                        transition: { delay: 0.05 },
                       }}
                     >
                       <Link
@@ -200,10 +201,8 @@ const Nav = () => {
                         Create Arrangement
                       </Link>
                     </motion.div>
-                    <motion.button
-                      type="button"
-                      onClick={signOut}
-                      className="mt-14 w-3/4 max-w-xs rounded-sm bg-slate-100 px-3 py-1.5 text-sm text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                    <motion.div
+                      className="flex w-3/4 max-w-xs"
                       initial={{ opacity: 0, x: -384 }}
                       animate={{
                         opacity: 1,
@@ -213,10 +212,17 @@ const Nav = () => {
                       exit={{
                         opacity: 0,
                         x: -384,
+                        transition: { delay: 0.1 },
                       }}
                     >
-                      Sign Out
-                    </motion.button>
+                      <button
+                        type="button"
+                        onClick={signOut}
+                        className="mt-14 w-full rounded-sm bg-slate-100 px-3 py-1.5 text-sm text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                      >
+                        Sign Out
+                      </button>
+                    </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -384 }}
                       animate={{
@@ -227,6 +233,7 @@ const Nav = () => {
                       exit={{
                         opacity: 0,
                         x: -384,
+                        transition: { delay: 0.15 },
                       }}
                     >
                       <Link
