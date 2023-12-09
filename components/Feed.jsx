@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import FeedCardList from "./FeedCardList";
+import { motion } from "framer-motion";
 
 const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState("");
@@ -92,9 +93,18 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
   return (
     <section className="mt-6 w-full sm:mt-12">
       {!isPersonalFeed && (
-        <form
+        <motion.form
           onSubmit={(e) => e.preventDefault()}
           className="flex flex-col items-center justify-center"
+          initial={{ opacity: 0, y: 10, ease: "easeInOut" }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 0.3333,
+            duration: 0.5,
+            delay: 0.2,
+          }}
+          exit={{ opacity: 0, y: 10 }}
         >
           <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
             <span className="hidden">Name</span>
@@ -106,7 +116,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
               className="w-full bg-transparent text-center text-sm outline-none placeholder:opacity-50 sm:text-lg"
             />
           </label>
-        </form>
+        </motion.form>
       )}
       <FeedCardList
         data={filteredArrangements}
