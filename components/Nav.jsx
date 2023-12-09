@@ -35,7 +35,7 @@ const Nav = () => {
               className="z-20 block transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none md:hidden"
             />
             <Image
-              src="/assets/images/songstrudel-nameonly.svg"
+              src="/assets/images/songstrudel-withname.svg"
               alt="SongStrudel Logo"
               width={148}
               height={37}
