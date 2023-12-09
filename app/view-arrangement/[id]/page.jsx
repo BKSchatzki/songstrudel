@@ -24,6 +24,7 @@ const ViewArrangement = ({ params: { id } }) => {
         try {
           if (!id) return;
           const res = await fetch(`/api/arrangement/view/${id}`);
+          if (!res.ok) throw new Error("Fetch failed.");
           const data = await res.json();
           if (
             data.visibility !== "private" ||
@@ -44,12 +45,12 @@ const ViewArrangement = ({ params: { id } }) => {
           }
         }
       }
-
-      if (id) {
-        fetchArrangement();
-      }
     };
-  }, [id]);
+
+    if (id) {
+      fetchArrangement();
+    }
+  }, [id, session]);
 
   const isCreator = session?.user.id === arrangement?.creator._id;
 
