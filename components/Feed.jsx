@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
 import FeedCardList from "./FeedCardList";
 import { motion } from "framer-motion";
 
@@ -74,6 +75,8 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
       console.log(err);
     }
   };
+
+  usePreventAutoZoom();
 
   const filteredArrangements = arrangements.filter((arrangement) => {
     const titlesLowercase = arrangement.title.toLowerCase();
