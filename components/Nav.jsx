@@ -158,44 +158,80 @@ const Nav = () => {
                       transition: { delay: 0.25 },
                     }}
                   >
-                    <Link
-                      href="/my-arrangements"
-                      onClick={() => setDropdownToggled(false)}
-                      className="w-3/4 max-w-xs rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-center text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
-                    >
-                      My Arrangements
-                    </Link>
-                    <Link
-                      href="/create-arrangement"
-                      onClick={() => setDropdownToggled(false)}
-                      className="w-3/4 max-w-xs rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-center text-sm font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
-                    >
-                      Create Arrangement
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={signOut}
-                      className="mt-14 w-3/4 max-w-xs rounded-sm bg-slate-100 px-3 py-1.5 text-sm text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
-                    >
-                      Sign Out
-                    </button>
                     <motion.div
-                      className="fixed left-20 top-[15px]"
-                      initial={{ opacity: 0, y: -150 }}
+                      className="flex w-3/4 max-w-xs"
+                      initial={{ opacity: 0, x: -384 }}
                       animate={{
                         opacity: 1,
-                        y: 0,
-                        transition: { delay: 0.25 },
+                        x: 0,
+                        transition: { delay: 0.4 },
                       }}
                       exit={{
                         opacity: 0,
-                        y: -150,
+                        x: -384,
+                      }}
+                    >
+                      <Link
+                        href="/my-arrangements"
+                        onClick={() => setDropdownToggled(false)}
+                        className="w-full rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-center text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                      >
+                        My Arrangements
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      className="flex w-3/4 max-w-xs"
+                      initial={{ opacity: 0, x: -384 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: 0.5 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        x: -384,
+                      }}
+                    >
+                      <Link
+                        href="/create-arrangement"
+                        onClick={() => setDropdownToggled(false)}
+                        className="w-full rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-center text-sm font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                      >
+                        Create Arrangement
+                      </Link>
+                    </motion.div>
+                    <motion.button
+                      type="button"
+                      onClick={signOut}
+                      className="mt-14 w-3/4 max-w-xs rounded-sm bg-slate-100 px-3 py-1.5 text-sm text-slate-950 shadow-sm shadow-slate-100/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                      initial={{ opacity: 0, x: -384 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: 0.6 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        x: -384,
+                      }}
+                    >
+                      Sign Out
+                    </motion.button>
+                    <motion.div
+                      initial={{ opacity: 0, x: -384 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: 0.7 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        x: -384,
                       }}
                     >
                       <Link
                         href="https://www.buymeacoffee.com/bkschatzki"
                         target="_blank"
-                        // className="fixed left-20 top-[15px]"
                       >
                         <Image
                           src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
