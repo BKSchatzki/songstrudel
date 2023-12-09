@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import Arrangement from "@components/Arrangement";
 
 const ViewArrangement = ({ params: { id } }) => {
@@ -130,10 +131,34 @@ const ViewArrangement = ({ params: { id } }) => {
         </p>
       ) : (
         <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
-          <div className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]" />
-          <div className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]" />
-          <div className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10" />
-          <div className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]" />
+          <motion.div
+            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+          <motion.div
+            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+          <motion.div
+            className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.2 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+          <motion.div
+            className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.3 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
         </div>
       )}
     </section>

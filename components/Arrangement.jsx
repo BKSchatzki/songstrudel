@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
 import { signIn, getProviders } from "next-auth/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import ArrangementTitle from "./ArrangementTitle";
 import ArrangementDescription from "./Arrangement.Description";

@@ -21,7 +21,7 @@ const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
                 <motion.div
                   key={index}
                   className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]"
-                  initial={{ opacity: 0, ease: "easeInOut" }}
+                  initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
@@ -36,7 +36,7 @@ const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
                 initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
                 <FeedCard
                   data={arrangement}
