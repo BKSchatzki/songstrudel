@@ -3,22 +3,34 @@
 import { useState, useEffect } from "react";
 import FeedCard from "./FeedCard";
 
+const SkeletonCard = () => {
+  return (
+    <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
+  );
+};
+
 const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
+  const skeletonCount = 12 - data.length;
+
   return (
     <div
       className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
         !isPersonalFeed && "mt-6 sm:mt-12"
       }`}
     >
-      {data.map((arrangement, index) => (
-        <FeedCard
-          key={arrangement._id}
-          data={arrangement}
-          isPersonalFeed={isPersonalFeed}
-          index={index}
-          handleDelete={handleDelete}
-        />
-      ))}
+      {data.length === 0
+        ? Array(skeletonCount)
+            .fill()
+            .map((_, index) => <SkeletonCard key={index} />)
+        : data.map((arrangement, index) => (
+            <FeedCard
+              key={arrangement._id}
+              data={arrangement}
+              isPersonalFeed={isPersonalFeed}
+              index={index}
+              handleDelete={handleDelete}
+            />
+          ))}
     </div>
   );
 };
@@ -128,26 +140,11 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
           </label>
         </form>
       )}
-      {arrangements.length !== 0 ? (
-        <FeedCardList
-          data={filteredArrangements}
-          isPersonalFeed={isPersonalFeed}
-          handleDelete={deleteArrangement}
-        />
-      ) : (
-        <div
-          className={`grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 ${
-            !isPersonalFeed && "mt-6 sm:mt-12"
-          }`}
-        >
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-          <div className="skeleton mb-4 h-[124px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[140px] md:h-[180px] lg:h-[204px]" />
-        </div>
-      )}
+      <FeedCardList
+        data={filteredArrangements}
+        isPersonalFeed={isPersonalFeed}
+        handleDelete={deleteArrangement}
+      />
     </section>
   );
 };
