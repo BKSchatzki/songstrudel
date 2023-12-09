@@ -64,6 +64,7 @@ const Nav = () => {
             </Link>
           </motion.div>
         </div>
+
         {/* Desktop Nav */}
         <AnimatePresence mode="wait">
           <div className="hidden md:flex">
@@ -103,7 +104,23 @@ const Nav = () => {
                 </motion.div>
               </div>
             ) : (
-              <>
+              <div className="flex gap-3 md:gap-5">
+                <motion.div
+                  className="flex items-center justify-center"
+                  initial={{ y: -100 }}
+                  animate={{ y: 0, transition: { delay: 0.2 } }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.1 },
+                  }}
+                >
+                  <Link
+                    href="/create-arrangement"
+                    className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                  >
+                    Try It Out!
+                  </Link>
+                </motion.div>
                 {providers &&
                   Object.values(providers).map((provider) => (
                     <motion.button
@@ -127,7 +144,7 @@ const Nav = () => {
                       Sign In
                     </motion.button>
                   ))}
-              </>
+              </div>
             )}
           </div>
         </AnimatePresence>
@@ -254,7 +271,23 @@ const Nav = () => {
               </AnimatePresence>
             </div>
           ) : (
-            <>
+            <div className="flex gap-3 md:gap-5">
+              <motion.div
+                className="flex items-center justify-center"
+                initial={{ y: -100 }}
+                animate={{ y: 0, transition: { delay: 0.2 } }}
+                exit={{
+                  opacity: 0,
+                  transition: { duration: 0.1 },
+                }}
+              >
+                <Link
+                  href="/create-arrangement"
+                  className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                >
+                  Create
+                </Link>
+              </motion.div>
               {providers &&
                 Object.values(providers).map((provider) => (
                   <motion.button
@@ -278,7 +311,7 @@ const Nav = () => {
                     Sign In
                   </motion.button>
                 ))}
-            </>
+            </div>
           )}
         </div>
       </div>
