@@ -36,6 +36,8 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
     const fetchArrangements = async () => {
       setLoading(true);
       const maxAttempts = 5;
+      const delayBetweenAttempts = 1000;
+
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         try {
           const res = await fetch("/api/arrangement");
@@ -61,6 +63,10 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
         } catch (err) {
           if (attempt === maxAttempts - 1) {
             console.error(err);
+          } else {
+            await new Promise((resolve) =>
+              setTimeout(resolve, delayBetweenAttempts),
+            );
           }
         }
       }

@@ -17,22 +17,38 @@ const ViewArrangement = ({ params: { id } }) => {
 
   useEffect(() => {
     const fetchArrangement = async () => {
-      if (!id) return;
-      const res = await fetch(`/api/arrangement/view/${id}`);
-      const data = await res.json();
-      if (
-        data.visibility !== "private" ||
-        session?.user.id === data.creator._id
-      ) {
-        setArrangement(data);
-      } else {
-        setIsPrivateArrangement(true);
+      const maxAttempts = 5;
+      const delayBetweenAttempts = 1000;
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        try {
+          if (!id) return;
+          const res = await fetch(`/api/arrangement/view/${id}`);
+          const data = await res.json();
+          if (
+            data.visibility !== "private" ||
+            session?.user.id === data.creator._id
+          ) {
+            setArrangement(data);
+          } else {
+            setIsPrivateArrangement(true);
+          }
+          break;
+        } catch (err) {
+          if (attempt === maxAttempts - 1) {
+            console.error(err);
+          } else {
+            await new Promise((resolve) =>
+              setTimeout(resolve, delayBetweenAttempts),
+            );
+          }
+        }
+      }
+
+      if (id) {
+        fetchArrangement();
       }
     };
-
-    if (id) {
-      fetchArrangement();
-    }
   }, [id]);
 
   const isCreator = session?.user.id === arrangement?.creator._id;
