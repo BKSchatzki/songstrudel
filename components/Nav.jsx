@@ -271,47 +271,50 @@ const Nav = () => {
               </AnimatePresence>
             </div>
           ) : (
-            <div className="flex gap-3 md:gap-5">
-              <motion.div
-                className="flex items-center justify-center"
-                initial={{ y: -100 }}
-                animate={{ y: 0, transition: { delay: 0.2 } }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.1 },
-                }}
-              >
-                <Link
-                  href="/create-arrangement"
-                  className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
-                >
-                  Create
-                </Link>
-              </motion.div>
-              {providers &&
-                Object.values(providers).map((provider) => (
-                  <motion.button
-                    type="button"
-                    key={provider.name}
-                    onClick={() => signIn(provider.id)}
-                    className="flex items-center justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
-                    initial={{ y: -150 }}
-                    animate={{ y: 0 }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.1 },
-                    }}
-                  >
-                    <Image
-                      src="/assets/images/discord-logo.svg"
-                      alt="Discord Logo"
-                      width={25}
-                      height={25}
-                    />
-                    Sign In
-                  </motion.button>
+            providers && (
+              <div className="flex gap-3 md:gap-5">
+                {Object.values(providers).map((provider) => (
+                  <>
+                    <motion.div
+                      className="flex items-center justify-center"
+                      initial={{ y: -100 }}
+                      animate={{ y: 0, transition: { delay: 0.2 } }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.1 },
+                      }}
+                    >
+                      <Link
+                        href="/create-arrangement"
+                        className="rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none"
+                      >
+                        Create
+                      </Link>
+                    </motion.div>
+                    <motion.button
+                      type="button"
+                      key={provider.name}
+                      onClick={() => signIn(provider.id)}
+                      className="flex items-center justify-center gap-2 rounded-sm bg-[#4752c4] px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm shadow-[#4752c4] transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
+                      initial={{ y: -150 }}
+                      animate={{ y: 0 }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.1 },
+                      }}
+                    >
+                      <Image
+                        src="/assets/images/discord-logo.svg"
+                        alt="Discord Logo"
+                        width={25}
+                        height={25}
+                      />
+                      Sign In
+                    </motion.button>
+                  </>
                 ))}
-            </div>
+              </div>
+            )
           )}
         </div>
       </div>
