@@ -17,8 +17,8 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
   useEffect(() => {
     const fetchArrangements = async () => {
       setLoading(true);
-      const maxAttempts = 5;
-      const delayBetweenAttempts = 2000;
+      const maxAttempts = 10;
+      const delayBetweenAttempts = 500;
 
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         try {

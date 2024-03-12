@@ -39,6 +39,10 @@ const Home = () => {
         <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text font-semibold text-transparent">
           before getting lost in the DAW sauce.
         </span>
+        <br />
+        <span className="mt-4 inline-block text-xs opacity-50 sm:text-sm">
+          SongStrudel is current undergoing changes. Enjoy as it is for now!
+        </span>
       </motion.p>
       {/* {!session?.user.id && (
         <Link
