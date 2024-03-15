@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import Arrangement from "@components/Arrangement";
 
 const CreateArrangement = () => {
@@ -58,22 +59,45 @@ const CreateArrangement = () => {
   };
 
   return (
-    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
-      <h1 className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
+    <motion.section
+      className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32"
+      initial={{ opacity: 0, ease: "easeInOut" }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.h1
+        className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl"
+        initial={{ opacity: 0, y: 50, ease: "easeInOut" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", bounce: 0.3333, duration: 0.5 }}
+        exit={{ opacity: 0, y: 50 }}
+      >
         Letting You{" "}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
           Cook
         </span>
-      </h1>
-      <Arrangement
-        arrangement={arrangement}
-        setArrangement={setArrangement}
-        isNewArrangement={true}
-        isUserLoggedIn={session?.user.id !== undefined}
-        saving={saving}
-        handleSubmit={createArrangement}
-      />
-    </section>
+      </motion.h1>
+      <motion.div
+        initial={{ opacity: 0, y: 50, ease: "easeInOut" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "spring",
+          bounce: 0.3333,
+          duration: 0.5,
+          delay: 0.1,
+        }}
+        exit={{ opacity: 0, y: 50 }}
+      >
+        <Arrangement
+          arrangement={arrangement}
+          setArrangement={setArrangement}
+          isNewArrangement={true}
+          isUserLoggedIn={session?.user.id !== undefined}
+          saving={saving}
+          handleSubmit={createArrangement}
+        />
+      </motion.div>
+    </motion.section>
   );
 };
 
