@@ -114,71 +114,59 @@ const ViewArrangement = ({ params: { id } }) => {
           Oven
         </span>
       </motion.h1>
-      <motion.div
-        initial={{ opacity: 0, y: 50, ease: "easeInOut" }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          type: "spring",
-          bounce: 0.3333,
-          duration: 0.5,
-          delay: 0.1,
-        }}
-        exit={{ opacity: 0, y: 50 }}
-      >
-        {arrangement ? (
-          <Arrangement
-            arrangement={arrangement}
-            setArrangement={setArrangement}
-            isCreator={isCreator}
-            isNewArrangement={false}
-            isUserLoggedIn={session?.user.id !== undefined}
-            saving={saving}
-            handleSubmit={editArrangement}
-            handleDelete={deleteArrangement}
-            handleCopy={copyUrlToClipboard}
-            editSuccess={editSuccess}
-            copySuccess={copySuccess}
+      {arrangement ? (
+        <Arrangement
+          arrangement={arrangement}
+          setArrangement={setArrangement}
+          isCreator={isCreator}
+          isNewArrangement={false}
+          isUserLoggedIn={session?.user.id !== undefined}
+          saving={saving}
+          handleSubmit={editArrangement}
+          handleDelete={deleteArrangement}
+          handleCopy={copyUrlToClipboard}
+          editSuccess={editSuccess}
+          copySuccess={copySuccess}
+        />
+      ) : isPrivateArrangement ? (
+        <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
+          Hmm. This oven seems to be{" "}
+          <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
+            locked shut.
+          </span>
+        </p>
+      ) : (
+        <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
+          <motion.div
+            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
           />
-        ) : isPrivateArrangement ? (
-          <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-            Hmm. This oven seems to be{" "}
-            <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
-              locked shut.
-            </span>
-          </p>
-        ) : (
-          <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
-            <motion.div
-              className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-              initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
-              exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-            />
-            <motion.div
-              className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-              initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-              exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-            />
-            <motion.div
-              className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
-              initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.2 }}
-              exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-            />
-            <motion.div
-              className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
-              initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.3 }}
-              exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-            />
-          </div>
-        )}
-      </motion.div>
+          <motion.div
+            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+          <motion.div
+            className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.2 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+          <motion.div
+            className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
+            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.3 }}
+            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+          />
+        </div>
+      )}
     </section>
   );
 };
