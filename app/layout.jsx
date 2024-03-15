@@ -1,5 +1,4 @@
 import "@styles/globals.css";
-import { GeistSans } from "geist/font/sans";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
@@ -11,8 +10,8 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="scrollbar scrollbar-track-slate-900 scrollbar-thumb-slate-800 min-h-screen overflow-y-scroll bg-gray-900 text-slate-100">
+    <html lang="en">
+      <body className="min-h-screen overflow-y-scroll bg-gray-900 text-slate-100 scrollbar scrollbar-track-slate-900 scrollbar-thumb-slate-800">
         <Provider>
           <Nav />
           <main>{children}</main>

@@ -1,13 +1,9 @@
 "use client";
 
 import Feed from "@components/Feed";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 
 const Home = () => {
-  const { data: session } = useSession();
-
   return (
     <section className="mx-auto flex w-11/12 max-w-7xl flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
       <motion.h1
@@ -44,14 +40,6 @@ const Home = () => {
           SongStrudel is current undergoing changes. Enjoy as it is for now!
         </span>
       </motion.p>
-      {/* {!session?.user.id && (
-        <Link
-          href="/create-arrangement"
-          className="mt-6 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-5 py-2.5 text-xl font-semibold shadow-sm shadow-indigo-500/50 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:mt-12 sm:px-6 sm:py-3 sm:text-2xl"
-        >
-          Try It Out!
-        </Link>
-      )} */}
       <Feed personalFeed={false} />
     </section>
   );

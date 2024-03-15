@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Feed from "@components/Feed";
-import { set } from "mongoose";
 
 const Profile = () => {
   const { data: session, status } = useSession();
