@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import SectionName from "./SectionName";
 import SectionAdd from "./SectionAdd";
 import SectionDelete from "./SectionDelete";
