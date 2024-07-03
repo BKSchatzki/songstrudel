@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import Arrangement from "@components/Arrangement";
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import { motion } from 'framer-motion';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
+import Arrangement from '@components/Arrangement';
 
 const ViewArrangement = ({ params: { id } }) => {
   const { data: session } = useSession();

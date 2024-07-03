@@ -1,11 +1,15 @@
 "use client";
 
-import SectionName from "./SectionName";
-import SectionAdd from "./SectionAdd";
-import SectionDelete from "./SectionDelete";
-import SectionCell from "./SectionCell";
-import SectionNotes from "./SectionNotes";
-import { Copy, ClipboardPaste } from "lucide-react";
+import {
+  ClipboardPaste,
+  Copy,
+} from 'lucide-react';
+
+import SectionAdd from './SectionAdd';
+import SectionCell from './SectionCell';
+import SectionDelete from './SectionDelete';
+import SectionName from './SectionName';
+import SectionNotes from './SectionNotes';
 
 const Section = ({
   arrangement,

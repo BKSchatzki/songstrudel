@@ -1,4 +1,8 @@
-import { Schema, model, models } from "mongoose";
+import {
+  model,
+  models,
+  Schema,
+} from 'mongoose';
 
 const arrangementSchema = new Schema(
   {

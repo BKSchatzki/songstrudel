@@ -1,5 +1,6 @@
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+
+import Link from 'next/link';
 
 const FeedCard = ({ index, data, isPersonalFeed, handleDelete }) => {
   const [arrangement, setArrangement] = useState(data);

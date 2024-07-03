@@ -1,6 +1,6 @@
+import Arrangement from '@models/arrangement';
 // import { unstable_noStore as noStore } from "next/cache";
-import { connectDB } from "@utils/database";
-import Arrangement from "@models/arrangement";
+import { connectDB } from '@utils/database';
 
 export const GET = async (req) => {
   try {

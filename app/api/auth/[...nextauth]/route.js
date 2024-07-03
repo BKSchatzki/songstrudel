@@ -1,7 +1,8 @@
-import NextAuth from "next-auth/next";
-import DiscordProvider from "next-auth/providers/discord";
-import { connectDB } from "@utils/database";
-import User from "@/models/user";
+import NextAuth from 'next-auth/next';
+import DiscordProvider from 'next-auth/providers/discord';
+
+import User from '@/models/user';
+import { connectDB } from '@utils/database';
 
 const handler = NextAuth({
   providers: [

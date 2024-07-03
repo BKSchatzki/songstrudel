@@ -1,14 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
-import { signIn, getProviders } from "next-auth/react";
-import Image from "next/image";
-import ArrangementTitle from "./ArrangementTitle";
-import ArrangementDescription from "./Arrangement.Description";
-import ArrangementInstruments from "./ArrangementInstruments";
-import SectionAdd from "./SectionAdd";
-import Section from "./Section";
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import {
+  getProviders,
+  signIn,
+} from 'next-auth/react';
+import Image from 'next/image';
+
+import { usePreventAutoZoom } from '@hooks/usePreventAutoZoom';
+
+import ArrangementDescription from './Arrangement.Description';
+import ArrangementInstruments from './ArrangementInstruments';
+import ArrangementTitle from './ArrangementTitle';
+import Section from './Section';
+import SectionAdd from './SectionAdd';
 
 const Arrangement = ({
   arrangement,

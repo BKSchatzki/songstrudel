@@ -1,10 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import {
+  AnimatePresence,
+  motion,
+} from 'framer-motion';
+import {
+  getProviders,
+  signIn,
+  signOut,
+  useSession,
+} from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Nav = () => {
   const { data: session } = useSession();

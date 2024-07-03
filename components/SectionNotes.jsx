@@ -1,4 +1,4 @@
-import TextareaAutosize from "react-textarea-autosize";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const SectionNotes = ({
   arrangement,

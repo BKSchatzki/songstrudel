@@ -1,10 +1,12 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Feed from "@components/Feed";
+import { useEffect } from 'react';
+
+import { motion } from 'framer-motion';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
+import Feed from '@components/Feed';
 
 const Profile = () => {
   const { data: session, status } = useSession();

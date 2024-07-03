@@ -1,7 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import FeedCard from "./FeedCard";
+import {
+  AnimatePresence,
+  motion,
+} from 'framer-motion';
+
+import FeedCard from './FeedCard';
 
 const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
   const skeletonCount = 24;

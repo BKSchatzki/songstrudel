@@ -1,5 +1,5 @@
-import { connectDB } from "@utils/database";
-import Arrangement from "@models/arrangement";
+import Arrangement from '@models/arrangement';
+import { connectDB } from '@utils/database';
 
 export const GET = async (req, { params }) => {
   try {

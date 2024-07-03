@@ -1,4 +1,4 @@
-import { Trash } from "lucide-react";
+import { Trash } from 'lucide-react';
 
 const SectionButton = ({ onClick, disabled }) => {
   return (

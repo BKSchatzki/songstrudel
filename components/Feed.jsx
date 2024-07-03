@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { usePreventAutoZoom } from "@hooks/usePreventAutoZoom";
-import FeedCardList from "./FeedCardList";
-import { motion } from "framer-motion";
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import { motion } from 'framer-motion';
+
+import { usePreventAutoZoom } from '@hooks/usePreventAutoZoom';
+
+import FeedCardList from './FeedCardList';
 
 const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState("");
