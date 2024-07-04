@@ -25,7 +25,7 @@ const SectionNotes = ({
               ...arrangement,
               sections: updatedSections,
             },
-            isNewArrangement,
+            isNewArrangement
           );
         }}
         placeholder="Section notes go here ~"

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useEffect,
@@ -35,7 +35,10 @@ const Nav = () => {
     <nav className="fixed z-10 w-full bg-gradient-to-b from-gray-900 to-transparent px-6 pb-3 pt-3">
       <div className="items-between mx-auto flex max-w-7xl justify-between">
         <div className="flex items-center justify-center gap-5">
-          <motion.div initial={{ y: -100 }} animate={{ y: 0 }}>
+          <motion.div
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+          >
             <Link
               href="/"
               onClick={() => setDropdownToggled(false)}
@@ -103,7 +106,10 @@ const Nav = () => {
                 >
                   Sign Out
                 </motion.button>
-                <motion.div initial={{ y: -150 }} animate={{ y: 0 }}>
+                <motion.div
+                  initial={{ y: -150 }}
+                  animate={{ y: 0 }}
+                >
                   <Link href="/my-arrangements">
                     <Image
                       src={session?.user.image}
@@ -164,7 +170,10 @@ const Nav = () => {
         <div className="flex md:hidden">
           {session?.user ? (
             <div className="flex">
-              <motion.div initial={{ y: -150 }} animate={{ y: 0 }}>
+              <motion.div
+                initial={{ y: -150 }}
+                animate={{ y: 0 }}
+              >
                 <Image
                   src={session?.user.image}
                   alt="My Discord Avatar"
@@ -180,7 +189,7 @@ const Nav = () => {
                     className="fixed right-0 top-0 z-10 flex h-full w-full flex-col items-center gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 pt-32 text-right backdrop-blur-md backdrop-filter"
                     initial={{ opacity: 0, x: 500 }}
                     animate={{ opacity: 1, x: 0, zIndex: -10 }}
-                    transition={{ duration: 0.3333, ease: "anticipate" }}
+                    transition={{ duration: 0.3333, ease: 'anticipate' }}
                     exit={{
                       opacity: 0,
                       x: 500,

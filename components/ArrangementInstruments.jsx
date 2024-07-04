@@ -10,7 +10,10 @@ const ArrangementInstruments = ({
   return (
     <div className="mb-4 flex flex-grow gap-1 sm:gap-2">
       {arrangement.instruments.map((instrument, instrumentIndex) => (
-        <label key={instrumentIndex} className="w-[14.2857%]">
+        <label
+          key={instrumentIndex}
+          className="w-[14.2857%]"
+        >
           <span className="hidden">Instruments</span>
           <input
             type="text"
@@ -24,7 +27,7 @@ const ArrangementInstruments = ({
                   ...arrangement,
                   instruments: updatedInstruments,
                 },
-                isNewArrangement,
+                isNewArrangement
               );
             }}
             maxLength={4}

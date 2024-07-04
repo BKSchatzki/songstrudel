@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useEffect,
@@ -33,8 +33,8 @@ const Arrangement = ({
   copySuccess,
 }) => {
   const newSection = {
-    name: "",
-    notes: "",
+    name: '',
+    notes: '',
     rows: [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
@@ -42,49 +42,49 @@ const Arrangement = ({
     ],
   };
   const textColors = [
-    "text-red-500",
-    "text-orange-500",
-    "text-yellow-500",
-    "text-green-500",
-    "text-blue-500",
-    "text-purple-500",
-    "text-pink-500",
+    'text-red-500',
+    'text-orange-500',
+    'text-yellow-500',
+    'text-green-500',
+    'text-blue-500',
+    'text-purple-500',
+    'text-pink-500',
   ];
   const darkTextColors = [
-    "text-red-950",
-    "text-orange-950",
-    "text-yellow-950",
-    "text-green-950",
-    "text-blue-950",
-    "text-purple-950",
-    "text-pink-950",
+    'text-red-950',
+    'text-orange-950',
+    'text-yellow-950',
+    'text-green-950',
+    'text-blue-950',
+    'text-purple-950',
+    'text-pink-950',
   ];
   const textBgColors = [
-    "bg-red-950",
-    "bg-orange-950",
-    "bg-yellow-950",
-    "bg-green-950",
-    "bg-blue-950",
-    "bg-purple-950",
-    "bg-pink-950",
+    'bg-red-950',
+    'bg-orange-950',
+    'bg-yellow-950',
+    'bg-green-950',
+    'bg-blue-950',
+    'bg-purple-950',
+    'bg-pink-950',
   ];
   const bgColors = [
-    "bg-red-500",
-    "bg-orange-500",
-    "bg-yellow-500",
-    "bg-green-500",
-    "bg-blue-500",
-    "bg-purple-500",
-    "bg-pink-500",
+    'bg-red-500',
+    'bg-orange-500',
+    'bg-yellow-500',
+    'bg-green-500',
+    'bg-blue-500',
+    'bg-purple-500',
+    'bg-pink-500',
   ];
   const shadowColors = [
-    "shadow-red-500/50",
-    "shadow-orange-500/50",
-    "shadow-yellow-500/50",
-    "shadow-green-500/50",
-    "shadow-blue-500/50",
-    "shadow-purple-500/50",
-    "shadow-pink-500/50",
+    'shadow-red-500/50',
+    'shadow-orange-500/50',
+    'shadow-yellow-500/50',
+    'shadow-green-500/50',
+    'shadow-blue-500/50',
+    'shadow-purple-500/50',
+    'shadow-pink-500/50',
   ];
 
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -122,10 +122,7 @@ const Arrangement = ({
   const setArrangementAndStore = (newArrangement) => {
     setArrangement(newArrangement);
     if (isNewArrangement) {
-      window.localStorage.setItem(
-        "newArrangement",
-        JSON.stringify(newArrangement),
-      );
+      window.localStorage.setItem('newArrangement', JSON.stringify(newArrangement));
     }
   };
 
@@ -165,7 +162,7 @@ const Arrangement = ({
                 ...arrangement,
                 sections: updatedSections,
               },
-              isNewArrangement,
+              isNewArrangement
             );
           }}
           disabled={!isCreator && !isNewArrangement}
@@ -190,11 +187,10 @@ const Arrangement = ({
             onClick={handleCopy}
             disabled={copySuccess}
             className={`col-span-2 rounded-sm bg-gradient-to-r from-green-500 to-teal-500 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-emerald-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
-              copySuccess &&
-              "translate-y-0.5 scale-95 cursor-default shadow-none brightness-50"
+              copySuccess && 'translate-y-0.5 scale-95 cursor-default shadow-none brightness-50'
             }`}
           >
-            {copySuccess ? "Successfully Copied" : "Copy URL to Clipboard"}
+            {copySuccess ? 'Successfully Copied' : 'Copy URL to Clipboard'}
           </button>
         )}
         {isCreator && !isNewArrangement && isUserLoggedIn && (
@@ -203,22 +199,20 @@ const Arrangement = ({
               type="button"
               onClick={handleDeleteClick}
               className={`col-span-1 rounded-sm bg-gradient-to-r from-rose-600 to-orange-600 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-red-600 ring-1 ring-red-600 ring-offset-0 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
-                confirmDelete
-                  ? "text-slate-950 brightness-125"
-                  : "bg-clip-text text-transparent"
+                confirmDelete ? 'text-slate-950 brightness-125' : 'bg-clip-text text-transparent'
               }`}
             >
-              {confirmDelete ? `Confirm (${countdown})` : "Delete"}
+              {confirmDelete ? `Confirm (${countdown})` : 'Delete'}
             </button>
             <button
               type="submit"
               disabled={saving || editSuccess}
               className={`col-span-1 rounded-sm bg-gradient-to-r from-orange-400 to-yellow-400 px-3 py-1.5 text-sm font-semibold text-slate-950 shadow-sm shadow-amber-400 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base ${
                 (editSuccess || saving) &&
-                "translate-y-0.5 scale-95 cursor-default shadow-none brightness-50"
+                'translate-y-0.5 scale-95 cursor-default shadow-none brightness-50'
               }`}
             >
-              {saving ? "Updating" : editSuccess ? "Updated" : "Update"}
+              {saving ? 'Updating' : editSuccess ? 'Updated' : 'Update'}
             </button>
           </>
         )}
@@ -228,9 +222,9 @@ const Arrangement = ({
             disabled={saving}
             className="col-span-2 col-start-1 rounded-sm bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1.5 text-sm font-semibold shadow-sm shadow-indigo-500 transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none sm:text-base"
           >
-            {saving ? "Creating" : "Create"}
+            {saving ? 'Creating' : 'Create'}
           </button>
-        )}{" "}
+        )}{' '}
         {isNewArrangement &&
           !isUserLoggedIn &&
           providers &&

@@ -3,8 +3,7 @@ import { connectDB } from '@utils/database';
 
 export const POST = async (req, res) => {
   try {
-    const { userId, title, description, instruments, sections } =
-      await req.json();
+    const { userId, title, description, instruments, sections } = await req.json();
     await connectDB();
     const newArrangement = new Arrangement({
       creator: userId,
@@ -18,7 +17,7 @@ export const POST = async (req, res) => {
     return new Response(JSON.stringify(newArrangement), { status: 201 });
   } catch (err) {
     console.log(err);
-    return new Response("Failed to save new arrangement to the database.", {
+    return new Response('Failed to save new arrangement to the database.', {
       status: 500,
     });
   }

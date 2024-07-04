@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useEffect,
@@ -19,14 +19,12 @@ const SectionCell = ({
 }) => {
   const [cellAppearance, setCellAppearance] = useState([
     `bg-opacity-5`,
-    "bg-opacity-20",
-    "bg-opacity-60",
-    "bg-opacity-100 brightness-150",
+    'bg-opacity-20',
+    'bg-opacity-60',
+    'bg-opacity-100 brightness-150',
   ]);
 
-  const [currentCellAppearance, setCurrentCellAppearance] = useState(
-    cellData[rowIndex][cellIndex],
-  );
+  const [currentCellAppearance, setCurrentCellAppearance] = useState(cellData[rowIndex][cellIndex]);
 
   useEffect(() => {
     setCurrentCellAppearance(cellData[rowIndex][cellIndex]);
@@ -44,7 +42,7 @@ const SectionCell = ({
       value={instrument || `Ins${cellIndex + 1}`}
       onClick={handleClick}
       className={`w-[14.2857%] text-[0.625rem] shadow-sm backdrop-blur-md backdrop-filter transition duration-75 sm:text-sm ${
-        !disabled && "active:translate-y-0.5 active:scale-95 active:shadow-none"
+        !disabled && 'active:translate-y-0.5 active:scale-95 active:shadow-none'
       } ${bgColors[cellIndex]} ${shadowColors[cellIndex]} ${
         cellAppearance[currentCellAppearance]
       } ${
@@ -54,8 +52,8 @@ const SectionCell = ({
                 ? `font-bold ${darkTextColors[cellIndex]}`
                 : `font-semibold ${textColors[cellIndex]}`
             }`
-          : "h-5 text-transparent sm:h-8"
-      } ${!instrument && "text-opacity-25"}
+          : 'h-5 text-transparent sm:h-8'
+      } ${!instrument && 'text-opacity-25'}
       `}
       disabled={disabled}
     />

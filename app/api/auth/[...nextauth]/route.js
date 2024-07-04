@@ -37,13 +37,9 @@ const handler = NextAuth({
         if (!userExists) {
           await User.create({
             id: profile.id,
-            username: profile.username.replace(" ", "").toLowerCase(),
+            username: profile.username.replace(' ', '').toLowerCase(),
           });
-          console.log(
-            `New user ${profile.username
-              .replace(" ", "")
-              .toLowerCase()} created.`,
-          );
+          console.log(`New user ${profile.username.replace(' ', '').toLowerCase()} created.`);
         }
         return true;
       } catch (err) {

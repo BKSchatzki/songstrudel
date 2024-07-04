@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useEffect,
@@ -12,7 +12,7 @@ import { usePreventAutoZoom } from '@hooks/usePreventAutoZoom';
 import FeedCardList from './FeedCardList';
 
 const Feed = ({ isPersonalFeed, currentUser }) => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const [arrangements, setArrangements] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,23 +28,15 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
 
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         try {
-          const res = await fetch("/api/arrangement");
-          if (!res.ok) throw new Error("Fetch failed.");
+          const res = await fetch('/api/arrangement');
+          if (!res.ok) throw new Error('Fetch failed.');
           const data = await res.json();
           isPersonalFeed
             ? setArrangements(
-                data
-                  .filter(
-                    (arrangement) => arrangement.creator._id === currentUser,
-                  )
-                  .reverse(),
+                data.filter((arrangement) => arrangement.creator._id === currentUser).reverse()
               )
             : setArrangements(
-                data
-                  .reverse()
-                  .filter(
-                    (arrangement) => arrangement.visibility === "visible",
-                  ),
+                data.reverse().filter((arrangement) => arrangement.visibility === 'visible')
               );
           setLoading(false);
           break;
@@ -52,9 +44,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
           if (attempt === maxAttempts - 1) {
             console.error(err);
           } else {
-            await new Promise((resolve) =>
-              setTimeout(resolve, delayBetweenAttempts),
-            );
+            await new Promise((resolve) => setTimeout(resolve, delayBetweenAttempts));
           }
         }
       }
@@ -67,15 +57,13 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
 
     try {
       const res = await fetch(`/api/arrangement/view/${id}`, {
-        method: "DELETE",
+        method: 'DELETE',
       });
       if (res.ok) {
         setArrangements;
       }
       if (res.ok) {
-        setArrangements(
-          arrangements.filter((arrangement) => arrangement._id !== id),
-        );
+        setArrangements(arrangements.filter((arrangement) => arrangement._id !== id));
       }
     } catch (err) {
       console.log(err);
@@ -87,15 +75,13 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
   const filteredArrangements = arrangements.filter((arrangement) => {
     const titlesLowercase = arrangement.title.toLowerCase();
     const usernamesLowercase = arrangement.creator.username.toLowerCase();
-    const instrumentsLowercase = arrangement.instruments
-      .join(" ")
-      .toLowerCase();
-    const searchWords = searchText.toLowerCase().split(" ");
+    const instrumentsLowercase = arrangement.instruments.join(' ').toLowerCase();
+    const searchWords = searchText.toLowerCase().split(' ');
     return searchWords.every(
       (word) =>
         titlesLowercase.includes(word) ||
         usernamesLowercase.includes(word) ||
-        instrumentsLowercase.includes(word),
+        instrumentsLowercase.includes(word)
     );
   });
 
@@ -105,10 +91,10 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
         <motion.form
           onSubmit={(e) => e.preventDefault()}
           className="flex flex-col items-center justify-center"
-          initial={{ opacity: 0, y: 10, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 10, ease: 'easeInOut' }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            type: "spring",
+            type: 'spring',
             bounce: 0.3333,
             duration: 0.5,
             delay: 0.2,

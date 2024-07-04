@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useEffect,
@@ -30,12 +30,9 @@ const ViewArrangement = ({ params: { id } }) => {
         try {
           if (!id) return;
           const res = await fetch(`/api/arrangement/view/${id}`);
-          if (!res.ok) throw new Error("Fetch failed.");
+          if (!res.ok) throw new Error('Fetch failed.');
           const data = await res.json();
-          if (
-            data.visibility !== "private" ||
-            session?.user.id === data.creator._id
-          ) {
+          if (data.visibility !== 'private' || session?.user.id === data.creator._id) {
             setArrangement(data);
           } else {
             setIsPrivateArrangement(true);
@@ -45,9 +42,7 @@ const ViewArrangement = ({ params: { id } }) => {
           if (attempt === maxAttempts - 1) {
             console.error(err);
           } else {
-            await new Promise((resolve) =>
-              setTimeout(resolve, delayBetweenAttempts),
-            );
+            await new Promise((resolve) => setTimeout(resolve, delayBetweenAttempts));
           }
         }
       }
@@ -67,9 +62,9 @@ const ViewArrangement = ({ params: { id } }) => {
 
     try {
       const res = await fetch(`/api/arrangement/view/${id}`, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(arrangement),
       });
@@ -87,9 +82,9 @@ const ViewArrangement = ({ params: { id } }) => {
 
     try {
       const res = await fetch(`/api/arrangement/view/${id}`, {
-        method: "DELETE",
+        method: 'DELETE',
       });
-      router.push("/my-arrangements");
+      router.push('/my-arrangements');
     } catch (err) {
       console.log(err);
     }
@@ -109,12 +104,12 @@ const ViewArrangement = ({ params: { id } }) => {
     <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
       <motion.h1
         className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl"
-        initial={{ opacity: 0, y: 50, ease: "easeInOut" }}
+        initial={{ opacity: 0, y: 50, ease: 'easeInOut' }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ type: "spring", bounce: 0.3333, duration: 0.5 }}
+        transition={{ type: 'spring', bounce: 0.3333, duration: 0.5 }}
         exit={{ opacity: 0, y: 50 }}
       >
-        Checking the{" "}
+        Checking the{' '}
         <span className="bg-gradient-to-t from-red-500 to-amber-500 bg-clip-text text-transparent">
           Oven
         </span>
@@ -135,7 +130,7 @@ const ViewArrangement = ({ params: { id } }) => {
         />
       ) : isPrivateArrangement ? (
         <p className="mx-4 mt-4 max-w-md text-base sm:text-lg">
-          Hmm. This oven seems to be{" "}
+          Hmm. This oven seems to be{' '}
           <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text font-semibold text-transparent">
             locked shut.
           </span>
@@ -144,28 +139,28 @@ const ViewArrangement = ({ params: { id } }) => {
         <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
           <motion.div
             className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
           />
           <motion.div
             className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.1 }}
             exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
           />
           <motion.div
             className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
-            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.2 }}
             exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
           />
           <motion.div
             className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
-            initial={{ opacity: 0, y: 100, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.3 }}
             exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}

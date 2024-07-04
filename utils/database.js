@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 let isConnected = false;
 
 export const connectDB = async () => {
-  mongoose.set("strictQuery", true);
+  mongoose.set('strictQuery', true);
 
   if (isConnected) {
-    console.log("Database already connected.");
+    console.log('Database already connected.');
     return;
   }
 
@@ -15,7 +15,7 @@ export const connectDB = async () => {
       dbName: process.env.DATABASE_NAME,
     });
     isConnected = true;
-    console.log("Connected to database.");
+    console.log('Connected to database.');
   } catch (err) {
     console.log(err);
   }

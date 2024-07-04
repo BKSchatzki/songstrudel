@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -10,9 +10,7 @@ const ArrangementDescription = ({
 }) => {
   return (
     <label className="mb-4 flex flex-col rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter focus-within:brightness-150">
-      <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">
-        Description
-      </span>
+      <span className="px-3 py-1.5 text-left text-xs font-semibold sm:text-base">Description</span>
       <TextareaAutosize
         type="text"
         value={arrangement.description}
@@ -25,7 +23,7 @@ const ArrangementDescription = ({
               ...arrangement,
               description: e.target.value,
             },
-            isNewArrangement,
+            isNewArrangement
           )
         }
         placeholder="A quick overview ~"
