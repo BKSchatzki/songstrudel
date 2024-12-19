@@ -32,8 +32,8 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="fixed z-10 w-full bg-gradient-to-b from-gray-900 to-transparent px-6 pb-3 pt-3">
-      <div className="items-between mx-auto flex max-w-7xl justify-between">
+    <nav className="fixed left-1/2 top-0 z-10 w-full -translate-x-1/2 bg-gradient-to-b from-slate-950 to-transparent px-4 pb-3 pt-3 sm:px-8 xl:px-20">
+      <div className="items-between mx-auto flex max-w-[1536px] justify-between sm:px-4">
         <div className="flex items-center justify-center gap-5">
           <motion.div
             initial={{ y: -100 }}
@@ -186,7 +186,7 @@ const Nav = () => {
               <AnimatePresence>
                 {dropdownToggled && (
                   <motion.div
-                    className="fixed right-0 top-0 z-10 flex h-full w-full flex-col items-center gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 pt-32 text-right backdrop-blur-md backdrop-filter"
+                    className="fixed right-0 top-0 z-10 flex h-full min-h-screen w-full flex-col items-center gap-6 rounded-sm bg-gray-900 bg-opacity-20 px-4 py-4 pt-32 text-right backdrop-blur-md backdrop-filter"
                     initial={{ opacity: 0, x: 500 }}
                     animate={{ opacity: 1, x: 0, zIndex: -10 }}
                     transition={{ duration: 0.3333, ease: 'anticipate' }}

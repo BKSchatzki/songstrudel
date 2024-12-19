@@ -5,6 +5,7 @@ import {
   useState,
 } from 'react';
 
+import { motion } from 'framer-motion';
 import {
   getProviders,
   signIn,
@@ -127,9 +128,12 @@ const Arrangement = ({
   };
 
   return (
-    <form
+    <motion.form
       onSubmit={handleSubmit}
       className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg"
+      initial={{ opacity: 0, ease: 'easeInOut' }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
     >
       <ArrangementTitle
         arrangement={arrangement}
@@ -245,7 +249,7 @@ const Arrangement = ({
             </button>
           ))}
       </div>
-    </form>
+    </motion.form>
   );
 };
 

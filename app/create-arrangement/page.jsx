@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 import Arrangement from '@components/Arrangement';
+import PageContainer from '@components/PageContainer';
 
 const CreateArrangement = () => {
   const { data: session } = useSession();
@@ -64,12 +65,7 @@ const CreateArrangement = () => {
   };
 
   return (
-    <motion.section
-      className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32"
-      initial={{ opacity: 0, ease: 'easeInOut' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-    >
+    <PageContainer>
       <motion.h1
         className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl"
         initial={{ opacity: 0, y: 50, ease: 'easeInOut' }}
@@ -102,7 +98,7 @@ const CreateArrangement = () => {
           handleSubmit={createArrangement}
         />
       </motion.div>
-    </motion.section>
+    </PageContainer>
   );
 };
 

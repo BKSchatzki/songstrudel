@@ -9,7 +9,9 @@ import { motion } from 'framer-motion';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
+import LoadingSpinner from '@/components/LoadingSpinner';
 import Arrangement from '@components/Arrangement';
+import PageContainer from '@components/PageContainer';
 
 const ViewArrangement = ({ params: { id } }) => {
   const { data: session } = useSession();
@@ -101,7 +103,7 @@ const ViewArrangement = ({ params: { id } }) => {
   };
 
   return (
-    <section className="mx-auto flex w-11/12 flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
+    <PageContainer>
       <motion.h1
         className="mx-4 mt-4 max-w-xl text-2xl font-bold sm:text-3xl"
         initial={{ opacity: 0, y: 50, ease: 'easeInOut' }}
@@ -136,38 +138,41 @@ const ViewArrangement = ({ params: { id } }) => {
           </span>
         </p>
       ) : (
-        <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
-          <motion.div
-            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-          />
-          <motion.div
-            className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
-            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 0.1 }}
-            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-          />
-          <motion.div
-            className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
-            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 0.2 }}
-            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-          />
-          <motion.div
-            className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
-            initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 0.3 }}
-            exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
-          />
+        <div className="mt-12">
+          <LoadingSpinner />
         </div>
+        // <div className="mt-4 w-full max-w-xs sm:mt-8 sm:max-w-lg">
+        //   <motion.div
+        //     className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+        //     initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
+        //     animate={{ opacity: 1, y: 0 }}
+        //     transition={{ duration: 0.2 }}
+        //     exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+        //   />
+        //   <motion.div
+        //     className="skeleton mb-4 h-[60px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[76px]"
+        //     initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
+        //     animate={{ opacity: 1, y: 0 }}
+        //     transition={{ duration: 0.2, delay: 0.1 }}
+        //     exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+        //   />
+        //   <motion.div
+        //     className="skeleton mb-4 h-8 rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-10"
+        //     initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
+        //     animate={{ opacity: 1, y: 0 }}
+        //     transition={{ duration: 0.2, delay: 0.2 }}
+        //     exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+        //   />
+        //   <motion.div
+        //     className="skeleton mb-4 h-[203px] rounded-sm bg-slate-950 bg-opacity-50 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter sm:h-[276px]"
+        //     initial={{ opacity: 0, y: 100, ease: 'easeInOut' }}
+        //     animate={{ opacity: 1, y: 0 }}
+        //     transition={{ duration: 0.2, delay: 0.3 }}
+        //     exit={{ opacity: 0, y: 100, transition: { duration: 0.1 } }}
+        //   />
+        // </div>
       )}
-    </section>
+    </PageContainer>
   );
 };
 

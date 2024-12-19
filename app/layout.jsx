@@ -12,7 +12,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className="min-h-screen overflow-y-scroll bg-gray-900 text-slate-100 scrollbar scrollbar-track-slate-900 scrollbar-thumb-slate-800">
+      <body className="min-h-screen overflow-y-scroll bg-slate-950 text-slate-100 scrollbar scrollbar-track-slate-900 scrollbar-thumb-slate-800 sm:px-8 xl:px-20">
         <Provider>
           <Nav />
           <main>{children}</main>

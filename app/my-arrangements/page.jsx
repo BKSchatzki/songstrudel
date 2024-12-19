@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 import Feed from '@components/Feed';
+import PageContainer from '@components/PageContainer';
 
 const Profile = () => {
   const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ const Profile = () => {
   }, [session, status, router]);
 
   return (
-    <section className="mx-auto flex w-11/12 max-w-7xl flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
+    <PageContainer>
       <motion.h1
         className="mx-4 mt-4 max-w-xl text-3xl font-bold sm:text-4xl"
         initial={{ opacity: 0, y: 50, ease: 'easeInOut' }}
@@ -58,7 +59,7 @@ const Profile = () => {
           currentUser={session?.user.id}
         />
       )}
-    </section>
+    </PageContainer>
   );
 };
 

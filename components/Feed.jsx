@@ -101,7 +101,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
           }}
           exit={{ opacity: 0, y: 10 }}
         >
-          <label className="flex w-11/12 max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
+          <label className="flex w-full max-w-3xl flex-row items-center justify-between rounded-sm bg-slate-950 bg-opacity-50 px-6 py-3 shadow-md shadow-slate-950/50 backdrop-blur-md backdrop-filter placeholder:opacity-50 focus-within:brightness-150">
             <span className="hidden">Name</span>
             <input
               type="text"

@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion';
 
 import Feed from '@components/Feed';
+import PageContainer from '@components/PageContainer';
 
 const Home = () => {
   return (
-    <section className="mx-auto flex w-11/12 max-w-7xl flex-col items-center justify-center pb-8 pt-16 text-center sm:pb-16 sm:pt-32">
+    <PageContainer>
       <motion.h1
         className="mx-4 mt-4 max-w-xl text-4xl font-bold sm:text-5xl"
         initial={{ opacity: 0, y: 50, ease: 'easeInOut' }}
@@ -36,13 +37,9 @@ const Home = () => {
         <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text font-semibold text-transparent">
           before getting lost in the DAW sauce.
         </span>
-        <br />
-        <span className="mt-4 inline-block text-xs opacity-50 sm:text-sm">
-          SongStrudel is current undergoing changes. Enjoy as it is for now!
-        </span>
       </motion.p>
       <Feed personalFeed={false} />
-    </section>
+    </PageContainer>
   );
 };
 
