@@ -41,10 +41,10 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
         } else {
           await new Promise((resolve) => setTimeout(resolve, delayBetweenAttempts));
         }
-      } finally {
-        setIsLoading(false);
       }
     }
+
+    setIsLoading(false);
   };
 
   const [isReady, cancelFetch] = useDebounce(
