@@ -20,6 +20,7 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
   usePreventAutoZoom();
 
   const fetchArrangements = async () => {
+    setIsLoading(true);
     const maxAttempts = 10;
     const delayBetweenAttempts = 500;
 
