@@ -15,7 +15,7 @@ import FeedCardList from './FeedCardList';
 const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState('');
   const [arrangements, setArrangements] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   usePreventAutoZoom();
 
