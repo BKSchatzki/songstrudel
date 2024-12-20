@@ -15,6 +15,7 @@ const userSchema = new Schema(
       type: String,
       unique: [true, 'This username already exists.'],
       required: [true, 'A username is required.'],
+      index: true,
     },
   },
   { timestamps: true }

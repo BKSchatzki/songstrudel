@@ -7,7 +7,7 @@ import {
 const arrangementSchema = new Schema(
   {
     creator: { type: Schema.Types.ObjectId, ref: 'User' },
-    title: { type: String, required: [true, 'A title is required.'] },
+    title: { type: String, required: [true, 'A title is required.'], index: true },
     description: { type: String },
     instruments: {
       type: [String],
