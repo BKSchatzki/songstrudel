@@ -45,6 +45,7 @@ const Nav = () => {
               className="flex items-center justify-center gap-2"
             >
               <Image
+                priority
                 src="/assets/images/songstrudel-logoonly.svg"
                 alt="SongStrudel Logo"
                 width={37}
@@ -52,6 +53,7 @@ const Nav = () => {
                 className="z-20 block transition duration-75 active:translate-y-0.5 active:scale-95 active:shadow-none md:hidden"
               />
               <Image
+                priority
                 src="/assets/images/songstrudel-withname.svg"
                 alt="SongStrudel Logo"
                 width={148}

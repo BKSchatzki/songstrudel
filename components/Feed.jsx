@@ -7,6 +7,7 @@ import {
 
 import { motion } from 'framer-motion';
 
+import useDebounce from '@hooks/useDebounce';
 import { usePreventAutoZoom } from '@hooks/usePreventAutoZoom';
 
 import FeedCardList from './FeedCardList';
@@ -14,43 +15,55 @@ import FeedCardList from './FeedCardList';
 const Feed = ({ isPersonalFeed, currentUser }) => {
   const [searchText, setSearchText] = useState('');
   const [arrangements, setArrangements] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  usePreventAutoZoom();
+
+  const fetchArrangements = async () => {
+    const maxAttempts = 10;
+    const delayBetweenAttempts = 500;
+
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        const url = `/api/arrangement?search=${encodeURIComponent(searchText)}&page=1`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Fetch failed.');
+        const data = await res.json();
+        isPersonalFeed
+          ? setArrangements(data.filter((arrangement) => arrangement.creator._id === currentUser))
+          : setArrangements(data.filter((arrangement) => arrangement.visibility === 'visible'));
+        setIsLoading(false);
+        break;
+      } catch (err) {
+        if (attempt === maxAttempts - 1) {
+          console.error(err);
+        } else {
+          await new Promise((resolve) => setTimeout(resolve, delayBetweenAttempts));
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const [isReady, cancelFetch] = useDebounce(
+    () => {
+      fetchArrangements();
+    },
+    1000,
+    [searchText]
+  );
 
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
+    setTimeout(() => setIsLoading(true), 500);
   };
 
   useEffect(() => {
-    const fetchArrangements = async () => {
-      setLoading(true);
-      const maxAttempts = 10;
-      const delayBetweenAttempts = 500;
-
-      for (let attempt = 0; attempt < maxAttempts; attempt++) {
-        try {
-          const res = await fetch('/api/arrangement');
-          if (!res.ok) throw new Error('Fetch failed.');
-          const data = await res.json();
-          isPersonalFeed
-            ? setArrangements(
-                data.filter((arrangement) => arrangement.creator._id === currentUser).reverse()
-              )
-            : setArrangements(
-                data.reverse().filter((arrangement) => arrangement.visibility === 'visible')
-              );
-          setLoading(false);
-          break;
-        } catch (err) {
-          if (attempt === maxAttempts - 1) {
-            console.error(err);
-          } else {
-            await new Promise((resolve) => setTimeout(resolve, delayBetweenAttempts));
-          }
-        }
-      }
-    };
-    fetchArrangements();
-  }, []);
+    if (isReady()) {
+      fetchArrangements();
+    }
+  }, [isReady]);
 
   const deleteArrangement = async (id) => {
     if (!id || !isPersonalFeed) return;
@@ -69,21 +82,6 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
       console.log(err);
     }
   };
-
-  usePreventAutoZoom();
-
-  const filteredArrangements = arrangements.filter((arrangement) => {
-    const titlesLowercase = arrangement.title.toLowerCase();
-    const usernamesLowercase = arrangement.creator.username.toLowerCase();
-    const instrumentsLowercase = arrangement.instruments.join(' ').toLowerCase();
-    const searchWords = searchText.toLowerCase().split(' ');
-    return searchWords.every(
-      (word) =>
-        titlesLowercase.includes(word) ||
-        usernamesLowercase.includes(word) ||
-        instrumentsLowercase.includes(word)
-    );
-  });
 
   return (
     <section className="mt-6 w-full sm:mt-12">
@@ -114,7 +112,8 @@ const Feed = ({ isPersonalFeed, currentUser }) => {
         </motion.form>
       )}
       <FeedCardList
-        data={filteredArrangements}
+        data={arrangements}
+        isLoading={isLoading}
         isPersonalFeed={isPersonalFeed}
         handleDelete={deleteArrangement}
       />

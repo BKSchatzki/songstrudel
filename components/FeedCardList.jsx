@@ -9,10 +9,10 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 
 import FeedCard from './FeedCard';
 
-const FeedCardList = ({ data, isPersonalFeed, handleDelete }) => {
+const FeedCardList = ({ data, isLoading, isPersonalFeed, handleDelete }) => {
   return (
     <AnimatePresence mode="wait">
-      {data.length === 0 ? (
+      {isLoading ? (
         <LoadingSpinner />
       ) : (
         <div

@@ -92,6 +92,8 @@ const Arrangement = ({
   const [countdown, setCountdown] = useState(3);
   const [providers, setProviders] = useState(null);
 
+  usePreventAutoZoom();
+
   useEffect(() => {
     const loadProviders = async () => {
       const res = await getProviders();
@@ -99,8 +101,6 @@ const Arrangement = ({
     };
     loadProviders();
   }, []);
-
-  usePreventAutoZoom();
 
   const handleDeleteClick = () => {
     if (!confirmDelete) {
